@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "554608800662",
+    "firebase_url": "https://e-danfo.firebaseio.com",
+    "project_id": "e-danfo",
+    "storage_bucket": "e-danfo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554608800662:android:78cb2666d63c0abfbb23b7",
+        "android_client_info": {
+          "package_name": "com.misterjedu.edanfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554608800662-phknliredvtrf86ehgnnqcnroatp7mch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5x-I-RMQNkMSheJTP_EMkF1iksClD-_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554608800662-phknliredvtrf86ehgnnqcnroatp7mch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
