@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_phone_activation_root_nsv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:fillViewport="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <!--    Sub container-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_phone_activation_sub_root_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.auth.LoginFragment">
+
+        <!--        Header Background image-->
+        <ImageView
+            android:id="@+id/fragment_phone_activation_header_img"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/danfo_curved_bg_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/fragment_phone_activation_back_arrow_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/backarrow_round_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/fragment_sign_up_menu_activation_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/phone_activation"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_phone_activation_back_arrow_iv"
+            app:layout_constraintStart_toEndOf="@+id/fragment_phone_activation_back_arrow_iv"
+            app:layout_constraintTop_toTopOf="@+id/fragment_phone_activation_back_arrow_iv" />
+
+        <!--        Body-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_phone_activation_body_cl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_phone_activation_header_img"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/fragment_phone_activation_phone_activation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="44dp"
+                android:text="@string/phone_activation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragment_phone_activation_enter_otp_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/enter_your_otp_code"
+                android:textColor="#040404"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_phone_activation_phone_activation_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_phone_activation_phone_activation_tv" />
+
+            <TextView
+                android:id="@+id/fragment_phone_activation_enter_digit_tv"
+                android:layout_width="0dp"
+                android:layout_height="59dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/enter_otp_str"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_phone_activation_enter_otp_tv"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_phone_activation_enter_otp_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_phone_activation_enter_otp_tv" />
+
+
+            <com.mukesh.OtpView
+                android:id="@+id/fragment_phone_activation_otp_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:inputType="number"
+                android:itemBackground="@drawable/curved_white_box"
+                android:textColor="@android:color/white"
+                app:OtpItemCount="6"
+                app:OtpLineColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_phone_activation_enter_digit_tv"
+                app:layout_constraintStart_toStartOf="@+id/fragment_phone_activation_enter_digit_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_phone_activation_enter_digit_tv"
+                app:lineColor="#363636"
+                app:lineWidth="1dp"
+                app:viewType="rectangle" />
+
+            <TextView
+                android:id="@+id/fragment_phone_activation_resend_code_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="76dp"
+                android:text="@string/resend_code_str"
+                app:layout_constraintStart_toStartOf="@+id/fragment_phone_activation_enter_digit_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_phone_activation_otp_view" />
+
+            <Button
+                android:id="@+id/fragment_phone_activation_send_otp_btn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/backarrow_round_background"
+                android:backgroundTint="@color/colorPrimary"
+                android:enabled="false"
+                android:gravity="center"
+                android:paddingLeft="24dp"
+                android:paddingRight="16dp"
+                app:icon="@drawable/ic_baseline_arrow_forward"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_phone_activation_resend_code_tv"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_phone_activation_enter_digit_tv"
+                app:layout_constraintTop_toTopOf="@+id/fragment_phone_activation_resend_code_tv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

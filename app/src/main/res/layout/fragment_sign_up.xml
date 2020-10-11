@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_sign_up_root_nsv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <!--    Sub container-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_sign_up_sub_root_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.auth.LoginFragment">
+
+        <!--        Header Background image-->
+        <ImageView
+            android:id="@+id/fragment_sign_up_header_img"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/danfo_curved_bg_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/fragment_sign_up_back_arrow_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/backarrow_round_background"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/fragment_sign_up_menu_verification_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/phone_verification"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/fragment_sign_up_back_arrow_iv"
+            app:layout_constraintStart_toEndOf="@+id/fragment_sign_up_back_arrow_iv"
+            app:layout_constraintTop_toTopOf="@+id/fragment_sign_up_back_arrow_iv" />
+
+        <!--        Body-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_sign_up_body_cl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_header_img"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/fragment_sign_up_hello_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="44dp"
+                android:text="Hello, Nice to Meet you"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragment_sign_up_welcome_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/welcome_to_edanfo"
+                android:textColor="#232323"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_hello_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_hello_tv" />
+
+
+            <!--            PhoneNumber-->
+            <LinearLayout
+                android:id="@+id/fragment_sign_up_phone_container_ll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/curved_white_box"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_welcome_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_welcome_tv">
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/fragment_sign_up_country_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    app:ccpDialog_fastScroller_bubbleColor="@color/colorAccent"
+                    app:ccp_defaultNameCode="NG"
+                    app:ccp_showNameCode="false"
+                    app:ccp_textSize="16sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/fragment_sign_up_phone_number_tl"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/your_phone_number"
+                    android:outlineAmbientShadowColor="@color/colorPrimary"
+                    android:outlineSpotShadowColor="@color/colorPrimary"
+                    app:boxStrokeColor="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/fragment_sign_up_verify_code_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="4dp"
+                android:text="We'll text you a code to verify your mobile number."
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_sign_up_phone_container_ll"
+                app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_phone_container_ll"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_phone_container_ll" />
+
+            <Button
+                android:id="@+id/fragment_sign_up_login_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:enabled="false"
+                android:paddingLeft="30dp"
+                android:paddingTop="16dp"
+                android:paddingRight="30dp"
+                android:paddingBottom="16dp"
+                android:text="Continue"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="7dp"
+                app:icon="@drawable/ic_baseline_arrow_forward"
+                app:iconGravity="end"
+                app:layout_constraintBottom_toTopOf="@+id/fragment_sign_up_terms_of_service_tv"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_sign_up_phone_container_ll"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_phone_container_ll" />
+
+            <TextView
+                android:id="@+id/fragment_sign_up_terms_of_service_tv"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/agree_terms_of_service"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_sign_up_login_btn"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_login_btn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

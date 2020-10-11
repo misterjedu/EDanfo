@@ -11,4 +11,28 @@
         android:label="OnBoardingFragment"
         tools:layout="@layout/fragment_onboarding"
         />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.misterjedu.edanfo.ui.auth.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout = "@layout/fragment_login"
+        />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.misterjedu.edanfo.ui.auth.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up"
+        />
+    <fragment
+        android:id="@+id/phoneActivationFragment"
+        android:name="com.misterjedu.edanfo.ui.auth.PhoneActivationFragment"
+        android:label="PhoneActivationFragment"
+        tools:layout = "@layout/fragment_phone_activation"
+        />
+    <fragment
+        android:id="@+id/createProfileFragment"
+        android:name="com.misterjedu.edanfo.ui.auth.createprofile.CreateProfileFragment"
+        android:label="CreateProfileFragment"
+        tools:layout="@layout/fragment_create_profile"
+        />
 </navigation>

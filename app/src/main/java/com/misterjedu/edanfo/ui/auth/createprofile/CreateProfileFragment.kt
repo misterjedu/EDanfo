@@ -1,4 +1,4 @@
-package com.misterjedu.edanfo.ui.onboarding
+package com.misterjedu.edanfo.ui.auth.createprofile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,15 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
-import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.ViewPagerAdapter
 import com.misterjedu.edanfo.databinding.FragmentCreateProfileBinding
-import com.misterjedu.edanfo.databinding.FragmentOnboardingBinding
-import kotlinx.android.synthetic.main.fragment_onboarding.*
 
-class OnBoardingFragment : Fragment() {
+class CreateProfileFragment : Fragment() {
 
-    private var _binding: FragmentOnboardingBinding? = null
+    private var _binding: FragmentCreateProfileBinding? = null
 
     private val binding get() = _binding!!
 
@@ -23,7 +20,7 @@ class OnBoardingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
+        _binding = FragmentCreateProfileBinding.inflate(inflater, container, false)
 
         // Inflate the layout for this fragment
         return binding.root
@@ -36,10 +33,10 @@ class OnBoardingFragment : Fragment() {
         //Set View PagerAdapter
         //TODO Use Dependency Injection
         val fragmentList: ArrayList<Fragment> = arrayListOf(
-            OnBoardingScreenOne(),
-            OnBoardingScreenTwo(),
-            OnBoardingScreenThree()
+            DriverProfile(),
+            PassengerProfile()
         )
+
 
         //Connect the fragment list to the view pager
         val adapter = activity?.supportFragmentManager?.let {
@@ -50,10 +47,24 @@ class OnBoardingFragment : Fragment() {
             )
         }
 
-        binding.fragmentOnboardingVp.adapter = adapter
+        binding.fragmentCreateProfileViewPager.adapter = adapter
 
-        TabLayoutMediator(fragment_onboarding_tab_layout, fragment_onboarding_vp)
-        { _, _ -> }.attach()
+        TabLayoutMediator(
+            binding.fragmentCreateProfileTabLayout,
+            binding.fragmentCreateProfileViewPager
+        )
+        { tab, position ->
+            tab.text = when (position) {
+                0 -> "DRIVER"
+                else -> "RIDER"
+            }
+        }.attach()
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 }
