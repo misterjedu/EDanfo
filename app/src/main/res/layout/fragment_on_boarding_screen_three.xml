@@ -12,11 +12,10 @@
     <ImageView
         android:id="@+id/fragment_onboarding2_background_iv"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/taxi_image"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_onboarding2_title_tv" />
 

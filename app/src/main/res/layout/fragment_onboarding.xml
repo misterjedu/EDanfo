@@ -23,8 +23,7 @@
         android:id="@+id/fragment_onboarding_tab_layout"
         android:layout_width="409dp"
         android:layout_height="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_login_login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_onboarding_getStarted_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +34,7 @@
         app:tabIndicatorHeight="0dp" />
 
     <Button
-        android:id="@+id/fragment_login_login_btn"
+        android:id="@+id/fragment_onboarding_getStarted_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

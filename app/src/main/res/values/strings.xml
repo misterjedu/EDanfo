@@ -25,9 +25,13 @@
     <string name="create_driver_account">Create Driver Account</string>
     <string name="enter_password_again">Enter Password Again</string>
     <string name="swipe_register_as_driver_str">Not a Driver? Swipe right and register as a Passenger</string>
-    <string name="register_driver_account_str">Want to register as a driver? Swipe left to create a driver account</string>
-    <string name="create_passenger_account">Create Passenger Account</string>
+    <string name="register_driver_account_str">Swipe left to register as a DRIVER</string>
+    <string name="create_passenger_account">Create Passenger\'s Account</string>
     <string name="login">Login</string>
     <string name="rider">Rider</string>
     <string name="driver">Driver</string>
+    <string name="transportation_in_a_breeze">Transportation in a Breeze</string>
+    <string name="complete">Complete</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New Password</string>
 </resources>

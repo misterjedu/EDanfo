@@ -5,36 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.ViewPagerAdapter
-import com.misterjedu.edanfo.databinding.FragmentCreateProfileBinding
-import com.misterjedu.edanfo.databinding.FragmentOnboardingBinding
 import kotlinx.android.synthetic.main.fragment_onboarding.*
 
 class OnBoardingFragment : Fragment() {
-
-    private var _binding: FragmentOnboardingBinding? = null
-
-    private val binding get() = _binding!!
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
 
         // Inflate the layout for this fragment
-        return binding.root
-
+        return inflater.inflate(R.layout.fragment_onboarding, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         //Set View PagerAdapter
-        //TODO Use Dependency Injection
         val fragmentList: ArrayList<Fragment> = arrayListOf(
             OnBoardingScreenOne(),
             OnBoardingScreenTwo(),
@@ -50,10 +42,21 @@ class OnBoardingFragment : Fragment() {
             )
         }
 
-        binding.fragmentOnboardingVp.adapter = adapter
+        fragment_onboarding_vp.adapter = adapter
 
-        TabLayoutMediator(fragment_onboarding_tab_layout, fragment_onboarding_vp)
-        { _, _ -> }.attach()
+        TabLayoutMediator(
+            fragment_onboarding_tab_layout,
+            fragment_onboarding_vp
+        )
+        { _, _ ->
+        }.attach()
 
+
+
+        fragment_onboarding_getStarted_btn.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment)
+        }
     }
+
+
 }

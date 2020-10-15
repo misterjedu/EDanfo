@@ -16,23 +16,44 @@
         android:name="com.misterjedu.edanfo.ui.auth.LoginFragment"
         android:label="LoginFragment"
         tools:layout = "@layout/fragment_login"
-        />
+        >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.misterjedu.edanfo.ui.auth.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_up"
-        />
+        >
+        <action
+            android:id="@+id/action_signUpFragment_to_phoneActivationFragment"
+            app:destination="@id/phoneActivationFragment" />
+        <argument
+            android:name="fragmentName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/phoneActivationFragment"
         android:name="com.misterjedu.edanfo.ui.auth.PhoneActivationFragment"
         android:label="PhoneActivationFragment"
         tools:layout = "@layout/fragment_phone_activation"
-        />
+        >
+        <argument
+            android:name="fragmentName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/createProfileFragment"
         android:name="com.misterjedu.edanfo.ui.auth.createprofile.CreateProfileFragment"
         android:label="CreateProfileFragment"
         tools:layout="@layout/fragment_create_profile"
+        />
+    <fragment
+        android:id="@+id/changePasswordFragment2"
+        android:name="com.misterjedu.edanfo.ui.auth.ChangePasswordFragment"
+        android:label="ChangePasswordFragment"
+        tools:layout="@layout/fragment_change_password"
         />
 </navigation>

@@ -1,167 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_passenger_root_cl"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    tools:context=".ui.auth.createprofile.DriverProfile">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <!--          FirstName Edit Text-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_passenger_first_name_til"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_passenger_root_cl"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/first_name"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        tools:context=".ui.auth.createprofile.DriverProfile">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_passenger_first_name_et"
-            android:layout_width="match_parent"
+        <!--          FirstName Edit Text-->
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:inputType="textPassword" />
+            android:layout_marginTop="24dp"
+            android:text="@string/create_passenger_account"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!--          LastName Edit Text-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_passenger_last_name_til"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/last_name"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_first_name_til">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_passenger_last_name_et"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:inputType="textPassword" />
+            android:layout_marginTop="8dp"
+            android:text="@string/register_driver_account_str"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_first_name_til"
+            app:layout_constraintStart_toStartOf="@+id/fragment_passenger_first_name_til"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <!--         Email Edit Text-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_passenger_email_til"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/email_address"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_last_name_til">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_passenger_email_et"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_passenger_first_name_til"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:inputType="textPassword" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/first_name"
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_passenger_first_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="textPassword" />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
-
-    <!--          Password Text-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_passenger_password_til"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/password"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:endIconMode="password_toggle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_email_til">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_passenger_password_et"
-            android:layout_width="match_parent"
+        <!--          LastName Edit Text-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_passenger_last_name_til"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:inputType="textPassword" />
+            android:layout_marginTop="8dp"
+            android:hint="@string/last_name"
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_first_name_til"
+            app:layout_constraintStart_toStartOf="@+id/fragment_passenger_first_name_til"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_first_name_til">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_passenger_last_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <!--          Password Text-->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_passenger_repeat_password_til"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/enter_password_again"
-        android:outlineAmbientShadowColor="@color/colorPrimary"
-        android:outlineSpotShadowColor="@color/colorPrimary"
-        app:endIconMode="password_toggle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_password_til">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_passenger_repeat_password_et"
-            android:layout_width="match_parent"
+        <!--         Email Edit Text-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_passenger_email_til"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:inputType="textPassword" />
+            android:layout_marginTop="8dp"
+            android:hint="@string/email_address"
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_last_name_til"
+            app:layout_constraintStart_toStartOf="@+id/fragment_passenger_last_name_til"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_last_name_til">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_passenger_email_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <!--          Password Text-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_passenger_password_til"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/password"
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_email_til"
+            app:layout_constraintStart_toStartOf="@+id/fragment_passenger_email_til"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_email_til">
 
-    <Button
-        android:id="@+id/fragment_passenger_profile_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:enabled="false"
-        android:paddingLeft="30dp"
-        android:paddingTop="16dp"
-        android:paddingRight="30dp"
-        android:paddingBottom="16dp"
-        android:text="@string/create_passenger_account"
-        android:textAlignment="viewStart"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:cornerRadius="7dp"
-        app:icon="@drawable/ic_baseline_arrow_forward"
-        app:iconGravity="end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fragment_passenger_repeat_password_til"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_repeat_password_til" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_passenger_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="textPassword" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/register_driver_account_str"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_profile_btn"
-        app:layout_constraintStart_toStartOf="@+id/fragment_passenger_profile_btn"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_profile_btn" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!--          Password Text-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fragment_passenger_repeat_password_til"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/enter_password_again"
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            app:endIconMode="password_toggle"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_password_til"
+            app:layout_constraintStart_toStartOf="@+id/fragment_passenger_password_til"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_password_til">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fragment_passenger_repeat_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="textPassword" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/fragment_passenger_profile_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:enabled="false"
+            android:paddingLeft="30dp"
+            android:paddingTop="16dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="16dp"
+            android:text="@string/create_passenger_account"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="7dp"
+            app:icon="@drawable/ic_baseline_arrow_forward"
+            app:iconGravity="end"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_repeat_password_til"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/fragment_passenger_repeat_password_til"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_repeat_password_til" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

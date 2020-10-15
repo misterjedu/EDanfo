@@ -5,30 +5,40 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
+import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.ViewPagerAdapter
-import com.misterjedu.edanfo.databinding.FragmentCreateProfileBinding
+import kotlinx.android.synthetic.main.fragment_create_profile.*
 
 class CreateProfileFragment : Fragment() {
-
-    private var _binding: FragmentCreateProfileBinding? = null
-
-    private val binding get() = _binding!!
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCreateProfileBinding.inflate(inflater, container, false)
-
-        // Inflate the layout for this fragment
-        return binding.root
+        return inflater.inflate(R.layout.fragment_create_profile, container, false)
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        Glide.with(this)
+            .load(R.drawable.danfo_curved_bg_2)
+            .into(fragment_create_profile_header_img);
+
+
+        Glide.with(this)
+            .load(R.drawable.logo_filled_black_background)
+            .into(fragment_create_profile_picture_iv);
+
+        Glide.with(this)
+            .load(R.drawable.ic_outline_photo_camera)
+            .into(fragment_create_profile_photo_icon_iv);
+
 
         //Set View PagerAdapter
         //TODO Use Dependency Injection
@@ -47,11 +57,11 @@ class CreateProfileFragment : Fragment() {
             )
         }
 
-        binding.fragmentCreateProfileViewPager.adapter = adapter
+        fragment_create_profile_view_pager.adapter = adapter
 
         TabLayoutMediator(
-            binding.fragmentCreateProfileTabLayout,
-            binding.fragmentCreateProfileViewPager
+            fragment_create_profile_tab_layout,
+            fragment_create_profile_view_pager
         )
         { tab, position ->
             tab.text = when (position) {
@@ -60,11 +70,12 @@ class CreateProfileFragment : Fragment() {
             }
         }.attach()
 
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+        //Back Arrow
+        fragment_create_profile_back_arrow_iv.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
     }
 
 }
