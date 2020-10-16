@@ -13,8 +13,6 @@ import kotlinx.android.synthetic.main.fragment_login.fragment_sign_up_header_img
 
 
 class LoginFragment : Fragment() {
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

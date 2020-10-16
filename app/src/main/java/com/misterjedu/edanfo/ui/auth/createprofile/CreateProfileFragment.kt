@@ -31,13 +31,13 @@ class CreateProfileFragment : Fragment() {
             .into(fragment_create_profile_header_img);
 
 
-        Glide.with(this)
-            .load(R.drawable.logo_filled_black_background)
-            .into(fragment_create_profile_picture_iv);
-
-        Glide.with(this)
-            .load(R.drawable.ic_outline_photo_camera)
-            .into(fragment_create_profile_photo_icon_iv);
+//        Glide.with(this)
+//            .load(R.drawable.logo_filled_black_background)
+//            .into(fragment_create_profile_picture_iv);
+//
+//        Glide.with(this)
+//            .load(R.drawable.ic_outline_photo_camera)
+//            .into(fragment_create_profile_photo_icon_iv);
 
 
         //Set View PagerAdapter

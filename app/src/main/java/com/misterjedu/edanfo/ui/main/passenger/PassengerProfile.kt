@@ -1,4 +1,4 @@
-package com.misterjedu.edanfo.ui.auth.createprofile
+package com.misterjedu.edanfo.ui.main.passenger
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +14,7 @@ class PassengerProfile : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_passenger_profile, container, false)
+        return inflater.inflate(R.layout.fragment_passenger_profile, container, false)
     }
 
 
