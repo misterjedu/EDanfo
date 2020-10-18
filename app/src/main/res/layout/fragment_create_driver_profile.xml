@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        tools:context=".ui.auth.createprofile.DriverProfile">
+        tools:context=".ui.auth.createprofile.CreateDriverProfile">
 
         <!--          FirstName Edit Text-->
 
@@ -186,7 +186,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:enabled="false"
+            android:enabled="true"
             android:paddingLeft="30dp"
             android:paddingTop="16dp"
             android:paddingRight="30dp"

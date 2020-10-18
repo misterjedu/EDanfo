@@ -43,8 +43,8 @@ class CreateProfileFragment : Fragment() {
         //Set View PagerAdapter
         //TODO Use Dependency Injection
         val fragmentList: ArrayList<Fragment> = arrayListOf(
-            DriverProfile(),
-            PassengerProfile()
+            CreateDriverProfile(),
+            CreatePassengerProfile()
         )
 
 

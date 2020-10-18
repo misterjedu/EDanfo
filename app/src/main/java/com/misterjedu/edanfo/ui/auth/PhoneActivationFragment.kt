@@ -47,7 +47,6 @@ class PhoneActivationFragment : Fragment() {
             }
         }
 
-
         //Back Arrow
         fragment_phone_activation_back_arrow_iv.setOnClickListener {
             findNavController().popBackStack()

@@ -1,5 +1,6 @@
 package com.misterjedu.edanfo.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.misterjedu.edanfo.R
+import com.misterjedu.edanfo.ui.main.DriverActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.fragment_sign_up_header_img
 
@@ -30,18 +32,24 @@ class LoginFragment : Fragment() {
 
         //Navigate to PhoneActivationFragment to SignUpFragment
         fragment_login_create_my_account_tv.setOnClickListener {
-            val action =  LoginFragmentDirections
+            val action = LoginFragmentDirections
                 .actionLoginFragmentToSignUpFragment("Sign Up")
             findNavController().navigate(action)
         }
 
         //Navigate to PhoneActivationFragment to change Password
         fragment_login_forgot_password_tv.setOnClickListener {
-            val action =  LoginFragmentDirections
+            val action = LoginFragmentDirections
                 .actionLoginFragmentToSignUpFragment("Change Password")
             findNavController().navigate(action)
         }
 
+
+        //Login and Start Activity for Driver
+        fragment_login_login_btn.setOnClickListener {
+            val intent = Intent(requireContext(), DriverActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

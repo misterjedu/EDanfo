@@ -3,4 +3,6 @@
     <color name="colorPrimary">#58BE3F</color>
     <color name="colorPrimaryDark">#347324</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorLightBackground">#ECF1EB</color>
+    <color name="colorCancelButton">#F78383</color>
 </resources>

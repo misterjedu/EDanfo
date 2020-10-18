@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/driver_nav"
+    app:startDestination="@id/driverProfile">
+
+    <fragment
+        android:id="@+id/driverProfile"
+        android:name="com.misterjedu.edanfo.ui.main.driver.DriverProfile"
+        android:label="DriverProfile"
+        tools:layout="@layout/fragment_driver_proflle"
+        />
+    <fragment
+        android:id="@+id/destinationList"
+        android:name="com.misterjedu.edanfo.ui.main.driver.DestinationList"
+        android:label="fragment_destination_list"
+        tools:layout="@layout/fragment_destination_list" />
+    <fragment
+        android:id="@+id/currentPassengers"
+        android:name="com.misterjedu.edanfo.ui.main.driver.CurrentPassengers"
+        android:label="fragment_current_passengers"
+        tools:layout="@layout/fragment_current_passengers" />
+    <fragment
+        android:id="@+id/addNewTripFragment"
+        android:name="com.misterjedu.edanfo.ui.main.driver.AddNewTrip"
+        android:label="AddNewTripFragment"
+        tools:layout="@layout/fragment_add_new_trip"
+        />
+    <fragment
+        android:id="@+id/tripFromHistory"
+        android:name="com.misterjedu.edanfo.ui.main.driver.TripFromHistory"
+        android:label="fragment_trip_from_history"
+        tools:layout="@layout/fragment_trip_from_history" />
+</navigation>

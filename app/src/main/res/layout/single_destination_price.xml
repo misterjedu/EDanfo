@@ -5,7 +5,10 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
     android:background="@drawable/curved_white_box"
     android:elevation="5dp">
 
@@ -14,104 +17,94 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:drawableEnd="@drawable/ic_baseline_arrow_forward"
         android:drawablePadding="5dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:text="From"
+        android:textSize="12sp"
         app:drawableTint="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/single_destination_location_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/poppins"
         android:text="Ajah"
-        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintBottom_toBottomOf="@+id/single_destination_destination_tv"
+        app:layout_constraintStart_toStartOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/ic_baseline_check_circle"
         android:drawablePadding="10dp"
+        android:gravity="center"
         android:text="to"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:text="Price"
+        android:textSize="12sp"
+        app:drawableTint="@color/colorPrimary"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/single_destination_destination_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Lekki"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/single_destination_price_tv"
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/single_destination_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="N100"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/textView11" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:drawableRight="@drawable/ic_baseline_money_24"
-        android:drawablePadding="10dp"
-        android:text="Price"
-        app:drawableTint="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Lekki"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="N100"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView12"
-        app:layout_constraintEnd_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toTopOf="@+id/textView12" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Edit"
-        android:textAllCaps="false"
-        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/backarrow_round_background"
+        android:backgroundTint="@color/colorCancelButton"
+        android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="#F78383"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Delete"
-        android:textAllCaps="false"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_delete_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--    @android:color/transparent-->

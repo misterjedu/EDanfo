@@ -1,318 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_driver_profile_root_nsv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <!--Collapsible Toolbar Layout-->
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_marginTop="15dp"
+        android:clipToPadding="false"
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/logo_filled_green_background"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="4dp" />
+
+        <TextView
+            android:id="@+id/driver_profile_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            app:contentScrim="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="@string/app_name">
+            android:text="@string/driver"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            tools:layout_conversion_absoluteHeight="19dp"
+            tools:layout_conversion_absoluteWidth="411dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="275dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fragment_driver_profile_sub_root_cl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!--        Header Background image-->
-                <ImageView
-                    android:id="@+id/fragment_driver_profile_header_img"
-                    android:layout_width="0dp"
-                    android:layout_height="170dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/colorPrimary" />
-
-
-                <!--                Profile Image-->
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/driver_profile_image"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/logo_filled_green_background"
-                    app:civ_border_color="@color/colorAccent"
-                    app:civ_border_width="4dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/fragment_driver_profile_header_img"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_driver_profile_header_img"
-                    app:layout_constraintVertical_bias="0.552" />
-
-                <!--        Body-->
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <!--            Toolbar-->
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                android:fitsSystemWindows="true"
-                android:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <!--    Profile Body-->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/fragment_driver_proflie_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
-            android:id="@+id/linearLayout">
+            android:fontFamily="@font/poppins_bold"
+            android:lineSpacingExtra="30sp"
+            android:text="Mathew Ndifreke"
+            android:textAlignment="center"
+            android:textColor="#141212"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:layout_conversion_absoluteHeight="30dp"
+            tools:layout_conversion_absoluteWidth="411dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="304dp" />
+
+        <TextView
+            android:id="@+id/fragment_driver_profile_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="4.9"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            tools:layout_conversion_absoluteHeight="24dp"
+            tools:layout_conversion_absoluteWidth="411dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="339dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#FAFFFA"
+            android:elevation="5dp">
 
             <TextView
-                android:id="@+id/driver_profile_title_tv"
-                android:layout_width="match_parent"
+                android:id="@+id/driver_total_trip_title_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/driver"
-                android:textAlignment="center"
-                android:textSize="12sp"
-                tools:layout_conversion_absoluteHeight="19dp"
-                tools:layout_conversion_absoluteWidth="411dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="275dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Total Trips "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/fragment_driver_proflie_name"
-                android:layout_width="match_parent"
+                android:id="@+id/driver_earning_title_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:lineSpacingExtra="30sp"
-                android:text="Mathew Ndifreke"
+                android:layout_marginTop="16dp"
+                android:text="Earnings"
                 android:textAlignment="center"
-                android:textColor="#141212"
-                android:textFontWeight="bold"
+                app:layout_constraintEnd_toStartOf="@+id/driver_earning_next_payout_title_tv"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/driver_total_trip_title_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/driver_earning_next_payout_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Next Payout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragment_driver_profile_total_trips_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins"
+                android:text="10"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                tools:layout_conversion_absoluteHeight="30dp"
-                tools:layout_conversion_absoluteWidth="411dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="304dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/driver_total_trip_title_tv"
+                app:layout_constraintTop_toBottomOf="@+id/driver_total_trip_title_tv"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/fragment_driver_profile_rating"
-                android:layout_width="match_parent"
+                android:id="@+id/fragment_driver_profuile_earnings_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="4.9"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
-                tools:layout_conversion_absoluteHeight="24dp"
-                tools:layout_conversion_absoluteWidth="411dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="339dp" />
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins"
+                android:text="N10000"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/driver_earning_title_tv"
+                app:layout_constraintStart_toStartOf="@+id/driver_earning_title_tv"
+                app:layout_constraintTop_toTopOf="@+id/fragment_driver_profile_total_trips_tv" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/fragment_driver_profile_next_payout_tv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FAFAFA">
+                android:fontFamily="@font/poppins"
+                android:text="21 Oct '19"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/driver_earning_next_payout_title_tv"
+                app:layout_constraintStart_toStartOf="@+id/driver_earning_next_payout_title_tv"
+                app:layout_constraintTop_toTopOf="@+id/fragment_driver_profuile_earnings_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_background"
+            android:outlineProvider="paddedBounds"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/driver_profile_trip_status_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:text="Trip Status"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fragment_driver_profile_trip_status_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:background="#FFFFFF"
+                android:foregroundGravity="center"
+                android:padding="5dp"
+                app:cardBackgroundColor="#FFFDFD"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/driver_profile_trip_status_title_tv">
 
                 <TextView
-                    android:id="@+id/driver_total_trip_title_tv"
+                    android:id="@+id/fragment_driver_profile_trip_status_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Total Trips "
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/driver_earning_title_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Earnings"
-                    android:textAlignment="center"
-                    app:layout_constraintEnd_toStartOf="@+id/driver_earning_next_payout_title_tv"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/driver_total_trip_title_tv"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/driver_earning_next_payout_title_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Next Payout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/fragment_driver_profile_total_trips_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="10"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="No active Trip"
+                    android:textColor="#E65050"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/driver_total_trip_title_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/driver_total_trip_title_tv"
-                    app:layout_constraintVertical_bias="0.0" />
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/fragment_driver_profuile_earnings_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="N10000"
-                    android:textAlignment="viewStart"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/driver_earning_title_tv"
-                    app:layout_constraintStart_toStartOf="@+id/driver_earning_title_tv"
-                    app:layout_constraintTop_toTopOf="@+id/fragment_driver_profile_total_trips_tv" />
+            <Button
+                android:id="@+id/fragment_drvier_profile_launch_trip_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:padding="15dp"
+                android:text="Launch"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_baseline_add_"
+                app:iconGravity="end"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_driver_profile_trip_status_cv"
+                app:layout_constraintStart_toEndOf="@+id/fragment_driver_profile_trip_status_cv"
+                app:layout_constraintTop_toTopOf="@+id/fragment_driver_profile_trip_status_cv" />
 
-                <TextView
-                    android:id="@+id/fragment_driver_profile_next_payout_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="21 Oct '19"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/driver_earning_next_payout_title_tv"
-                    app:layout_constraintStart_toStartOf="@+id/driver_earning_next_payout_title_tv"
-                    app:layout_constraintTop_toTopOf="@+id/fragment_driver_profuile_earnings_tv" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fragment_driver_profile_trip_destination_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="20dp"
+                app:cardBackgroundColor="#F9DFDF"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:contentPadding="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/fragment_driver_profile_trip_status_cv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_driver_profile_trip_status_cv">
 
                 <TextView
-                    android:id="@+id/driver_profile_trip_status_title_tv"
+                    android:id="@+id/fragment_driver_profile_trip_destination_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="44dp"
-                    android:text="Trip Status"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_gravity="center"
+                    android:text="No trip available. Launch a new one"
+                    android:textAlignment="center"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fragment_driver_profile_trip_status_cv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="32dp"
-                    android:foregroundGravity="center"
-                    android:padding="30dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:contentPadding="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/driver_profile_trip_status_title_tv">
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:paddingLeft="7dp"
+                android:paddingTop="3dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="3dp"
+                android:text="(10 seats booked, 3 left)"
+                android:textColor="#232222"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/driver_profile_trip_status_title_tv"
+                app:layout_constraintStart_toEndOf="@+id/driver_profile_trip_status_title_tv"
+                app:layout_constraintTop_toTopOf="@+id/driver_profile_trip_status_title_tv"
+                app:layout_constraintVertical_bias="0.5" />
 
-                    <TextView
-                        android:id="@+id/fragment_driver_profile_trip_status_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="#FFFFFF"
-                        android:gravity="center"
-                        android:text="No active Trip"
-                        android:textColor="#E65050"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </androidx.cardview.widget.CardView>
-
-                <Button
-                    android:id="@+id/fragment_drvier_profile_launch_trip_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:text="Launch Trip"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/fragment_driver_profile_trip_status_cv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/fragment_driver_profile_trip_status_cv"
-                    app:layout_constraintVertical_bias="0.5" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fragment_driver_profile_trip_destination_card"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:paddingTop="20dp"
-                    app:cardBackgroundColor="#F9DFDF"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp"
-                    app:contentPadding="15dp"
-                    app:layout_constraintEnd_toEndOf="@+id/fragment_drvier_profile_launch_trip_btn"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/fragment_driver_profile_trip_status_cv"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_driver_profile_trip_status_cv">
-
-                    <TextView
-                        android:id="@+id/fragment_driver_profile_trip_destination_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="No trip available. Launch a new one"
-                        android:textAlignment="center"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="#EAFFE1"
-                    android:padding="3dp"
-                    android:text="10 seats booked, 3 left"
-                    android:textColor="#232222"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/driver_profile_trip_status_title_tv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/driver_profile_trip_status_title_tv" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
