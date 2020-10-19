@@ -16,7 +16,6 @@ class PassengerRecyclerAdapter(
 
 ) : RecyclerView.Adapter<PassengerRecyclerAdapter.PassengerViewHolder>() {
 
-    private lateinit var adapter: DestinationRecyclerAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PassengerViewHolder {
         val passengerListView = LayoutInflater.from(parent.context)

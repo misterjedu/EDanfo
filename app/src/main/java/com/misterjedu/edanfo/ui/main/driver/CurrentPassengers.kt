@@ -41,7 +41,7 @@ class CurrentPassengers : Fragment(),
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //Passenger Recycler Adapater
+        //Passenger Recycler Adapter
         adapter = PassengerRecyclerAdapter(this, passengerList)
         current_passenger_recyler_adapter.adapter = adapter
         current_passenger_recyler_adapter.layoutManager = LinearLayoutManager(requireContext())
