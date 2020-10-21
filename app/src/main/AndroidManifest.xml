@@ -23,7 +23,7 @@
 
         </activity>
 
-        <activity android:name=".ui.main.DriverActivity">
+        <activity android:name=".ui.main.driver.DriverActivity">
 
         </activity>
 

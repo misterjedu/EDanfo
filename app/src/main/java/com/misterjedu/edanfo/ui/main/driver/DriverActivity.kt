@@ -1,4 +1,4 @@
-package com.misterjedu.edanfo.ui.main
+package com.misterjedu.edanfo.ui.main.driver
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +16,6 @@ class DriverActivity : AppCompatActivity() {
         //Bottom Navigation
         val bottomNavigator: BottomNavigationView = home_driver_bottom_navigation
         bottomNavigator.setOnNavigationItemSelectedListener(navListener)
-
     }
 
     //Switch Fragment with Bottom Navigation
@@ -27,10 +26,7 @@ class DriverActivity : AppCompatActivity() {
                 R.id.bottom_nav_destination -> R.id.destinationList
                 else -> R.id.driverProfile
             }
-
-            Navigation.findNavController(this, R.id.activity_driver_fcv).
-            navigate(fragment)
-
+            Navigation.findNavController(this, R.id.activity_driver_fcv).navigate(fragment)
             true
         }
 }

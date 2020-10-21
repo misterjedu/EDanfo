@@ -7,8 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.misterjedu.edanfo.R
-import com.misterjedu.edanfo.ui.main.DriverActivity
-import com.misterjedu.edanfo.ui.main.MainActivity
+import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import kotlinx.android.synthetic.main.fragment_create_driver_profile.*
 
 class CreateDriverProfile : Fragment() {

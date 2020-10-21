@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.misterjedu.edanfo.R
-import com.misterjedu.edanfo.ui.main.DriverActivity
+import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.fragment_sign_up_header_img
 

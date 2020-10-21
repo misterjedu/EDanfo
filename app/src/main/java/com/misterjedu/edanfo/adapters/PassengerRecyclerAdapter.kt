@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.single_passenger_order.view.*
 class PassengerRecyclerAdapter(
     private var clickListener: OnPassengerClickListener,
     private var passengerList : List<PassengerData>
-
 ) : RecyclerView.Adapter<PassengerRecyclerAdapter.PassengerViewHolder>() {
 
 
@@ -45,8 +44,6 @@ class PassengerRecyclerAdapter(
                 action.onItemClick(item, adapterPosition)
             }
         }
-
-
     }
 
     //OnClick Listener InterfaceR

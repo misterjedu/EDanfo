@@ -4,7 +4,7 @@
     <item
         android:id="@+id/bottom_nav_home"
         android:icon="@drawable/ic_baseline_home"
-        android:title="Profile"/>
+        android:title="Home" />
 
     <item
         android:id="@+id/bottom_nav_destination"
@@ -13,8 +13,8 @@
 
     <item
         android:id="@+id/bottom_nav_add_trip"
-        android:icon="@drawable/ic_baseline_add_location_24"
-        android:title="Add Trip"/>
+        android:icon="@drawable/ic_baseline_person_pin_24"
+        android:title="Account" />
 
 
 

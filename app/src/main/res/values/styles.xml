@@ -11,7 +11,74 @@
 
 
     <style name="SplashTheme" parent="AppTheme">
-        <item name="android:windowBackground"  scale="1" textAlignment="center" >@drawable/logo_filled_green_background</item>
+        <item name="android:windowBackground" textAlignment="center">
+            @drawable/logo_filled_green_background
+        </item>
     </style>
+
+
+    <!--   BUTTONS **********************************->
+    <!-    Primary Green Buttom-->
+    <style name="PrimaryButton" parent="AppTheme">
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">7dp</item>
+    </style>
+    <!--    Cancel Button-->
+    <style name="CancelButton" parent="PrimaryButton">
+        <item name="android:backgroundTint">@color/colorCancelButton</item>
+    </style>
+
+
+    <!--   TEXTS  **********************************->
+        <!-    Thin Sub text-->
+    <style name="ThinSubText" parent="AppTheme">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--   Bold Sub text -->
+    <style name="BoldSubText" parent="ThinSubText">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <!--    Black Normal Text-->
+    <style name="BlackNormalText" parent="ThinSubText">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--    Faint Normal Text-->
+    <style name="FaintNormalText" parent="ThinSubText">
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <!--    Green Normal Text-->
+    <style name="GreenNormalText" parent="BlackNormalText">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <!--    Green sub Text-->
+    <style name="GreenSubText" parent="GreenNormalText">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--    Bold Normal Text-->
+    <style name="BoldNormalText" parent="BlackNormalText">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+
+    <!-- INPUTS *******************************-->
+
 
 </resources>

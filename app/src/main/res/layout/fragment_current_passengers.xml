@@ -85,36 +85,24 @@
 
         <Button
             android:id="@+id/button6"
+            style="@style/PrimaryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:paddingLeft="30dp"
-            android:paddingTop="16dp"
-            android:paddingRight="30dp"
-            android:paddingBottom="16dp"
             android:text="Start Trip"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:cornerRadius="7dp" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/current_passenger_end_trip"
+            style="@style/CancelButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/colorCancelButton"
-            android:paddingLeft="30dp"
-            android:paddingTop="16dp"
-            android:paddingRight="30dp"
-            android:paddingBottom="16dp"
-            android:text="Cancel Trip"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:cornerRadius="7dp" />
+            android:text="Cancel Trip" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
