@@ -13,17 +13,18 @@ class DriverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_driver)
 
-        //Bottom Navigation
+        // Bottom Navigation
         val bottomNavigator: BottomNavigationView = home_driver_bottom_navigation
         bottomNavigator.setOnNavigationItemSelectedListener(navListener)
     }
 
-    //Switch Fragment with Bottom Navigation
+    // Switch Fragment with Bottom Navigation
     private var navListener: BottomNavigationView.OnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             val fragment: Int = when (item.itemId) {
-                R.id.bottom_nav_home -> R.id.driverProfile
-                R.id.bottom_nav_destination -> R.id.destinationList
+                R.id.bottom_driver_nav_home -> R.id.driverProfile
+                R.id.bottom_driver_nav_destination -> R.id.destinationList
+                R.id.bottom_driver_nav_my_account -> R.id.driverAccount
                 else -> R.id.driverProfile
             }
             Navigation.findNavController(this, R.id.activity_driver_fcv).navigate(fragment)

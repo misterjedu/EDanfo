@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.driver.account.DriverStatistics">
+
+    <LinearLayout
+        android:id="@+id/driver_statistics_app_bar_ll"
+        style="@style/CustomAppBar">
+
+        <ImageView
+            android:id="@+id/fragment_driver_statistics_back_arrow_iv"
+            style="@style/GreenBackArrow" />
+
+        <TextView
+            android:id="@+id/driver_statistics_my_stats_tv"
+            style="@style/CustomAppBarText"
+            android:text="My Stats" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driver_statistics_ratings_card_cl"
+                style="@style/DriverStatCard">
+
+                <TextView
+                    android:id="@+id/textView18"
+                    style="@style/DriverStatName"
+                    android:text="Ratings"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/driver_statistics_rating_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                    app:layout_constraintStart_toEndOf="@+id/textView18"
+                    app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+                <TextView
+                    android:id="@+id/driver_statistics_rating_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:text="4"
+                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_rating_spinner"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_rating_spinner" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_star"
+                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_rating_number_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_rating_number_tv"
+                    app:tint="@color/colorPrimary" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            Earnings-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driver_statistics_earnings_card_cl"
+                style="@style/DriverStatCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/driver_statistics_name_earning_tv"
+                    style="@style/DriverStatName"
+                    android:text="Earnings"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/driver_statistics_earning_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_earning_tv"
+                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_earning_tv"
+                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_earning_tv" />
+
+                <TextView
+                    android:id="@+id/driver_statistics_earning_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="N10,000"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            Seats Booked-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driver_statistics_booked_card_cl"
+                style="@style/DriverStatCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/driver_statistics_name_booked_tv"
+                    style="@style/DriverStatName"
+                    android:text="Seats Booked"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/driver_statistics_booked_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_booked_tv"
+                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_booked_tv"
+                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_booked_tv" />
+
+                <TextView
+                    android:id="@+id/driver_statistics_booked_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="400"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--            Seats Cancelled-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driver_statistics_seats_cancelled_card_cl"
+                style="@style/DriverStatCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/driver_statistics_name_seats_cancelled_tv"
+                    style="@style/DriverStatName"
+                    android:text="Seats Cancelled"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/driver_statistics_seats_cancelled_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_seats_cancelled_tv"
+                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_seats_cancelled_tv"
+                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_seats_cancelled_tv" />
+
+                <TextView
+                    android:id="@+id/driver_statistics_seats_cancelled_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="55"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            Trips Completed-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driver_statistics_trips_completed_card_cl"
+                style="@style/DriverStatCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/driver_statistics_name_trips_completed_tv"
+                    style="@style/DriverStatName"
+                    android:text="Trips Completed"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/driver_statistics_trips_completed_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_trips_completed_tv"
+                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_trips_completed_tv"
+                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_trips_completed_tv" />
+
+                <TextView
+                    android:id="@+id/driver_statistics_trips_completed_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            Cancelled Trips-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driver_statistics_trips_cancelled_card_cl"
+                style="@style/DriverStatCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/driver_statistics_name_trips_cancelled_tv"
+                    style="@style/DriverStatName"
+                    android:text="Trips Cancelled"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/driver_statistics_trips_cancelled_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_trips_cancelled_tv"
+                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_trips_cancelled_tv"
+                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_trips_cancelled_tv" />
+
+                <TextView
+                    android:id="@+id/driver_statistics_trips_cancelled_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

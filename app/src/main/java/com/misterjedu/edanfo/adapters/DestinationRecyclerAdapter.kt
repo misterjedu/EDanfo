@@ -3,7 +3,6 @@ package com.misterjedu.edanfo.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.misterjedu.edanfo.R
@@ -17,13 +16,11 @@ class DestinationRecyclerAdapter(
 
 //    private var destinationList = destination
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolders {
         val destinationListView = LayoutInflater.from(parent.context)
             .inflate(R.layout.single_destination_price, parent, false)
         return DestinationViewHolders(destinationListView)
     }
-
 
     override fun onBindViewHolder(holder: DestinationViewHolders, position: Int) {
         holder.initialize(destinationList[position], clickListener)
@@ -47,8 +44,7 @@ class DestinationRecyclerAdapter(
         }
     }
 
-
-    //OnClick Listener InterfaceR
+    // OnClick Listener InterfaceR
     interface OnDestinationClickListener {
         fun onItemClick(item: DestinationData, position: Int)
     }

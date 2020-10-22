@@ -9,7 +9,7 @@
     android:layout_marginBottom="5dp"
     android:background="@drawable/curved_white_box"
     android:elevation="8dp"
-    tools:context=".ui.main.driver.TripFromHistory">
+    tools:context=".ui.main.driver.destination.TripFromHistory">
 
     <CheckBox
         android:id="@+id/single_trip_history_checkbox"

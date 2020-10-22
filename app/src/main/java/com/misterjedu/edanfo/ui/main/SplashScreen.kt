@@ -1,9 +1,8 @@
 package com.misterjedu.edanfo.ui.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.ActivityNavigator
+import androidx.appcompat.app.AppCompatActivity
 import com.misterjedu.edanfo.R
 
 class SplashScreen : AppCompatActivity() {

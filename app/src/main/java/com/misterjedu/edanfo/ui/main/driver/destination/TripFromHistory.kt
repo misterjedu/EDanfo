@@ -1,14 +1,13 @@
-package com.misterjedu.edanfo.ui.main.driver
+package com.misterjedu.edanfo.ui.main.driver.destination
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.util.keyIterator
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
@@ -25,7 +24,8 @@ class TripFromHistory : Fragment(), TripHistoryRecyclerAdapter.OnTripClickListen
     private var tripList = DummyData.tripData()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -35,11 +35,11 @@ class TripFromHistory : Fragment(), TripHistoryRecyclerAdapter.OnTripClickListen
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //Get Views to use
+        // Get Views to use
         itemSelectedText = fragment_trip_item_selected_tv
         addItemButton = fragment_trip_history_add_button
 
-        //Get all Checked Items
+        // Get all Checked Items
         fragment_trip_history_add_button.setOnClickListener {
             var trips = ""
             adapter.checkBoxStateArray.keyIterator().forEach {
@@ -49,23 +49,22 @@ class TripFromHistory : Fragment(), TripHistoryRecyclerAdapter.OnTripClickListen
             }
         }
 
-        //Setting Adapter
+        // Setting Adapter
         adapter = TripHistoryRecyclerAdapter(tripList, this)
         trip_from_history_recycler_view.adapter = adapter
         trip_from_history_recycler_view.layoutManager = LinearLayoutManager(requireContext())
 
-        //Back Button
+        // Back Button
         fragment_trip_from_history_back_arrow_iv.setOnClickListener {
             findNavController().popBackStack()
         }
     }
 
-
     override fun onItemClick(item: HistoryData, position: Int) {
-        //DO SOMETHING LATER
+        // DO SOMETHING LATER
     }
 
-    //Update UI text with number of Items Clicked
+    // Update UI text with number of Items Clicked
     override fun onCheckboxClick(position: Int) {
         val checkedListArr = mutableListOf<Int>()
         adapter.checkBoxStateArray.keyIterator().forEach {

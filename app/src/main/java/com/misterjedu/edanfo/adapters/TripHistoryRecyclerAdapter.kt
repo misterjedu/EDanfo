@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.HistoryData
-import com.misterjedu.edanfo.viewmodels.CheckedTripViewModel
 import kotlinx.android.synthetic.main.single_trip_history.view.*
 
 class TripHistoryRecyclerAdapter(
@@ -42,12 +41,11 @@ class TripHistoryRecyclerAdapter(
             checkBox.setOnClickListener {
                 if (!checkBoxStateArray.get(adapterPosition, false)) {
                     checkBox.isChecked = true
-                    checkBoxStateArray.put(adapterPosition, true )
+                    checkBoxStateArray.put(adapterPosition, true)
                 } else {
                     checkBox.isChecked = false
                     checkBoxStateArray.put(adapterPosition, false)
                 }
-
 
                 clickListener.onCheckboxClick(adapterPosition)
             }
@@ -62,8 +60,7 @@ class TripHistoryRecyclerAdapter(
         }
     }
 
-
-    //OnClick Listener InterfaceR
+    // OnClick Listener InterfaceR
     interface OnTripClickListener {
         fun onItemClick(item: HistoryData, position: Int)
         fun onCheckboxClick(position: Int)

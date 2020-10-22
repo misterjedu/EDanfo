@@ -34,4 +34,16 @@
     <string name="complete">Complete</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="new_password">New Password</string>
+
+
+    <!-- For  Stats Spinner-->
+    <string-array name="stat_spinner_array">
+        <item>Today</item>
+        <item>This Week</item>
+        <item>This Month</item>
+        <item>This Year</item>
+        <item>Total</item>
+    </string-array>
+
+
 </resources>

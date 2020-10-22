@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="20dp"
-    tools:context=".ui.main.driver.AddNewTrip">
+    tools:context=".ui.main.driver.destination.AddNewTrip">
 
 
     <LinearLayout
@@ -25,23 +25,14 @@
 
             <ImageView
                 android:id="@+id/fragment_add_trip_back_arrow_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/backarrow_round_background"
-                android:backgroundTint="@color/colorPrimary"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="5dp"
-                android:src="@drawable/ic_baseline_arrow_back_24" />
+                style="@style/GreenBackArrow"
+                />
 
             <TextView
-                android:id="@+id/textView24"
+                android:id="@+id/driver_statistics_my_stats_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:gravity="center"
+                android:layout_marginStart="20dp"
                 android:text="Add Trip"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
@@ -60,7 +51,7 @@
                 android:layout_marginStart="16dp"
                 android:text="From"
                 android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/fragment_add_new_trip_final_bustop_et"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_add_new_trip_current_bustop_et"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/fragment_add_new_trip_current_bustop_et" />
 
@@ -71,12 +62,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/input_corner_radius"
-                android:ems="10"
+                style="@style/GreenEditText"
                 android:hint="Current Bustop"
                 android:inputType="textPersonName"
-                android:padding="15dp"
-                android:textColorHint="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -96,12 +84,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                style="@style/GreenEditText"
                 android:background="@drawable/input_corner_radius"
-                android:ems="10"
                 android:hint="Final Bustop"
                 android:inputType="textPersonName"
-                android:padding="15dp"
-                android:textColorHint="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_add_new_trip_current_bustop_et"
                 app:layout_constraintStart_toStartOf="@+id/fragment_add_new_trip_current_bustop_et"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_add_new_trip_current_bustop_et" />
@@ -122,12 +108,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/input_corner_radius"
-                android:ems="10"
+                style="@style/GreenEditText"
                 android:hint="Price"
                 android:inputType="number"
-                android:padding="15dp"
-                android:textColorHint="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_add_new_trip_final_bustop_et"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/fragment_add_new_trip_final_bustop_et"

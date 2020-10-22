@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/curved_white_box"
     android:elevation="5dp"
-    tools:context=".ui.main.driver.TripFromHistory">
+    tools:context=".ui.main.driver.destination.TripFromHistory">
 
     <ImageView
         android:id="@+id/fragment_trip_from_history_back_arrow_iv"

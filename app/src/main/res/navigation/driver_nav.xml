@@ -7,29 +7,39 @@
 
     <fragment
         android:id="@+id/driverProfile"
-        android:name="com.misterjedu.edanfo.ui.main.driver.DriverProfile"
+        android:name="com.misterjedu.edanfo.ui.main.driver.home.DriverProfile"
         android:label="DriverProfile"
         tools:layout="@layout/fragment_driver_proflle"
         />
     <fragment
         android:id="@+id/destinationList"
-        android:name="com.misterjedu.edanfo.ui.main.driver.DestinationList"
+        android:name="com.misterjedu.edanfo.ui.main.driver.destination.DestinationList"
         android:label="fragment_destination_list"
         tools:layout="@layout/fragment_destination_list" />
     <fragment
         android:id="@+id/currentPassengers"
-        android:name="com.misterjedu.edanfo.ui.main.driver.CurrentPassengers"
+        android:name="com.misterjedu.edanfo.ui.main.driver.home.CurrentPassengers"
         android:label="fragment_current_passengers"
         tools:layout="@layout/fragment_current_passengers" />
     <fragment
         android:id="@+id/addNewTripFragment"
-        android:name="com.misterjedu.edanfo.ui.main.driver.AddNewTrip"
+        android:name="com.misterjedu.edanfo.ui.main.driver.destination.AddNewTrip"
         android:label="AddNewTripFragment"
         tools:layout="@layout/fragment_add_new_trip"
         />
     <fragment
         android:id="@+id/tripFromHistory"
-        android:name="com.misterjedu.edanfo.ui.main.driver.TripFromHistory"
+        android:name="com.misterjedu.edanfo.ui.main.driver.destination.TripFromHistory"
         android:label="fragment_trip_from_history"
         tools:layout="@layout/fragment_trip_from_history" />
+    <fragment
+        android:id="@+id/driverAccount"
+        android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverAccount"
+        android:label="fragment_driver_account"
+        tools:layout="@layout/fragment_driver_account" />
+    <fragment
+        android:id="@+id/driverStatistics"
+        android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverStatistics"
+        android:label="fragment_driver_statistics"
+        tools:layout="@layout/fragment_driver_statistics" />
 </navigation>

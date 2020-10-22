@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/bottom_nav_home"
+        android:id="@+id/bottom_driver_nav_home"
         android:icon="@drawable/ic_baseline_home"
         android:title="Home" />
 
     <item
-        android:id="@+id/bottom_nav_destination"
+        android:id="@+id/bottom_driver_nav_destination"
         android:icon="@drawable/ic_baseline_directions_bus"
         android:title="Destination"/>
 
     <item
-        android:id="@+id/bottom_nav_add_trip"
-        android:icon="@drawable/ic_baseline_person_pin_24"
+        android:id="@+id/bottom_driver_nav_my_account"
+        android:icon="@drawable/ic_baseline_account_circle"
         android:title="Account" />
 
 

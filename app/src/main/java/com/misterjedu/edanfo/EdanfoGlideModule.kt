@@ -15,5 +15,4 @@ class EdanfoGlideModule : AppGlideModule() {
         super.applyOptions(context, builder)
         builder.apply { RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL).signature(ObjectKey(System.currentTimeMillis().toShort())) }
     }
-
 }

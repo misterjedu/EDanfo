@@ -3,7 +3,7 @@ package com.misterjedu.edanfo.helpers
 import com.misterjedu.edanfo.data.HistoryData
 
 object DummyData {
-    fun tripData() : List<HistoryData> {
+    fun tripData(): List<HistoryData> {
         return arrayListOf(
             HistoryData(1, "Mushin to Yaba", 100),
             HistoryData(2, "Shagamu to Boluwatife", 100),
@@ -37,6 +37,5 @@ object DummyData {
             HistoryData(29, "Shagamu to Boluwatife", 100),
             HistoryData(30, "Lekki to Sangotedo", 100),
         )
-
     }
 }
