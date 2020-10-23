@@ -79,7 +79,7 @@
 
         <!--        Profile Settings-->
         <LinearLayout
-            android:id="@+id/driver_account_account_settings_card_cv"
+            android:id="@+id/driver_account_account_settings_card_ll"
             style="@style/SettingsOptionCard">
 
             <TextView

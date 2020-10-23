@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.misterjedu.edanfo.R
 import kotlinx.android.synthetic.main.fragment_driver_statistics.*
 
-class DriverStatistics : Fragment() {
+class DriverAccountStatistics : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

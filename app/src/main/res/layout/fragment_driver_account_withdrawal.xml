@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.driver.account.DriverAccountWithdrawal">
+
+    <LinearLayout
+        android:id="@+id/fragment_driver_account_withdrawal_app_bar_ll"
+        style="@style/CustomAppBar">
+
+        <ImageView
+            android:id="@+id/fragment_driver_account_withdrawal_back_arrow_iv"
+            style="@style/GreenBackArrow" />
+
+        <TextView
+            android:id="@+id/fragment_driver_account_profile_withdrawal_tv"
+            style="@style/CustomAppBarText"
+            android:text="Withdrwal" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_driver_account_withdrawal_account_balance_card_cl"
+                style="@style/DriverStatCard">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_baseline_account_balance"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/fragment_driver_account_withdrawal_account_balance_tv"
+                    style="@style/NormalSubText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Account Balance"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+                <TextView
+                    android:id="@+id/fragment_driver_account_withdrawal_account_balance_value_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="N 7,600"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintStart_toStartOf="@+id/fragment_driver_account_withdrawal_account_balance_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_driver_account_withdrawal_account_balance_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_driver_account_withdrawal_account_account_details_cl"
+                style="@style/DriverStatCard">
+
+                <TextView
+                    android:id="@+id/textView20"
+                    style="@style/NormalSubText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payout would be sent to : "
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fragment_driver_account_withdrawal_account_account_details_tv"
+                    style="@style/GreenSubText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="GtBank (0032765432)"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView20"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+                <Button
+                    android:id="@+id/fragment_driver_account_withdrawal_account_change_account_details_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Change"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--           Amount to Withdraw-->
+            <TextView
+                android:id="@+id/fragment_driver_account_withdrawal_amount_tv"
+                style="@style/NormalSubText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="Amount to Withdraw (Minimum of 2,000)" />
+
+            <EditText
+                android:id="@+id/fragment_driver_account_withdrawal_amount_et"
+                style="@style/GreenEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:hint="2,000"
+                android:inputType="number" />
+
+
+            <!--           Enter Password-->
+            <TextView
+                android:id="@+id/fragment_driver_account_withdrawal_password_tv"
+                style="@style/NormalSubText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="Enter your password" />
+
+            <EditText
+                android:id="@+id/fragment_driver_account_withdrawal_password_et"
+                style="@style/GreenEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:inputType="textPassword" />
+
+
+            <Button
+                android:id="@+id/fragment_driver_account_withdrawal_button"
+                style="@style/PrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="Withdraw" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

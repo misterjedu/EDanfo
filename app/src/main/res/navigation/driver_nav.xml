@@ -39,7 +39,22 @@
         tools:layout="@layout/fragment_driver_account" />
     <fragment
         android:id="@+id/driverStatistics"
-        android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverStatistics"
+        android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverAccountStatistics"
         android:label="fragment_driver_statistics"
         tools:layout="@layout/fragment_driver_statistics" />
+    <fragment
+        android:id="@+id/driverAccountProfile"
+        android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverAccountProfile"
+        android:label="fragment_driver_account_profile"
+        tools:layout="@layout/fragment_driver_account_profile" />
+    <fragment
+        android:id="@+id/driverAccountChangePassword"
+        android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverAccountChangePassword"
+        android:label="fragment_driver_account_change_password"
+        tools:layout="@layout/fragment_driver_account_change_password" />
+    <fragment
+        android:id="@+id/driverAccountWithdrawal"
+        android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverAccountWithdrawal"
+        android:label="fragment_driver_account_withdrawal"
+        tools:layout="@layout/fragment_driver_account_withdrawal" />
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.main.driver.account.DriverStatistics">
+    tools:context=".ui.main.driver.account.DriverAccountStatistics">
 
     <LinearLayout
         android:id="@+id/driver_statistics_app_bar_ll"
@@ -80,9 +80,7 @@
             <!--            Earnings-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/driver_statistics_earnings_card_cl"
-                style="@style/DriverStatCard"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                style="@style/DriverStatCard">
 
                 <TextView
                     android:id="@+id/driver_statistics_name_earning_tv"

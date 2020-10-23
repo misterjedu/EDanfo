@@ -21,8 +21,23 @@ class DriverAccount : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         driver_account_profile_stat_card_ll.setOnClickListener {
             findNavController().navigate(R.id.driverStatistics)
         }
+
+        driver_account_account_settings_card_ll.setOnClickListener {
+            findNavController().navigate(R.id.driverAccountProfile)
+        }
+
+        driver_account_change_password_card_ll.setOnClickListener {
+            findNavController().navigate(R.id.driverAccountChangePassword)
+        }
+
+        driver_account_withdrawal_tv.setOnClickListener {
+            findNavController().navigate(R.id.driverAccountWithdrawal)
+        }
+
+
     }
 }
