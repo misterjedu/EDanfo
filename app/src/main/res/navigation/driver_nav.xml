@@ -9,14 +9,10 @@
         android:id="@+id/driverProfile"
         android:name="com.misterjedu.edanfo.ui.main.driver.home.DriverProfile"
         android:label="DriverProfile"
-        tools:layout="@layout/fragment_driver_proflle" >
+        tools:layout="@layout/fragment_driver_profile">
         <action
-            android:id="@+id/action_driverProfile_to_destinationList4"
-            app:destination="@id/destinationList"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_driverProfile_to_currentPassengers"
+            app:destination="@id/currentPassengers" />
     </fragment>
 
 
@@ -25,19 +21,22 @@
         android:name="com.misterjedu.edanfo.ui.main.driver.destination.DestinationList"
         android:label="fragment_destination_list"
         tools:layout="@layout/fragment_destination_list">
-
         <action
-            android:id="@+id/action_destinationList_to_driverAccount2"
-            app:destination="@id/driverAccount"
+            android:id="@+id/action_destinationList_to_driverProfile6"
+            app:destination="@id/driverProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/driverProfile"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_destinationList_to_addNewTripFragment"
+            app:destination="@id/addNewTripFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_destinationList_to_driverProfile6"
-            app:destination="@id/driverProfile"
-            app:popUpTo="@id/driverProfile"
-            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -50,7 +49,15 @@
         android:id="@+id/addNewTripFragment"
         android:name="com.misterjedu.edanfo.ui.main.driver.destination.AddNewTrip"
         android:label="AddNewTripFragment"
-        tools:layout="@layout/fragment_add_new_trip" />
+        tools:layout="@layout/fragment_add_new_trip">
+        <action
+            android:id="@+id/action_addNewTripFragment_to_tripFromHistory"
+            app:destination="@id/tripFromHistory"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/tripFromHistory"
         android:name="com.misterjedu.edanfo.ui.main.driver.destination.TripFromHistory"
@@ -67,8 +74,47 @@
         <action
             android:id="@+id/action_driverAccount_to_driverProfile4"
             app:destination="@id/driverProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/driverProfile"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_driverAccount_to_driverStatistics"
+            app:destination="@id/driverStatistics"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_driverAccount_to_driverAccountProfile"
+            app:destination="@id/driverAccountProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_driverAccount_to_driverAccountChangePassword"
+            app:destination="@id/driverAccountChangePassword"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_driverAccount_to_fragmentDriverWithdrawalSettings"
+            app:destination="@id/fragmentDriverWithdrawalSettings"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_driverAccount_to_driverAccountWithdrawal"
+            app:destination="@id/driverAccountWithdrawal"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
 
@@ -91,7 +137,16 @@
         android:id="@+id/driverAccountWithdrawal"
         android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverAccountWithdrawal"
         android:label="fragment_driver_account_withdrawal"
-        tools:layout="@layout/fragment_driver_account_withdrawal" />
+        tools:layout="@layout/fragment_driver_account_withdrawal" >
+        <action
+            android:id="@+id/action_driverAccountWithdrawal_to_fragmentDriverWithdrawalSettings"
+            app:destination="@id/fragmentDriverWithdrawalSettings"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
     <fragment
         android:id="@+id/fragmentDriverWithdrawalSettings"
         android:name="com.misterjedu.edanfo.ui.main.driver.account.FragmentDriverWithdrawalSettings"

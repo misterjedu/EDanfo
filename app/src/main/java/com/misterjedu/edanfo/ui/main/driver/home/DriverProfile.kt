@@ -8,7 +8,9 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.misterjedu.edanfo.R
-import kotlinx.android.synthetic.main.fragment_driver_proflle.*
+import com.misterjedu.edanfo.helpers.checkItem
+import kotlinx.android.synthetic.main.activity_driver.*
+import kotlinx.android.synthetic.main.fragment_driver_profile.*
 
 class DriverProfile : Fragment() {
 
@@ -20,7 +22,7 @@ class DriverProfile : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_driver_proflle, container, false)
+        return inflater.inflate(R.layout.fragment_driver_profile, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -33,13 +35,17 @@ class DriverProfile : Fragment() {
         }
 
         fragment_driver_profile_trip_destination_tv.setOnClickListener {
-            findNavController().navigate(R.id.currentPassengers)
+            findNavController().navigate(R.id.action_driverProfile_to_currentPassengers)
         }
 
-
-        //Exit app from this fragment
-        requireActivity().onBackPressedDispatcher.addCallback{
-            requireActivity().finish()
+        //        Navigate to Driver home on Back Press
+        requireActivity().onBackPressedDispatcher.addCallback {
+            if (findNavController().currentDestination?.id == R.id.driverProfile
+            ) {
+                activity?.finish()
+            } else {
+                findNavController().popBackStack()
+            }
         }
 
     }

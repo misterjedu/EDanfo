@@ -28,7 +28,7 @@ class AddNewTrip : Fragment() {
         }
 
         fragment_add_new_trip_from_history_tv.setOnClickListener {
-            findNavController().navigate(R.id.tripFromHistory)
+            findNavController().navigate(R.id.action_addNewTripFragment_to_tripFromHistory)
         }
     }
 }

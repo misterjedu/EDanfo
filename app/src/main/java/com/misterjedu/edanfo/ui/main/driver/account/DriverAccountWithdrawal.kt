@@ -23,6 +23,11 @@ class DriverAccountWithdrawal : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        fragment_driver_account_withdrawal_account_change_account_details_button.setOnClickListener {
+            findNavController().navigate(R.id.action_driverAccountWithdrawal_to_fragmentDriverWithdrawalSettings)
+        }
+
+
         fragment_driver_account_withdrawal_back_arrow_iv.setOnClickListener {
             findNavController().popBackStack()
         }

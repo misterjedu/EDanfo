@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.DestinationRecyclerAdapter
 import com.misterjedu.edanfo.data.DestinationData
+import com.misterjedu.edanfo.helpers.checkItem
+import kotlinx.android.synthetic.main.activity_driver.*
 import kotlinx.android.synthetic.main.fragment_destination_list.*
 
 class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClickListener {
@@ -44,15 +46,18 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
 
 //        Navigate to Add Trip Fragment
         destination_list_add_btn.setOnClickListener {
-            findNavController().navigate(R.id.addNewTripFragment)
+            findNavController().navigate(R.id.action_destinationList_to_addNewTripFragment)
         }
-
 
 //        Navigate to Driver home on Back Press
         requireActivity().onBackPressedDispatcher.addCallback {
-            findNavController().navigate(R.id.action_destinationList_to_driverProfile6)
+            if (findNavController().currentDestination?.id == R.id.destinationList) {
+                activity?.home_driver_bottom_navigation?.checkItem(R.id.bottom_driver_nav_home)
+                findNavController().navigate(R.id.action_destinationList_to_driverProfile6)
+            } else {
+                findNavController().popBackStack()
+            }
         }
-
     }
 
     override fun onItemClick(item: DestinationData, position: Int) {
