@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import com.misterjedu.edanfo.R
 import kotlinx.android.synthetic.main.fragment_driver_account.*
@@ -38,6 +39,14 @@ class DriverAccount : Fragment() {
             findNavController().navigate(R.id.driverAccountWithdrawal)
         }
 
+        driver_account_withdrawal_settings_card_ll.setOnClickListener {
+            findNavController().navigate(R.id.fragmentDriverWithdrawalSettings)
+        }
+
+//        Navigate to Driver home on Back Press
+        requireActivity().onBackPressedDispatcher.addCallback {
+            findNavController().navigate(R.id.action_driverAccount_to_driverProfile4)
+        }
 
     }
 }

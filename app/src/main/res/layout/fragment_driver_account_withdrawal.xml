@@ -32,12 +32,13 @@
             android:layout_margin="16dp"
             android:orientation="vertical">
 
+<!--            Account Balance-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_driver_account_withdrawal_account_balance_card_cl"
                 style="@style/DriverStatCard">
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/fragment_driver_account_withdrawal_icon_iv"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/ic_baseline_account_balance"
@@ -53,8 +54,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="Account Balance"
-                    app:layout_constraintStart_toEndOf="@+id/imageView6"
-                    app:layout_constraintTop_toTopOf="@+id/imageView6" />
+                    app:layout_constraintStart_toEndOf="@+id/fragment_driver_account_withdrawal_icon_iv"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_driver_account_withdrawal_icon_iv" />
 
                 <TextView
                     android:id="@+id/fragment_driver_account_withdrawal_account_balance_value_tv"
@@ -63,13 +64,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="N 7,600"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_driver_account_withdrawal_icon_iv"
                     app:layout_constraintStart_toStartOf="@+id/fragment_driver_account_withdrawal_account_balance_tv"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_driver_account_withdrawal_account_balance_tv" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
+<!--            To be Paid to-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_driver_account_withdrawal_account_account_details_cl"
                 style="@style/DriverStatCard">

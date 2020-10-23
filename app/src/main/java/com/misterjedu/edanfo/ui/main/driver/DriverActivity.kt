@@ -3,6 +3,8 @@ package com.misterjedu.edanfo.ui.main.driver
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.misterjedu.edanfo.R
 import kotlinx.android.synthetic.main.activity_driver.*
@@ -18,7 +20,8 @@ class DriverActivity : AppCompatActivity() {
         bottomNavigator.setOnNavigationItemSelectedListener(navListener)
     }
 
-    // Switch Fragment with Bottom Navigation
+
+//     Switch Fragment with Bottom Navigation
     private var navListener: BottomNavigationView.OnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             val fragment: Int = when (item.itemId) {

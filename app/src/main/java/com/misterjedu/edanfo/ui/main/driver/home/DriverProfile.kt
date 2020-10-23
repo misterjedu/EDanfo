@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.misterjedu.edanfo.R
@@ -34,5 +35,12 @@ class DriverProfile : Fragment() {
         fragment_driver_profile_trip_destination_tv.setOnClickListener {
             findNavController().navigate(R.id.currentPassengers)
         }
+
+
+        //Exit app from this fragment
+        requireActivity().onBackPressedDispatcher.addCallback{
+            requireActivity().finish()
+        }
+
     }
 }

@@ -47,7 +47,14 @@ class LoginFragment : Fragment() {
         // Login and Start Activity for Driver
         fragment_login_login_btn.setOnClickListener {
             val intent = Intent(requireContext(), DriverActivity::class.java)
+
+            //Start Driver Activit
             startActivity(intent)
+
+            //Finish Authentication Activity  here and user moves to a new Driver Activity
+            requireActivity().finish()
         }
+
+
     }
 }

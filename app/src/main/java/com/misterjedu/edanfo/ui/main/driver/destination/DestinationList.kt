@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,10 +47,12 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
             findNavController().navigate(R.id.addNewTripFragment)
         }
 
-        // override Back Pressed
-//        requireActivity().onBackPressedDispatcher.addCallback {
-//            findNavController().navigate(R.id.landingFragment)
-//        }
+
+//        Navigate to Driver home on Back Press
+        requireActivity().onBackPressedDispatcher.addCallback {
+            findNavController().navigate(R.id.action_destinationList_to_driverProfile6)
+        }
+
     }
 
     override fun onItemClick(item: DestinationData, position: Int) {
