@@ -37,7 +37,6 @@
                 style="@style/NormalSubText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="From"
                 android:textColor="#000000" />
 
@@ -93,16 +92,17 @@
                 style="@style/PrimaryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:text="Add SubTrip" />
 
             <TextView
                 android:id="@+id/fragment_add_new_trip_from_history_tv"
                 style="@style/GreenNormalText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Or Add Trip from History"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
 

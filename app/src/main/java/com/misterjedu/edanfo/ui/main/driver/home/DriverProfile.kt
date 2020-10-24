@@ -8,8 +8,6 @@ import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.misterjedu.edanfo.R
-import com.misterjedu.edanfo.helpers.checkItem
-import kotlinx.android.synthetic.main.activity_driver.*
 import kotlinx.android.synthetic.main.fragment_driver_profile.*
 
 class DriverProfile : Fragment() {
@@ -34,7 +32,7 @@ class DriverProfile : Fragment() {
             newPostDialog.show(activity?.supportFragmentManager!!, "Add Dialog")
         }
 
-        fragment_driver_profile_trip_destination_tv.setOnClickListener {
+        fragment_driver_profile_check_orders_btn.setOnClickListener {
             findNavController().navigate(R.id.action_driverProfile_to_currentPassengers)
         }
 

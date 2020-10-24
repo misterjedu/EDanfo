@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.PassengerRecyclerAdapter
 import com.misterjedu.edanfo.data.PassengerData
+import com.misterjedu.edanfo.helpers.DummyData
 import kotlinx.android.synthetic.main.fragment_current_passengers.*
 
 class CurrentPassengers :
@@ -18,15 +19,7 @@ class CurrentPassengers :
     PassengerRecyclerAdapter.OnPassengerClickListener {
 
     private lateinit var adapter: PassengerRecyclerAdapter
-    private var passengerList = arrayListOf(
-        PassengerData("Badmus Shobowale", "Mushin to Yaba", "2 mins ago"),
-        PassengerData("Omo Ologo", "Shagamu to Boluwatife", "5 mins ago"),
-        PassengerData("Adewale Shwab", "Lekki to Sangotedo", "5 mins ago"),
-        PassengerData("Funke Duduke", "Mushin to Yaba", "10 mins ago"),
-        PassengerData("Hushpuppy MoronmuboMoronmubo", "Lekki to Ikorodu", "11 mins ago"),
-        PassengerData("Badmus Shobowale", "Mushin to Yaba", "13 mins ago"),
-        PassengerData("Funke Duduke", "Mushin to Yaba", "15 mins ago"),
-    )
+    private var passengerList = DummyData.passengerList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +38,7 @@ class CurrentPassengers :
         current_passenger_recyler_adapter.adapter = adapter
         current_passenger_recyler_adapter.layoutManager = LinearLayoutManager(requireContext())
 
-        fragment_current_passengers_back_arrow_iv.setOnClickListener {
+        fragment_current_passenger_back_arrow_iv.setOnClickListener {
             findNavController().popBackStack()
         }
     }

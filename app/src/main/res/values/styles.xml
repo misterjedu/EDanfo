@@ -200,4 +200,12 @@
     </style>
 
 
+    <!--.*********************************** Driver Profile -->
+
+    <style name="DriverDashboardIcon" parent="AppTheme">
+        <item name="android:background">@drawable/backarrow_round_background</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
 </resources>
