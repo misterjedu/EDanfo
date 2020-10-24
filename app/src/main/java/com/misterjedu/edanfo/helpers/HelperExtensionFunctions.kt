@@ -1,12 +1,8 @@
 package com.misterjedu.edanfo.helpers
 
-import android.app.Activity
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.misterjedu.edanfo.R
-import kotlinx.android.synthetic.main.activity_driver.*
+
 
 
 fun BottomNavigationView.checkItem(actionId: Int) {
@@ -17,8 +13,6 @@ fun BottomNavigationView.checkItem(actionId: Int) {
 
     menu.findItem(actionId)?.isChecked = true
 }
-
-
 
 //fun navigateBackPress(activity: Activity, fragment: Fragment, destination : Int?){
 //    if (findNavController(activity, destination!!).currentDestination?.id == destination) {

@@ -54,13 +54,15 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_first_name_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
-                style = "@style/GreenTextInputLayout"
                 android:layout_marginRight="16dp"
                 android:hint="@string/first_name"
+                app:endIconMode="custom"
+                app:errorEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_not_a_driver_tv">
@@ -69,7 +71,6 @@
                     android:id="@+id/fragment_driver_first_name_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="text"
                     android:paddingLeft="10dp" />
 
@@ -79,11 +80,12 @@
             <!--          LastName Edit Text-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_last_name_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/last_name"
-                style = "@style/GreenTextInputLayout"
+                app:endIconMode="custom"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_driver_first_name_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_first_name_til"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_driver_first_name_til">
@@ -92,7 +94,6 @@
                     android:id="@+id/fragment_driver_last_name_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -101,11 +102,12 @@
             <!--          Email Address-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_email_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/email_address"
-                style = "@style/GreenTextInputLayout"
+                app:endIconMode="custom"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_driver_last_name_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_last_name_til"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_driver_last_name_til">
@@ -114,7 +116,6 @@
                     android:id="@+id/fragment_driver_email_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,11 +124,13 @@
             <!--          Plate Number-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_plate_number_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/plate_number"
-                style = "@style/GreenTextInputLayout"
+                app:endIconMode="custom"
+                app:errorEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_driver_email_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_email_til"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_driver_email_til">
@@ -136,7 +139,6 @@
                     android:id="@+id/fragment_driver_plate_number_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -145,12 +147,14 @@
             <!--          Password-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_password_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/password"
-                style = "@style/GreenTextInputLayout"
+                app:counterEnabled="true"
                 app:endIconMode="password_toggle"
+                app:errorEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_driver_plate_number_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_plate_number_til"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_driver_plate_number_til">
@@ -159,7 +163,6 @@
                     android:id="@+id/fragment_driver_password_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -168,12 +171,14 @@
             <!--         Enter Password Again-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_repeat_password_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/enter_password_again"
-                style = "@style/GreenTextInputLayout"
+                app:counterEnabled="true"
                 app:endIconMode="password_toggle"
+                app:errorEnabled="false"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_driver_password_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_password_til"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_driver_password_til">
@@ -182,7 +187,6 @@
                     android:id="@+id/fragment_driver_repeat_password_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -197,6 +201,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="24dp"
+                android:enabled="false"
                 android:text="@string/create_driver_account"
                 android:textAlignment="viewStart"
                 app:icon="@drawable/ic_baseline_arrow_forward"
