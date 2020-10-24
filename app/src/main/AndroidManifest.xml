@@ -19,11 +19,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden">
 
         </activity>
 
-        <activity android:name=".ui.main.driver.DriverActivity">
+        <activity
+            android:name=".ui.main.driver.DriverActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden">
 
         </activity>
 

@@ -43,17 +43,42 @@
         <argument
             android:name="fragmentName"
             app:argType="string" />
+
+        <action
+            android:id="@+id/action_phoneActivationFragment_to_createProfileLanding"
+            app:destination="@id/createProfileLanding" />
+        <action
+            android:id="@+id/action_phoneActivationFragment_to_changePasswordFragment2"
+            app:destination="@id/changePasswordFragment2" />
     </fragment>
-    <fragment
-        android:id="@+id/createProfileFragment"
-        android:name="com.misterjedu.edanfo.ui.auth.createprofile.CreateProfileFragment"
-        android:label="CreateProfileFragment"
-        tools:layout="@layout/fragment_create_profile"
-        />
     <fragment
         android:id="@+id/changePasswordFragment2"
         android:name="com.misterjedu.edanfo.ui.auth.ChangePasswordFragment"
         android:label="ChangePasswordFragment"
         tools:layout="@layout/fragment_change_password"
         />
+    <fragment
+        android:id="@+id/createPassengerProfile"
+        android:name="com.misterjedu.edanfo.ui.auth.createprofile.CreatePassengerProfile"
+        android:label="CreatePassengerProfile"
+        tools:layout="@layout/fragment_create_passenger_profile"
+        />
+    <fragment
+        android:id="@+id/createDriverProfile"
+        android:name="com.misterjedu.edanfo.ui.auth.createprofile.CreateDriverProfile"
+        android:label="CreateDriverProfile"
+        tools:layout="@layout/fragment_create_driver_profile"
+        />
+    <fragment
+        android:id="@+id/createProfileLanding"
+        android:name="com.misterjedu.edanfo.ui.auth.createprofile.CreateProfileLanding"
+        android:label="fragment_create_profile_landing"
+        tools:layout="@layout/fragment_create_profile_landing" >
+        <action
+            android:id="@+id/action_createProfileLanding_to_createDriverProfile"
+            app:destination="@id/createDriverProfile" />
+        <action
+            android:id="@+id/action_createProfileLanding_to_createPassengerProfile"
+            app:destination="@id/createPassengerProfile" />
+    </fragment>
 </navigation>

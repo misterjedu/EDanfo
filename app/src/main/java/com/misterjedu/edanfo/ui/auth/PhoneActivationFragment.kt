@@ -38,13 +38,14 @@ class PhoneActivationFragment : Fragment() {
             .into(fragment_phone_activation_header_img)
 
         // Navigate to Create Profile or Change Password based on args.
-        fragment_phone_activation_send_otp_btn.setOnClickListener {
+        fragment_phone_activation_continue_btn.setOnClickListener {
             if (fragmentName == "Sign Up") {
-                findNavController().navigate(R.id.createProfileFragment)
+                findNavController().navigate(R.id.action_phoneActivationFragment_to_createProfileLanding)
             } else {
-                findNavController().navigate(R.id.changePasswordFragment2)
+                findNavController().navigate(R.id.action_phoneActivationFragment_to_changePasswordFragment2)
             }
         }
+
 
         // Back Arrow
         fragment_phone_activation_back_arrow_iv.setOnClickListener {
