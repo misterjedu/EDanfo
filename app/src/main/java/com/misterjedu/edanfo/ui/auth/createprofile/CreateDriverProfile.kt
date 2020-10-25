@@ -1,22 +1,39 @@
 package com.misterjedu.edanfo.ui.auth.createprofile
 
+import android.R.attr.password
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.*
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.helpers.*
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_driver_profile.*
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class CreateDriverProfile : Fragment() {
+
+
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
+
     private lateinit var createDriverAccountButton: Button
 
     override fun onCreateView(
@@ -33,23 +50,61 @@ class CreateDriverProfile : Fragment() {
 
         createDriverAccountButton = fragment_driver_profile_btn
 
-        //Field Validation
+        //Form Field Validation
         validateFields()
+
+        //Firebase Sign in Authentication on button clicked
+        fragment_driver_profile_btn.setOnClickListener {
+            //Show Progress Bar when Button's clicked and disable Button
+            fragment_driver_profile_progress_bar.show(fragment_driver_profile_btn)
+
+            val email = fragment_driver_email_et.text.toString()
+            val password = fragment_driver_password_et.text.toString()
+
+            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+
+                    if (task.isSuccessful) {
+                        //Hide Progress bar  and enable button when result comes back
+                        fragment_driver_profile_progress_bar.hide(fragment_driver_profile_btn)
+
+                        // Login and Start Activity for Driver
+                        val intent = Intent(requireContext(), DriverActivity::class.java)
+                        startActivity(intent)
+                        //Finish Authentication Activity  here and user moves to a new Driver Activity
+                        requireActivity().finish()
+                    } else {
+                        fragment_driver_profile_progress_bar.hide(fragment_driver_profile_btn)
+                        // If sign in fails, display a message to the user.
+
+                        when (task.exception) {
+                            is FirebaseAuthUserCollisionException -> {
+                                showSnackBar(
+                                    fragment_driver_profile_btn, "You are already Registered"
+                                )
+                            }
+                            is FirebaseNetworkException -> {
+                                showSnackBar(
+                                    fragment_driver_profile_btn,
+                                    "Network Error! Check your Network and try Again",
+                                )
+                            }
+                            else -> {
+                                showSnackBar(
+                                    fragment_driver_profile_btn,
+                                    task.exception?.message.toString()
+                                )
+                            }
+                        }
+
+                    }
+                }
+        }
 
 
         //Back Arrow
         fragment_create_driver_profile_back_arrow_iv.setOnClickListener {
             findNavController().popBackStack()
-        }
-
-
-
-        fragment_driver_profile_btn.setOnClickListener {
-            // Login and Start Activity for Driver
-            val intent = Intent(requireContext(), DriverActivity::class.java)
-            startActivity(intent)
-            //Finish Authentication Activity  here and user moves to a new Driver Activity
-            requireActivity().finish()
         }
     }
 
@@ -94,7 +149,6 @@ class CreateDriverProfile : Fragment() {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(s: Editable) {
-
             //Enable Button when all fields are validated
             createDriverAccountButton.isEnabled =
                 !(!validateName(fragment_driver_first_name_et.text.toString()) or

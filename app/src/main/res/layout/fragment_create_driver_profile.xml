@@ -52,6 +52,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/fragment_not_a_driver_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Tap to set upload Profile Image"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/fragment_driver_first_name_til"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_driver_first_name_til"
+                app:layout_constraintStart_toStartOf="@+id/fragment_driver_first_name_til"
+                app:layout_constraintTop_toBottomOf="@+id/driver_account_profile_imag" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_first_name_til"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -122,6 +138,7 @@
 
 
             <!--          Plate Number-->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_plate_number_til"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -208,25 +225,21 @@
                 app:iconGravity="end"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_driver_repeat_password_til"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_repeat_password_til"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_driver_repeat_password_til" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_driver_repeat_password_til"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/fragment_not_a_driver_tv"
-                android:layout_width="0dp"
+            <ProgressBar
+                android:id="@+id/fragment_driver_profile_progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Tap to set upload Profile Image"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/fragment_driver_first_name_til"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_driver_first_name_til"
-                app:layout_constraintStart_toStartOf="@+id/fragment_driver_first_name_til"
-                app:layout_constraintTop_toBottomOf="@+id/driver_account_profile_imag" />
+                android:layout_marginStart="154dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_driver_profile_btn"
+                app:layout_constraintStart_toStartOf="@+id/fragment_driver_profile_btn"
+                app:layout_constraintTop_toTopOf="@+id/fragment_driver_profile_btn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -2,7 +2,10 @@ package com.misterjedu.edanfo.helpers
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import com.google.android.material.textfield.TextInputLayout
 import com.misterjedu.edanfo.R
 import java.util.regex.Matcher
@@ -95,3 +98,18 @@ fun EditText.watchToValidate(
 
 }
 
+
+//Hide and Show Progress Bars
+fun ProgressBar.hide(button: Button? = null) {
+    visibility = View.GONE
+    if (button != null) {
+        button.isEnabled = true
+    }
+}
+
+fun ProgressBar.show(button: Button? = null) {
+    visibility = View.VISIBLE
+    if (button != null) {
+        button.isEnabled = false
+    }
+}

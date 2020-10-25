@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.misterjedu.edanfo.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_driver.*
 
+@AndroidEntryPoint
 class DriverActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
