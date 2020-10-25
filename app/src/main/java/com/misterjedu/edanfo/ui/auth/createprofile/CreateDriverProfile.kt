@@ -1,26 +1,19 @@
 package com.misterjedu.edanfo.ui.auth.createprofile
 
-import android.R.attr.password
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
-import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
 import com.misterjedu.edanfo.R
-import com.misterjedu.edanfo.helpers.*
+import com.misterjedu.edanfo.utils.*
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_driver_profile.*
@@ -145,7 +138,7 @@ class CreateDriverProfile : Fragment() {
 
 
     //Enable button once all fields are validated
-    private val watcher: TextWatcher = object : TextWatcher {
+    private val watcher: TextWatcher =  object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(s: Editable) {

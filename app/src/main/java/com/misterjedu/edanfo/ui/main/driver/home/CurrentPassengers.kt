@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.PassengerRecyclerAdapter
 import com.misterjedu.edanfo.data.PassengerData
-import com.misterjedu.edanfo.helpers.DummyData
+import com.misterjedu.edanfo.utils.DummyData
 import kotlinx.android.synthetic.main.fragment_current_passengers.*
 
 class CurrentPassengers :

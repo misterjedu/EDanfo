@@ -1,4 +1,4 @@
-package com.misterjedu.edanfo.helpers
+package com.misterjedu.edanfo.utils
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,13 +7,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import com.google.android.material.textfield.TextInputLayout
+import com.hbb20.CountryCodePicker
 import com.misterjedu.edanfo.R
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 
 fun validateNumber(number: String): Boolean {
-    val pattern: Pattern = Pattern.compile("(\\+?234|0)[789][01][0-9]{8}")
+    val pattern: Pattern = Pattern.compile("(\\+?2340?)[789][01][0-9]{8}")
     val matcher: Matcher = pattern.matcher(number)
     val matchFound = matcher.matches()
     return !(number.isEmpty() || !matchFound)
@@ -53,7 +54,8 @@ fun validateEmail(email: String): Boolean {
 fun EditText.watchToValidate(
     editField: EditField,
     inputLayer: TextInputLayout,
-    extraParam: EditText? = null
+    extraEditText: EditText? = null,
+    countryPicker: CountryCodePicker? = null
 ) {
     addTextChangedListener(object : TextWatcher {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
@@ -64,30 +66,43 @@ fun EditText.watchToValidate(
         }
 
         override fun afterTextChanged(s: Editable) {
-            when (editField) {
-                EditField.NAME -> if (validateName(s.toString())) {
-                    setValidate()
-                } else {
-                    inputLayer.error = "Name can not be empty"
-                }
-                EditField.EMAIL -> if (validateEmail(s.toString())) {
-                    setValidate()
-                } else {
-                    inputLayer.error = "Invalid Email Address"
-                }
-                EditField.PASSWORD -> if (validatePassword(s.toString())) {
-                    setValidate()
-                } else {
-                    inputLayer.error = "Password too Short"
-                }
-                EditField.REPEATPASSWORD -> if (extraParam != null) {
-                    if (validateRepeatPassword(extraParam.text.toString(), s.toString())) {
+            if (s.toString().trim().isEmpty()) {
+                inputLayer.error = null
+                inputLayer.endIconDrawable = null
+            } else {
+                when (editField) {
+                    EditField.NAME -> if (validateName(s.toString())) {
                         setValidate()
                     } else {
-                        inputLayer.error = "Password does not match"
+                        inputLayer.error = "Name can not be empty"
+                    }
+                    EditField.EMAIL -> if (validateEmail(s.toString())) {
+                        setValidate()
+                    } else {
+                        inputLayer.error = "Invalid Email Address"
+                    }
+                    EditField.PHONE -> if (validateNumber(countryPicker?.textView_selectedCountry?.text.toString() + s.toString())) {
+                        setValidate()
+                    } else {
+                        inputLayer.error = "Invalid Nigerian Phone Number"
+                    }
+                    EditField.PASSWORD -> if (validatePassword(s.toString())
+                    ) {
+                        setValidate()
+                    } else {
+                        inputLayer.error = "Password too Short"
+                    }
+                    EditField.REPEATPASSWORD -> if (extraEditText != null) {
+                        if (validateRepeatPassword(extraEditText.text.toString(), s.toString())) {
+                            setValidate()
+                        } else {
+                            inputLayer.error = "Password does not match"
+                        }
                     }
                 }
             }
+
+
         }
 
         private fun setValidate() {

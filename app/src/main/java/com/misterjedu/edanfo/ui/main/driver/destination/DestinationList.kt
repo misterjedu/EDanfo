@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.DestinationRecyclerAdapter
 import com.misterjedu.edanfo.data.DestinationData
-import com.misterjedu.edanfo.helpers.checkItem
+import com.misterjedu.edanfo.utils.checkItem
 import kotlinx.android.synthetic.main.activity_driver.*
 import kotlinx.android.synthetic.main.fragment_destination_list.*
 

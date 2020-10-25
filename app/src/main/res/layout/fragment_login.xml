@@ -27,12 +27,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/colorPrimary" />
 
-
-        <!--            Welcome back text-->
-
-
-        <!--The Country list-->
-
         <TextView
             android:id="@+id/fragment_login_welcome_tv"
             android:layout_width="wrap_content"
@@ -64,14 +58,13 @@
         <!--            PhoneNumber Edit Text-->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fragment_login_phone_number_text_layout_tl"
-            style="@style/GreenTextInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:hint="@string/phone_number"
             app:boxStrokeColor="@color/colorPrimary"
-            app:endIconDrawable="@drawable/ic_baseline_check_circle"
             app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/fragment_login_country_picker"
@@ -81,21 +74,20 @@
                 android:id="@+id/fragment_login_phone_number_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
                 android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--           Password Edit Text-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fragment_driver_first_name_til"
-            style="@style/GreenTextInputLayout"
+            android:id="@+id/fragment_login_password_til"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
             android:hint="@string/password"
-            app:endIconMode="password_toggle"
+            app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="@+id/fragment_login_phone_number_text_layout_tl"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_login_phone_number_text_layout_tl">
@@ -104,7 +96,6 @@
                 android:id="@+id/fragment_login_password_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -120,8 +111,8 @@
             android:fontFamily="@font/poppins"
             android:text="@string/forgot_password"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="@+id/fragment_driver_first_name_til"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_driver_first_name_til" />
+            app:layout_constraintStart_toStartOf="@+id/fragment_login_password_til"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_login_password_til" />
 
         <Button
             android:id="@+id/fragment_login_login_btn"
@@ -130,10 +121,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/login"
+            android:enabled="false"
             android:textAlignment="viewStart"
             app:icon="@drawable/ic_baseline_arrow_forward"
             app:iconGravity="end"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_driver_first_name_til"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_login_password_til"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/fragment_login_forgot_password_tv"
             app:layout_constraintTop_toBottomOf="@+id/fragment_login_forgot_password_tv" />

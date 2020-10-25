@@ -1,10 +1,9 @@
-package com.misterjedu.edanfo.helpers
+package com.misterjedu.edanfo.utils
 
 import android.view.MenuItem
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_create_driver_profile.*
 
 
 fun BottomNavigationView.checkItem(actionId: Int) {

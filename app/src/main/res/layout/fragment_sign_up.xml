@@ -111,18 +111,18 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_sign_up_phone_number_tl"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:hint="@string/your_phone_number"
-                android:outlineAmbientShadowColor="@color/colorPrimary"
-                android:outlineSpotShadowColor="@color/colorPrimary"
-                app:boxStrokeColor="@color/colorPrimary">
+                app:endIconMode="custom">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_sign_up_phone_number_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF" />
+                    android:inputType="number" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,8 +145,9 @@
             android:id="@+id/fragment_sign_up_continue_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:enabled="true"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
             android:paddingLeft="30dp"
             android:paddingTop="16dp"
             android:paddingRight="30dp"
@@ -162,13 +163,14 @@
             app:layout_constraintBottom_toTopOf="@+id/fragment_sign_up_terms_of_service_tv"
             app:layout_constraintEnd_toEndOf="@+id/fragment_sign_up_phone_container_ll"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_phone_container_ll" />
+            app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_phone_container_ll"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_verify_code_tv"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/fragment_sign_up_terms_of_service_tv"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:layout_marginBottom="16dp"
             android:text="@string/agree_terms_of_service"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -176,7 +178,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/fragment_sign_up_continue_btn"
             app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_verify_code_tv"
-            app:layout_constraintVertical_bias="0.93" />
+            app:layout_constraintVertical_bias="0.811" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

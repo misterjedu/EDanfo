@@ -2,13 +2,20 @@ package com.misterjedu.edanfo.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.hbb20.CountryCodePicker
 import com.misterjedu.edanfo.R
+import com.misterjedu.edanfo.utils.EditField
+import com.misterjedu.edanfo.utils.validateNumber
+import com.misterjedu.edanfo.utils.validatePassword
+import com.misterjedu.edanfo.utils.watchToValidate
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.fragment_sign_up_header_img
@@ -25,6 +32,8 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        validateField()
+
         // Load Header Image with Glide
         Glide.with(this)
             .load(R.drawable.danfo_curved_bg_2)
@@ -37,24 +46,54 @@ class LoginFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        // Navigate to PhoneActivationFragment to change Password
-        fragment_login_forgot_password_tv.setOnClickListener {
-            val action = LoginFragmentDirections
-                .actionLoginFragmentToSignUpFragment("Change Password")
-            findNavController().navigate(action)
-        }
 
         // Login and Start Activity for Driver
         fragment_login_login_btn.setOnClickListener {
             val intent = Intent(requireContext(), DriverActivity::class.java)
 
-            //Start Driver Activit
+            //Start Driver Activity
             startActivity(intent)
 
             //Finish Authentication Activity  here and user moves to a new Driver Activity
             requireActivity().finish()
         }
 
+        // Navigate to PhoneActivationFragment to change Password
+        fragment_login_forgot_password_tv.setOnClickListener {
+            val action = LoginFragmentDirections
+                .actionLoginFragmentToSignUpFragment("Change Password")
+            findNavController().navigate(action)
+        }
+    }
 
+
+    private fun validateField() {
+        fragment_login_phone_number_et.watchToValidate(
+            EditField.PHONE,
+            fragment_login_phone_number_text_layout_tl,
+            null,
+            fragment_login_country_picker
+        )
+
+        fragment_login_password_et.watchToValidate(
+            EditField.PASSWORD, fragment_login_password_til
+        )
+
+        fragment_login_phone_number_et.addTextChangedListener(watcher)
+        fragment_login_password_et.addTextChangedListener(watcher)
+    }
+
+
+    private val watcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable) {
+            val phoneNumber =
+                fragment_login_country_picker.textView_selectedCountry?.text.toString() +
+                        fragment_login_phone_number_et.text.toString().trim()
+            fragment_login_login_btn.isEnabled =
+                !(!validateNumber(phoneNumber) or
+                        !validatePassword(fragment_login_password_et.text.toString().trim()))
+        }
     }
 }

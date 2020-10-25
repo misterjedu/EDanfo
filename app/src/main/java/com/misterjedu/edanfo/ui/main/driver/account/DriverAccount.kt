@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import com.misterjedu.edanfo.R
-import com.misterjedu.edanfo.helpers.checkItem
+import com.misterjedu.edanfo.utils.checkItem
 import kotlinx.android.synthetic.main.activity_driver.*
 import kotlinx.android.synthetic.main.fragment_driver_account.*
 
