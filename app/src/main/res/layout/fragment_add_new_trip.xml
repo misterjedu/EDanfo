@@ -90,6 +90,7 @@
             <Button
                 android:id="@+id/fragment_add_new_sub_trip_button"
                 style="@style/PrimaryButton"
+                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

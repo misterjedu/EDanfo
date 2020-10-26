@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -15,7 +14,7 @@ import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.PhoneToOtp
 import com.misterjedu.edanfo.utils.validateNumber
 import kotlinx.android.synthetic.main.fragment_sign_up.*
-import kotlinx.android.synthetic.main.fragment_sign_up.fragment_sign_up_header_img
+
 
 class SignUpFragment : Fragment() {
 
@@ -51,9 +50,12 @@ class SignUpFragment : Fragment() {
 
         // Continue Button
         fragment_sign_up_continue_btn.setOnClickListener {
+            val phoneNum =
+                fragment_sign_up_country_picker.textView_selectedCountry.text.toString() +
+                        fragment_sign_up_phone_number_et.text.toString().trim()
             val dataToPhoneVer = PhoneToOtp(
                 fragmentName,
-                fragment_sign_up_phone_number_et.text.toString().trim()
+                phoneNum
             )
 
             val action = SignUpFragmentDirections
@@ -67,6 +69,7 @@ class SignUpFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
+
 
     // Change several texts and hide visibility if it's loaded as Forgot Password Framgment
     private fun setVarTexts() {

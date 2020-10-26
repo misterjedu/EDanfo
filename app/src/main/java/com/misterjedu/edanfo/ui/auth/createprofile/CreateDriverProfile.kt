@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.*
 import com.misterjedu.edanfo.R
+import com.misterjedu.edanfo.data.DriverDetail
 import com.misterjedu.edanfo.utils.*
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,8 +27,12 @@ class CreateDriverProfile : Fragment() {
 
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
-
     private lateinit var createDriverAccountButton: Button
+
+    private lateinit var driveFirstName: String
+    private lateinit var driverLastName: String
+    private lateinit var driverEmail: String
+    private lateinit var driverNumber: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,10 +61,15 @@ class CreateDriverProfile : Fragment() {
 
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
+                    //Hide Progress Bar
+                    fragment_driver_profile_progress_bar.hide(fragment_driver_profile_btn)
 
                     if (task.isSuccessful) {
-                        //Hide Progress bar  and enable button when result comes back
-                        fragment_driver_profile_progress_bar.hide(fragment_driver_profile_btn)
+
+                        var driverDetail =
+                            DriverDetail(driverNumber, driverEmail, driveFirstName, driverLastName)
+
+                        //TODO Firebase RealTime Firebase
 
                         // Login and Start Activity for Driver
                         val intent = Intent(requireContext(), DriverActivity::class.java)
@@ -67,7 +77,7 @@ class CreateDriverProfile : Fragment() {
                         //Finish Authentication Activity  here and user moves to a new Driver Activity
                         requireActivity().finish()
                     } else {
-                        fragment_driver_profile_progress_bar.hide(fragment_driver_profile_btn)
+
                         // If sign in fails, display a message to the user.
 
                         when (task.exception) {
@@ -102,8 +112,8 @@ class CreateDriverProfile : Fragment() {
     }
 
 
-    private fun validateFields() {
 
+    private fun validateFields() {
         //Validate individual input textFields
         fragment_driver_first_name_et.watchToValidate(
             EditField.NAME, fragment_driver_first_name_til
@@ -138,7 +148,7 @@ class CreateDriverProfile : Fragment() {
 
 
     //Enable button once all fields are validated
-    private val watcher: TextWatcher =  object : TextWatcher {
+    private val watcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(s: Editable) {

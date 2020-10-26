@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "554608800662-630gctea5ej34u1bd6sgvcr77m506u3c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.misterjedu.edanfo",
+            "certificate_hash": "82659b1411eb065186613c14b73f1dac2b3701a1"
+          }
+        },
+        {
           "client_id": "554608800662-phknliredvtrf86ehgnnqcnroatp7mch.apps.googleusercontent.com",
           "client_type": 3
         }

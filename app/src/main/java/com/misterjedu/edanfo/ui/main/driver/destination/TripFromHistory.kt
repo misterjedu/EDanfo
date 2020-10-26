@@ -1,6 +1,8 @@
 package com.misterjedu.edanfo.ui.main.driver.destination
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.TripHistoryRecyclerAdapter
 import com.misterjedu.edanfo.data.HistoryData
-import com.misterjedu.edanfo.utils.DummyData
+import com.misterjedu.edanfo.utils.*
 import kotlinx.android.synthetic.main.fragment_trip_from_history.*
 
 class TripFromHistory : Fragment(), TripHistoryRecyclerAdapter.OnTripClickListener {
@@ -34,6 +36,8 @@ class TripFromHistory : Fragment(), TripHistoryRecyclerAdapter.OnTripClickListen
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        validateFields()
 
         // Get Views to use
         itemSelectedText = fragment_trip_item_selected_tv
@@ -74,5 +78,20 @@ class TripFromHistory : Fragment(), TripHistoryRecyclerAdapter.OnTripClickListen
         }
         itemSelectedText.text = "${checkedListArr.size} items Selected"
         addItemButton.isEnabled = checkedListArr.size > 0
+    }
+
+
+    private fun validateFields() {
+        fragment_trip_from_history_location_et.watchToValidate(EditField.NAME)
+        fragment_trip_from_history_location_et.addTextChangedListener(watcher)
+    }
+
+    private val watcher: TextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable) {
+            fragment_trip_from_history_search_button.isEnabled =
+                validateName(fragment_trip_from_history_location_et.text.toString())
+        }
     }
 }

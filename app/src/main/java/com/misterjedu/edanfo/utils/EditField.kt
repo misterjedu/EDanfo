@@ -5,5 +5,7 @@ enum class EditField {
     REPEATPASSWORD,
     NAME,
     EMAIL,
-    PHONE
+    PHONE,
+    AMOUNT,
+    PAYMENT
 }

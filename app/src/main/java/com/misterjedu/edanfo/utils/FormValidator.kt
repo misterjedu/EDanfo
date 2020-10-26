@@ -20,6 +20,10 @@ fun validateNumber(number: String): Boolean {
     return !(number.isEmpty() || !matchFound)
 }
 
+fun validateOTP(string: String): Boolean {
+    return string.isNotEmpty() && string.length == 6
+}
+
 fun validateGender(genderSelected: String): Boolean {
     return genderSelected == "Male" || genderSelected == "Female" || genderSelected == "Other"
 }
@@ -28,12 +32,29 @@ fun validatePassword(password: String): Boolean {
     return password.trim().length > 6
 }
 
+
 fun validateRepeatPassword(password1: String, password2: String): Boolean {
     return password1.trim().isNotEmpty() && password1 == password2
 }
 
 fun validateName(name: String): Boolean {
-    return name.trim().isNotEmpty()
+    return name.trim().length > 1
+}
+
+fun validatePrice(amount: String): Boolean {
+    return if (amount.isEmpty()) {
+        false
+    } else {
+        amount.toInt() > 50
+    }
+}
+
+fun validatePayment(amount: String): Boolean {
+    return if (amount.isEmpty()) {
+        false
+    } else {
+        amount.toInt() > 1000
+    }
 }
 
 
@@ -53,7 +74,7 @@ fun validateEmail(email: String): Boolean {
 @JvmOverloads
 fun EditText.watchToValidate(
     editField: EditField,
-    inputLayer: TextInputLayout,
+    inputLayer: TextInputLayout? = null,
     extraEditText: EditText? = null,
     countryPicker: CountryCodePicker? = null
 ) {
@@ -67,47 +88,75 @@ fun EditText.watchToValidate(
 
         override fun afterTextChanged(s: Editable) {
             if (s.toString().trim().isEmpty()) {
-                inputLayer.error = null
-                inputLayer.endIconDrawable = null
+                if (inputLayer != null) {
+                    error = null
+                    inputLayer.error = null
+                    inputLayer.endIconDrawable = null
+                }
             } else {
                 when (editField) {
                     EditField.NAME -> if (validateName(s.toString())) {
                         setValidate()
                     } else {
-                        inputLayer.error = "Name can not be empty"
+                        setInvalidate("Too Short")
                     }
                     EditField.EMAIL -> if (validateEmail(s.toString())) {
                         setValidate()
                     } else {
-                        inputLayer.error = "Invalid Email Address"
+                        setInvalidate("Invalid Email Address")
                     }
                     EditField.PHONE -> if (validateNumber(countryPicker?.textView_selectedCountry?.text.toString() + s.toString())) {
                         setValidate()
                     } else {
-                        inputLayer.error = "Invalid Nigerian Phone Number"
+                        setInvalidate("Invalid Nigerian Phone Number")
                     }
                     EditField.PASSWORD -> if (validatePassword(s.toString())
                     ) {
                         setValidate()
                     } else {
-                        inputLayer.error = "Password too Short"
+                        setInvalidate("Password too Short")
                     }
                     EditField.REPEATPASSWORD -> if (extraEditText != null) {
                         if (validateRepeatPassword(extraEditText.text.toString(), s.toString())) {
                             setValidate()
                         } else {
-                            inputLayer.error = "Password does not match"
+                            setInvalidate("Password does not match")
                         }
                     }
+                    EditField.AMOUNT -> if (validatePrice(s.toString())) {
+                        setValidate()
+                    } else {
+                        setInvalidate("Minimum is 50 naira")
+                    }
+                    EditField.PAYMENT -> if (validatePrice(s.toString())) {
+                        setValidate()
+                    } else {
+                        setInvalidate("Minimum is 1000 naira")
+                    }
+
                 }
             }
 
 
         }
 
+        //When Field is validated
         private fun setValidate() {
-            inputLayer.error = null
-            inputLayer.setEndIconDrawable(R.drawable.ic_baseline_check_circle)
+            if (inputLayer != null) { //Works for Material Edit text with Input layer
+                inputLayer.error = null
+                inputLayer.setEndIconDrawable(R.drawable.ic_baseline_check_circle)
+            } else { // Works for only Edit Text
+                error = null
+            }
+        }
+
+        //When Field is invalidated
+        private fun setInvalidate(message: String) {
+            if (inputLayer != null) { //Works for Material Edit text with Input layer
+                inputLayer.error = message
+            } else { // Works for only Edit Text
+                error = message
+            }
         }
     })
 
@@ -127,4 +176,13 @@ fun ProgressBar.show(button: Button? = null) {
     if (button != null) {
         button.isEnabled = false
     }
+}
+
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    visibility = View.GONE
 }

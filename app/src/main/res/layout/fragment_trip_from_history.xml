@@ -27,7 +27,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/fragment_trip_from_history_location_et"
         style="@style/GreenEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,9 +36,10 @@
         android:layout_marginEnd="16dp"
         android:hint="Location"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_trip_from_history_search_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_trip_from_history_app_bar_ll" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_trip_from_history_app_bar_ll"
+        android:autofillHints="" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trip_from_history_recycler_view"
@@ -51,15 +52,16 @@
         tools:listitem="@layout/single_trip_history" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/fragment_trip_from_history_search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="Search"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_trip_from_history_location_et"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toTopOf="@+id/fragment_trip_from_history_location_et" />
 
     <TextView
         android:id="@+id/fragment_trip_item_selected_tv"
@@ -67,8 +69,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="No Item Selected"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toStartOf="@+id/fragment_trip_from_history_location_et"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_trip_from_history_location_et" />
 
     <Button
         android:id="@+id/fragment_trip_history_add_button"

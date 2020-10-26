@@ -10,17 +10,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import com.hbb20.CountryCodePicker
 import com.misterjedu.edanfo.R
-import com.misterjedu.edanfo.utils.EditField
-import com.misterjedu.edanfo.utils.validateNumber
-import com.misterjedu.edanfo.utils.validatePassword
-import com.misterjedu.edanfo.utils.watchToValidate
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
+import com.misterjedu.edanfo.utils.*
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.fragment_sign_up_header_img
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
+
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,13 +55,7 @@ class LoginFragment : Fragment() {
 
         // Login and Start Activity for Driver
         fragment_login_login_btn.setOnClickListener {
-            val intent = Intent(requireContext(), DriverActivity::class.java)
-
-            //Start Driver Activity
-            startActivity(intent)
-
-            //Finish Authentication Activity  here and user moves to a new Driver Activity
-            requireActivity().finish()
+            userLogin()
         }
 
         // Navigate to PhoneActivationFragment to change Password
@@ -63,6 +63,33 @@ class LoginFragment : Fragment() {
             val action = LoginFragmentDirections
                 .actionLoginFragmentToSignUpFragment("Change Password")
             findNavController().navigate(action)
+        }
+    }
+
+    private fun userLogin() {
+
+        //Disable button and show Progress Bar
+        fragment_login_progress_bar.show(fragment_login_login_btn)
+
+        val userName = fragment_login_phone_number_et.text.toString()
+        val userPassWord = fragment_login_password_et.text.toString()
+
+        firebaseAuth.signInWithEmailAndPassword(userName, userPassWord).addOnCompleteListener {
+            fragment_login_progress_bar.hide(fragment_login_login_btn)
+            if (it.isSuccessful) {
+
+                //Start Driver Activity
+                val intent = Intent(requireContext(), DriverActivity::class.java)
+                startActivity(intent)
+
+                //Finish Authentication Activity  here and user moves to a new Driver Activity
+                requireActivity().finish()
+            } else {
+                //Disable Button and show Progress bar
+
+
+                it.exception?.message?.let { it1 -> showSnackBar(fragment_login_login_btn, it1) }
+            }
         }
     }
 
@@ -96,4 +123,6 @@ class LoginFragment : Fragment() {
                         !validatePassword(fragment_login_password_et.text.toString().trim()))
         }
     }
+
+
 }

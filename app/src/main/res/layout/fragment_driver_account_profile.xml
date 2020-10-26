@@ -134,7 +134,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="07012345678"
-                android:inputType="number" />
+                android:inputType="phone" />
 
             <Button
                 android:id="@+id/fragment_driver_account_profile_update_button"
@@ -142,6 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
+                android:enabled="false"
                 android:text="Update Profile" />
 
         </LinearLayout>
