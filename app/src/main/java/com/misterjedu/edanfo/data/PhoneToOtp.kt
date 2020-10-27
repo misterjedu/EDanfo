@@ -6,7 +6,7 @@ import android.os.Parcelable
 data class PhoneToOtp(
     val fragmentName: String,
     val phoneNumber: String
-) : Parcelable{
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!
@@ -14,11 +14,12 @@ data class PhoneToOtp(
     }
 
     override fun describeContents(): Int {
-        TODO("Not yet implemented")
+        return 0
     }
 
     override fun writeToParcel(p0: Parcel?, p1: Int) {
-        TODO("Not yet implemented")
+        p0?.writeString(fragmentName)
+        p0?.writeString(phoneNumber)
     }
 
     companion object CREATOR : Parcelable.Creator<PhoneToOtp> {

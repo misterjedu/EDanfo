@@ -39,7 +39,7 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/driver_account_profile_imag"
+                    android:id="@+id/driver_account_profile_image"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="8dp"

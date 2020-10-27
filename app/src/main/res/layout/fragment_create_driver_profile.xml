@@ -40,13 +40,13 @@
             <!--          FirstName Edit Text-->
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/driver_account_profile_imag"
+                android:id="@+id/driver_account_profile_image"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/logo_filled_green_background"
-                app:civ_border_color="@color/colorAccent"
+                android:src="@drawable/logo_filled_black_background"
+                app:civ_border_color="@color/colorPrimary"
                 app:civ_border_width="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,17 +56,15 @@
                 android:id="@+id/fragment_not_a_driver_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
                 android:text="Tap to set upload Profile Image"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/fragment_driver_first_name_til"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_driver_first_name_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_first_name_til"
-                app:layout_constraintTop_toBottomOf="@+id/driver_account_profile_imag" />
+                app:layout_constraintTop_toBottomOf="@+id/driver_account_profile_image" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_driver_first_name_til"
@@ -81,7 +79,7 @@
                 app:errorEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_not_a_driver_tv">
+                app:layout_constraintTop_toBottomOf="@+id/fragment_create_driver_profile_upload_image_btn">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fragment_driver_first_name_et"
@@ -236,6 +234,30 @@
                 app:layout_constraintBottom_toBottomOf="@+id/fragment_driver_profile_btn"
                 app:layout_constraintStart_toStartOf="@+id/fragment_driver_profile_btn"
                 app:layout_constraintTop_toTopOf="@+id/fragment_driver_profile_btn" />
+
+            <ProgressBar
+                android:id="@+id/fragment_create_driver_profile_image_progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/driver_account_profile_image"
+                app:layout_constraintEnd_toEndOf="@+id/driver_account_profile_image"
+                app:layout_constraintStart_toStartOf="@+id/driver_account_profile_image"
+                app:layout_constraintTop_toTopOf="@+id/driver_account_profile_image" />
+
+            <Button
+                android:id="@+id/fragment_create_driver_profile_upload_image_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:enabled="false"
+                android:text="Upload Image"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_not_a_driver_tv"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/fragment_not_a_driver_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_not_a_driver_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

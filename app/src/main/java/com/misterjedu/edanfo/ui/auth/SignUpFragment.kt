@@ -1,5 +1,7 @@
 package com.misterjedu.edanfo.ui.auth
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,6 +23,9 @@ class SignUpFragment : Fragment() {
     private lateinit var fragmentName: String
     private val args: SignUpFragmentArgs by navArgs()
 
+    private val SHARED_PREFS: String = "sharedPrefs"
+    private val PHONENUMBER: String = "phoneNumber"
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,7 +46,6 @@ class SignUpFragment : Fragment() {
         setVarTexts()
         validateFields()
 
-
         // Load Header Image
         Glide.with(this)
             .load(R.drawable.danfo_curved_bg_2)
@@ -50,6 +54,7 @@ class SignUpFragment : Fragment() {
 
         // Continue Button
         fragment_sign_up_continue_btn.setOnClickListener {
+
             val phoneNum =
                 fragment_sign_up_country_picker.textView_selectedCountry.text.toString() +
                         fragment_sign_up_phone_number_et.text.toString().trim()
@@ -57,6 +62,9 @@ class SignUpFragment : Fragment() {
                 fragmentName,
                 phoneNum
             )
+
+            savePhoneNumber(phoneNum)
+
 
             val action = SignUpFragmentDirections
                 .actionSignUpFragmentToPhoneActivationFragment(dataToPhoneVer)
@@ -108,5 +116,15 @@ class SignUpFragment : Fragment() {
                 }
             }
         )
+    }
+
+
+    //Save Phone Number in Shared Preferences
+    private fun savePhoneNumber(phoneNum: String) {
+        val sharedPreferences: SharedPreferences =
+            requireActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString(PHONENUMBER, phoneNum)
+        editor.apply()
     }
 }

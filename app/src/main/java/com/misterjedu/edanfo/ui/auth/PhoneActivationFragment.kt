@@ -38,6 +38,7 @@ class PhoneActivationFragment : Fragment() {
 
     lateinit var otpView: OtpView
     private lateinit var dataFromSignUp: PhoneToOtp
+
     lateinit var storedVerificationId: String
     lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private val args: PhoneActivationFragmentArgs by navArgs()
@@ -72,11 +73,13 @@ class PhoneActivationFragment : Fragment() {
 
         // Call the Verify code method to verify of the OTP if the user has to manually enter it
         fragment_phone_activation_continue_btn.setOnClickListener {
-            if (validateOTP(fragment_phone_activation_otp_view.text.toString())) {
-                verifyCode(otpView.text.toString())
-            } else {
-                showSnackBar(fragment_phone_activation_continue_btn, "Invalid OTP")
-            }
+
+            findNavController().navigate(R.id.action_phoneActivationFragment_to_createProfileLanding)
+//            if (validateOTP(fragment_phone_activation_otp_view.text.toString())) {
+//                verifyCode(otpView.text.toString())
+//            } else {
+//                showSnackBar(fragment_phone_activation_continue_btn, "Invalid OTP")
+//            }
         }
 
 
