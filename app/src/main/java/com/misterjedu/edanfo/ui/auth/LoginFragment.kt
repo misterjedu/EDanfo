@@ -1,6 +1,8 @@
 package com.misterjedu.edanfo.ui.auth
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -26,6 +28,8 @@ class LoginFragment : Fragment() {
 
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var driverEmail: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +43,8 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         validateField()
+
+        driverEmail = loadFromSharedPreference(requireActivity(), DRIVEREMAILADDRESS)
 
         // Load Header Image with Glide
         Glide.with(this)
@@ -70,13 +76,13 @@ class LoginFragment : Fragment() {
 
         //Disable button and show Progress Bar
         fragment_login_progress_bar.show(fragment_login_login_btn)
-
-        val userName = fragment_login_phone_number_et.text.toString()
         val userPassWord = fragment_login_password_et.text.toString()
 
-        firebaseAuth.signInWithEmailAndPassword(userName, userPassWord).addOnCompleteListener {
+        firebaseAuth.signInWithEmailAndPassword(driverEmail, userPassWord).addOnCompleteListener {
             fragment_login_progress_bar.hide(fragment_login_login_btn)
             if (it.isSuccessful) {
+
+
 
                 //Start Driver Activity
                 val intent = Intent(requireContext(), DriverActivity::class.java)
@@ -86,7 +92,6 @@ class LoginFragment : Fragment() {
                 requireActivity().finish()
             } else {
                 //Disable Button and show Progress bar
-
 
                 it.exception?.message?.let { it1 -> showSnackBar(fragment_login_login_btn, it1) }
             }
@@ -123,6 +128,7 @@ class LoginFragment : Fragment() {
                         !validatePassword(fragment_login_password_et.text.toString().trim()))
         }
     }
+
 
 
 }

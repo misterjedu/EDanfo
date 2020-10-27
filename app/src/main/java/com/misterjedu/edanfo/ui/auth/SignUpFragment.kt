@@ -14,6 +14,9 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.PhoneToOtp
+import com.misterjedu.edanfo.utils.DRIVERPHONENUMBER
+import com.misterjedu.edanfo.utils.SHARED_PREFS
+import com.misterjedu.edanfo.utils.saveToSharedPreference
 import com.misterjedu.edanfo.utils.validateNumber
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
@@ -22,9 +25,6 @@ class SignUpFragment : Fragment() {
 
     private lateinit var fragmentName: String
     private val args: SignUpFragmentArgs by navArgs()
-
-    private val SHARED_PREFS: String = "sharedPrefs"
-    private val PHONENUMBER: String = "phoneNumber"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,7 +54,6 @@ class SignUpFragment : Fragment() {
 
         // Continue Button
         fragment_sign_up_continue_btn.setOnClickListener {
-
             val phoneNum =
                 fragment_sign_up_country_picker.textView_selectedCountry.text.toString() +
                         fragment_sign_up_phone_number_et.text.toString().trim()
@@ -63,7 +62,8 @@ class SignUpFragment : Fragment() {
                 phoneNum
             )
 
-            savePhoneNumber(phoneNum)
+            //Save User Phone Number To shared Preference
+            saveToSharedPreference(requireActivity(), DRIVERPHONENUMBER, phoneNum)
 
 
             val action = SignUpFragmentDirections
@@ -118,13 +118,4 @@ class SignUpFragment : Fragment() {
         )
     }
 
-
-    //Save Phone Number in Shared Preferences
-    private fun savePhoneNumber(phoneNum: String) {
-        val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putString(PHONENUMBER, phoneNum)
-        editor.apply()
-    }
 }

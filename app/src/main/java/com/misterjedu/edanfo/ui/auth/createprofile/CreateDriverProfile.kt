@@ -1,9 +1,7 @@
 package com.misterjedu.edanfo.ui.auth.createprofile
 
 import android.app.Activity.RESULT_OK
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -70,11 +68,10 @@ class CreateDriverProfile : Fragment() {
         lastNameEditText = fragment_driver_last_name_et
         emailEditText = fragment_driver_email_et
         passwordEditText = fragment_driver_password_et
-
-        loadDriverPhoneNumber()
-
-
         createDriverAccountButton = fragment_driver_profile_btn
+
+        //Load  Driver PhoneNumber From Shared Preference
+        driverNumber = loadFromSharedPreference(requireActivity(), DRIVERPHONENUMBER)
 
         //Form Field Validation
         validateFields()
@@ -86,6 +83,13 @@ class CreateDriverProfile : Fragment() {
 
         //Firebase Sign in Authentication on button clicked
         createDriverAccountButton.setOnClickListener {
+
+            //Save Driver Email to Share Preference
+            saveToSharedPreference(
+                requireActivity(),
+                DRIVEREMAILADDRESS,
+                emailEditText.text.toString().trim()
+            )
             authenticateDriver()
         }
 
@@ -305,13 +309,6 @@ class CreateDriverProfile : Fragment() {
 
                 }
             }
-    }
-
-    //Load Phone Number From Shared Preferences
-    private fun loadDriverPhoneNumber() {
-        val sharedPreferences: SharedPreferences =
-            requireActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE)
-        driverNumber = sharedPreferences.getString(PHONENUMBER, "").toString()
     }
 }
 

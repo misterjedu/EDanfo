@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.DestinationRecyclerAdapter
 import com.misterjedu.edanfo.data.DestinationData
+import com.misterjedu.edanfo.utils.DummyData
 import com.misterjedu.edanfo.utils.checkItem
 import kotlinx.android.synthetic.main.activity_driver.*
 import kotlinx.android.synthetic.main.fragment_destination_list.*
@@ -19,13 +20,7 @@ import kotlinx.android.synthetic.main.fragment_destination_list.*
 class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClickListener {
 
     private lateinit var adapter: DestinationRecyclerAdapter
-    private var destinationList = arrayListOf(
-        DestinationData("Sango", "Sagamu", 500),
-        DestinationData("Egba", "Idi Iroko", 200),
-        DestinationData("Ajah", "Lekki", 100),
-        DestinationData("Mary Land", "Yaba", 150),
-        DestinationData("Ikeja", "Isale Afa", 700)
-    )
+    private var destinationList = DummyData.passengerDetails()
 
     override fun onCreateView(
         inflater: LayoutInflater,

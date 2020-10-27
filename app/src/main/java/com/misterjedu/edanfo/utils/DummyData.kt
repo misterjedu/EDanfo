@@ -1,9 +1,11 @@
 package com.misterjedu.edanfo.utils
 
+import com.misterjedu.edanfo.data.DestinationData
 import com.misterjedu.edanfo.data.HistoryData
 import com.misterjedu.edanfo.data.PassengerData
 
 object DummyData {
+
     fun tripData(): List<HistoryData> {
         return arrayListOf(
             HistoryData(1, "Mushin to Yaba", 100),
@@ -50,6 +52,18 @@ object DummyData {
             PassengerData("Hushpuppy MoronmuboMoronmubo", "Lekki to Ikorodu", "11 mins ago"),
             PassengerData("Badmus Shobowale", "Mushin to Yaba", "13 mins ago"),
             PassengerData("Funke Duduke", "Mushin to Yaba", "15 mins ago"),
+        )
+    }
+
+
+
+    fun passengerDetails(): List<DestinationData>{
+        return   arrayListOf(
+            DestinationData("Sango", "Sagamu", 500),
+            DestinationData("Egba", "Idi Iroko", 200),
+            DestinationData("Ajah", "Lekki", 100),
+            DestinationData("Mary Land", "Yaba", 150),
+            DestinationData("Ikeja", "Isale Afa", 700)
         )
     }
 }
