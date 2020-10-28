@@ -18,6 +18,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -38,13 +40,12 @@ class CreateDriverProfile : Fragment() {
     lateinit var firebaseAuth: FirebaseAuth
     private lateinit var createDriverAccountButton: Button
     private val CHOOSE_IMAGE = 101
-    private lateinit var profileImageDownloadUrl: String
+    private var profileImageDownloadUrl: String? = null
     private lateinit var driverProfileImg: Uri
     private lateinit var driverFirstName: String
     private lateinit var driverLastName: String
     private lateinit var driverEmail: String
     private lateinit var driverNumber: String
-
 
     private lateinit var firstNameEditText: EditText
     private lateinit var lastNameEditText: EditText
@@ -90,7 +91,9 @@ class CreateDriverProfile : Fragment() {
                 DRIVEREMAILADDRESS,
                 emailEditText.text.toString().trim()
             )
-            authenticateDriver()
+
+            //First Upload Profile to firebase
+            updateProfileToFirebase()
         }
 
         //Back Arrow
@@ -159,7 +162,8 @@ class CreateDriverProfile : Fragment() {
                         !validateRepeatPassword(
                             fragment_driver_password_et.text.toString(),
                             fragment_driver_repeat_password_et.text.toString()
-                        ))
+                        )
+                        )
         }
     }
 
@@ -227,7 +231,6 @@ class CreateDriverProfile : Fragment() {
 
                 profileImageDownloadUrl = it.toString()
                 showSnackBar(createDriverAccountButton, "Image Successfully uploaded")
-                Log.i("Image Store", profileImageDownloadUrl)
             }
         }?.addOnFailureListener {
             showSnackBar(createDriverAccountButton, it.message.toString())
@@ -235,15 +238,42 @@ class CreateDriverProfile : Fragment() {
     }
 
 
-    //Authenticate Driver in Firebase
-    private fun authenticateDriver() {
-
+    private fun updateProfileToFirebase() {
         //Show Progress Bar when Button's clicked and disable Button
         fragment_driver_profile_progress_bar.show(createDriverAccountButton)
 
         driverEmail = emailEditText.text.toString()
         driverFirstName = firstNameEditText.text.toString()
         driverLastName = lastNameEditText.text.toString()
+
+        val user: FirebaseUser? = firebaseAuth.currentUser
+
+        if (profileImageDownloadUrl == null) {
+            showSnackBar(createDriverAccountButton, "Please, upload your profile image")
+        } else if (user != null && profileImageDownloadUrl != null) {
+
+            //User Profile object builder containing Profile picture and Display Name
+            val profile: UserProfileChangeRequest = UserProfileChangeRequest.Builder()
+                .setDisplayName(driverLastName + driverFirstName)
+                .setPhotoUri(Uri.parse(profileImageDownloadUrl))
+                .build()
+
+            user.updateProfile(profile).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    authenticateDriver()
+                }
+            }.addOnFailureListener {
+                showSnackBar(createDriverAccountButton, it.message.toString())
+            }
+        } else {
+            showSnackBar(createDriverAccountButton, "Something went Wrong")
+        }
+    }
+
+
+    //Authenticate Driver in Firebase
+    private fun authenticateDriver() {
+
         val password = passwordEditText.text.toString()
 
         //First, sign up with Email and Password
@@ -278,8 +308,14 @@ class CreateDriverProfile : Fragment() {
                                 } else {
                                     showSnackBar(
                                         createDriverAccountButton,
-                                        "Registeration Failed"
+                                        "Registration successful but Your details were not saved. Update in your account settings"
                                     )
+                                    // Login and Start Activity for Driver
+                                    val intent =
+                                        Intent(requireContext(), DriverActivity::class.java)
+                                    startActivity(intent)
+                                    //Finish Authentication Activity  here and user moves to a new Driver Activity
+                                    requireActivity().finish()
                                 }
                             }
                     }
@@ -290,7 +326,8 @@ class CreateDriverProfile : Fragment() {
                     when (task.exception) {
                         is FirebaseAuthUserCollisionException -> {
                             showSnackBar(
-                                createDriverAccountButton, "You are already Registered"
+                                createDriverAccountButton,
+                                "You are already Registered. Please, Login "
                             )
                         }
                         is FirebaseNetworkException -> {

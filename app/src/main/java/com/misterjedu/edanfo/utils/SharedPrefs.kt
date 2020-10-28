@@ -20,3 +20,5 @@ fun saveToSharedPreference(activity: Activity, prefType: String, prefValue: Stri
     editor.apply()
 }
 
+
+

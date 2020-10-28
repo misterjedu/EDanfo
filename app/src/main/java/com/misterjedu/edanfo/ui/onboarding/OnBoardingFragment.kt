@@ -9,6 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.ViewPagerAdapter
+import com.misterjedu.edanfo.utils.ONBOARD
+import com.misterjedu.edanfo.utils.loadFromSharedPreference
+import com.misterjedu.edanfo.utils.saveToSharedPreference
 import kotlinx.android.synthetic.main.fragment_onboarding.*
 
 class OnBoardingFragment : Fragment() {
@@ -25,7 +28,7 @@ class OnBoardingFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        //If user has already gone through onBoarding once, don't show again.
         // Set View PagerAdapter
         val fragmentList: ArrayList<Fragment> = arrayListOf(
             OnBoardingScreenOne(),
@@ -51,6 +54,17 @@ class OnBoardingFragment : Fragment() {
         }.attach()
 
         fragment_onboarding_getStarted_btn.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment)
+        }
+
+        saveToSharedPreference(requireActivity(), ONBOARD, "true")
+    }
+
+
+    //If User has already gone through OnBoarding once, Move straight to Login Fragment
+    override fun onStart() {
+        super.onStart()
+        if (loadFromSharedPreference(requireActivity(), ONBOARD) == "true") {
             findNavController().navigate(R.id.loginFragment)
         }
     }

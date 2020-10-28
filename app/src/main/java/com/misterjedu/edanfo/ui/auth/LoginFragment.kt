@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -70,20 +71,28 @@ class LoginFragment : Fragment() {
                 .actionLoginFragmentToSignUpFragment("Change Password")
             findNavController().navigate(action)
         }
+
+
+        //Close App if User exists from Login Fragment
+        requireActivity().onBackPressedDispatcher.addCallback {
+            if (findNavController().currentDestination?.id == R.id.loginFragment
+            ) {
+                activity?.finish()
+            } else {
+                findNavController().popBackStack()
+            }
+        }
     }
 
     private fun userLogin() {
-
         //Disable button and show Progress Bar
         fragment_login_progress_bar.show(fragment_login_login_btn)
         val userPassWord = fragment_login_password_et.text.toString()
 
         firebaseAuth.signInWithEmailAndPassword(driverEmail, userPassWord).addOnCompleteListener {
             fragment_login_progress_bar.hide(fragment_login_login_btn)
+
             if (it.isSuccessful) {
-
-
-
                 //Start Driver Activity
                 val intent = Intent(requireContext(), DriverActivity::class.java)
                 startActivity(intent)
@@ -130,5 +139,15 @@ class LoginFragment : Fragment() {
     }
 
 
-
+    //If User is already Logged in, Go straight to the Dashboard
+    override fun onStart() {
+        super.onStart()
+        if (firebaseAuth.currentUser != null) {
+            //Start Driver Activity
+            val intent = Intent(requireContext(), DriverActivity::class.java)
+            startActivity(intent)
+            //Finish Authentication Activity  here and user moves to a new Driver Activity
+            requireActivity().finish()
+        }
+    }
 }
