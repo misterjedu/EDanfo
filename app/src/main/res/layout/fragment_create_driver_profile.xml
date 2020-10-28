@@ -53,7 +53,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/fragment_not_a_driver_tv"
+                android:id="@+id/fragment_create_driver_tap_to_upload_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -135,6 +135,29 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
+            <!--          Phone Number-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_phone_number_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Phone Number"
+                app:endIconMode="custom"
+                app:errorEnabled="false"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_driver_email_til"
+                app:layout_constraintStart_toStartOf="@+id/fragment_driver_email_til"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_driver_email_til">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_phone_number_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!--          Plate Number-->
 
             <com.google.android.material.textfield.TextInputLayout
@@ -146,9 +169,9 @@
                 android:hint="@string/plate_number"
                 app:endIconMode="custom"
                 app:errorEnabled="false"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_driver_email_til"
-                app:layout_constraintStart_toStartOf="@+id/fragment_driver_email_til"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_driver_email_til">
+                app:layout_constraintEnd_toEndOf="@+id/fragment_phone_number_til"
+                app:layout_constraintStart_toStartOf="@+id/fragment_phone_number_til"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_phone_number_til">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fragment_driver_plate_number_et"
@@ -254,10 +277,10 @@
                 android:enabled="false"
                 android:text="Upload Image"
                 android:textAllCaps="false"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_not_a_driver_tv"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_create_driver_tap_to_upload_tv"
                 app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="@+id/fragment_not_a_driver_tv"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_not_a_driver_tv" />
+                app:layout_constraintStart_toStartOf="@+id/fragment_create_driver_tap_to_upload_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_create_driver_tap_to_upload_tv"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -71,21 +71,28 @@ class DriverProfile : Fragment() {
 
     private fun loadUserInformation() {
         val user: FirebaseUser? = firebaseAuth.currentUser
+        if (user != null) {
+            Log.i("Driver details ID", user.uid)
+            user.displayName?.let { Log.i("Driver Details nname", it) }
+            Log.i("Drivers Image URL", user.photoUrl.toString())
+            user.email?.let { Log.i("Driver Email", it) }
+            user.phoneNumber?.let { Log.i("Driver Phone NUmber", it) }
+        }
+
+
 
 
         if (user != null) {
-            Log.i("Driver name", "Hello")
-            Log.i("Driver Photo URI", user.photoUrl.toString())
+
+
+            if (user.photoUrl.toString() != null) {
+                Glide.with(this)
+                    .load(user.photoUrl.toString())
+                    .into(profileImage)
+
+
+                profileName.text = user.displayName
+            }
         }
-//        if (user != null) {
-//            if (user.displayName != null) {
-//                Glide.with(this)
-//                    .load(user.photoUrl.toString())
-//                    .into(profileImage)
-//
-//                profileName.text = user.displayName
-//
-//            }
-//        }
     }
 }

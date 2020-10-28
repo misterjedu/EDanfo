@@ -19,10 +19,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.PhoneToOtp
-import com.misterjedu.edanfo.utils.hide
-import com.misterjedu.edanfo.utils.show
-import com.misterjedu.edanfo.utils.showSnackBar
-import com.misterjedu.edanfo.utils.validateOTP
+import com.misterjedu.edanfo.utils.*
 import com.mukesh.OtpView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_phone_activation.*
@@ -40,7 +37,8 @@ class PhoneActivationFragment : Fragment() {
     private lateinit var dataFromSignUp: PhoneToOtp
 
     lateinit var storedVerificationId: String
-    lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
+    var resendToken: PhoneAuthProvider.ForceResendingToken? = null
+
     private val args: PhoneActivationFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -59,6 +57,8 @@ class PhoneActivationFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+//        fragment_phone_activation_progress_bar.show(fragment_phone_activation_continue_btn)
+
         val enterDigitString =
             "Enter the 6-digit code sent to you at ${dataFromSignUp.phoneNumber}. Did you enter the correct number?"
 
@@ -71,15 +71,14 @@ class PhoneActivationFragment : Fragment() {
             .load(R.drawable.danfo_curved_bg_2)
             .into(fragment_phone_activation_header_img)
 
+
         // Call the Verify code method to verify of the OTP if the user has to manually enter it
         fragment_phone_activation_continue_btn.setOnClickListener {
-
-            findNavController().navigate(R.id.action_phoneActivationFragment_to_createProfileLanding)
-//            if (validateOTP(fragment_phone_activation_otp_view.text.toString())) {
-//                verifyCode(otpView.text.toString())
-//            } else {
-//                showSnackBar(fragment_phone_activation_continue_btn, "Invalid OTP")
-//            }
+            if (validateOTP(fragment_phone_activation_otp_view.text.toString())) {
+                verifyCode(otpView.text.toString())
+            } else {
+                showSnackBar(fragment_phone_activation_continue_btn, "Invalid OTP")
+            }
         }
 
 
@@ -88,8 +87,11 @@ class PhoneActivationFragment : Fragment() {
 
         //Resend Phone Verification
         fragment_phone_activation_resend_code_tv.setOnClickListener {
-            fragment_phone_activation_resend_code_tv.hide()
-            resendVerificationCode(dataFromSignUp.phoneNumber)
+            if (resendToken != null) {
+                fragment_phone_activation_resend_code_tv.hide()
+                resendVerificationCode(dataFromSignUp.phoneNumber)
+            }
+
         }
 
         // Back Arrow
@@ -102,7 +104,6 @@ class PhoneActivationFragment : Fragment() {
     //Method to send the verification code
     private fun sendVerificationCode(number: String) {
         fragment_phone_activation_progress_bar.show()  //Show Progress Bar
-
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
             number,
             60L,
@@ -114,7 +115,6 @@ class PhoneActivationFragment : Fragment() {
 
     //Method to Re-send the verification code
     private fun resendVerificationCode(number: String) {
-
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
             number,
             60L,
@@ -147,10 +147,10 @@ class PhoneActivationFragment : Fragment() {
                 val code = phoneAuthCredential.smsCode
                 showSnackBar(fragment_phone_activation_resend_code_tv, "Verification Completed")
 
-                //Enable Button when code sent
-                fragment_phone_activation_continue_btn.isEnabled = true
+                //Enable Button when code sent and Hide Progress bar
+                fragment_phone_activation_progress_bar.hide(fragment_phone_activation_continue_btn)
 
-                //sometime the code is not detected automatically, thus would be null
+                //If code is automatically detected by Firebase, Verify code Immediately
                 if (code != null) {
                     val otpCode: Editable = SpannableStringBuilder(code)
                     otpView.text = otpCode
@@ -168,7 +168,7 @@ class PhoneActivationFragment : Fragment() {
         }
 
 
-    //Method to verify the verification code
+    //Use Otp to get Signup Credential
     private fun verifyCode(code: String) {
         val credential: PhoneAuthCredential =
             PhoneAuthProvider.getCredential(storedVerificationId, code)
@@ -177,10 +177,21 @@ class PhoneActivationFragment : Fragment() {
     }
 
 
+    //Sign In using Credential
     private fun signInWithCredential(credential: PhoneAuthCredential) {
 
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
+
+
+                //Save User Phone Number To shared Preference
+                saveToSharedPreference(
+                    requireActivity(),
+                    DRIVERPHONENUMBER,
+                    dataFromSignUp.phoneNumber
+                )
+
+
                 if (dataFromSignUp.fragmentName == "Sign Up") {
                     findNavController().navigate(R.id.action_phoneActivationFragment_to_createProfileLanding)
                 } else {

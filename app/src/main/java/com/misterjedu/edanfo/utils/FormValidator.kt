@@ -14,10 +14,19 @@ import java.util.regex.Pattern
 
 
 fun validateNumber(number: String): Boolean {
-    val pattern: Pattern = Pattern.compile("(\\+?2340?)[789][01][0-9]{8}")
+    val pattern: Pattern = Pattern.compile("(\\+?234|0)[789][01][0-9]{8}")
     val matcher: Matcher = pattern.matcher(number)
     val matchFound = matcher.matches()
     return !(number.isEmpty() || !matchFound)
+}
+
+
+fun convertPhoneNumber(number: String): String {
+    return if (number[0].toString() == "0") {
+        number.substring(1)
+    }else{
+        number
+    }
 }
 
 fun validateOTP(string: String): Boolean {
@@ -105,7 +114,7 @@ fun EditText.watchToValidate(
                     } else {
                         setInvalidate("Invalid Email Address")
                     }
-                    EditField.PHONE -> if (validateNumber(countryPicker?.textView_selectedCountry?.text.toString() + s.toString())) {
+                    EditField.PHONE -> if (validateNumber(s.toString())) {
                         setValidate()
                     } else {
                         setInvalidate("Invalid Nigerian Phone Number")

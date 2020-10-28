@@ -41,40 +41,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fragment_sign_up_header_img" />
 
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/fragment_login_country_picker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            app:ccpDialog_fastScroller_bubbleColor="@color/colorAccent"
-            app:ccp_defaultNameCode="NG"
-            app:ccp_showNameCode="false"
-            app:ccp_textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/fragment_login_phone_number_text_layout_tl" />
-
 
         <!--            PhoneNumber Edit Text-->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fragment_login_phone_number_text_layout_tl"
+            android:id="@+id/fragment_login_email_text_layout_tl"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/phone_number"
+            android:hint="@string/email_address"
             app:boxStrokeColor="@color/colorPrimary"
             app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fragment_login_country_picker"
+            app:layout_constraintStart_toStartOf="@+id/fragment_login_welcome_tv"
             app:layout_constraintTop_toBottomOf="@+id/fragment_login_welcome_tv">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fragment_login_phone_number_et"
+                android:id="@+id/fragment_login_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,9 +75,9 @@
             android:layout_marginTop="14dp"
             android:hint="@string/password"
             app:endIconMode="custom"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_login_phone_number_text_layout_tl"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_login_email_text_layout_tl"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_login_phone_number_text_layout_tl">
+            app:layout_constraintTop_toBottomOf="@+id/fragment_login_email_text_layout_tl">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/fragment_login_password_et"

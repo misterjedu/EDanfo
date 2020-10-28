@@ -14,10 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.PhoneToOtp
-import com.misterjedu.edanfo.utils.DRIVERPHONENUMBER
-import com.misterjedu.edanfo.utils.SHARED_PREFS
-import com.misterjedu.edanfo.utils.saveToSharedPreference
-import com.misterjedu.edanfo.utils.validateNumber
+import com.misterjedu.edanfo.utils.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 
@@ -56,14 +53,11 @@ class SignUpFragment : Fragment() {
         fragment_sign_up_continue_btn.setOnClickListener {
             val phoneNum =
                 fragment_sign_up_country_picker.textView_selectedCountry.text.toString() +
-                        fragment_sign_up_phone_number_et.text.toString().trim()
+                        convertPhoneNumber(fragment_sign_up_phone_number_et.text.toString().trim())
             val dataToPhoneVer = PhoneToOtp(
                 fragmentName,
                 phoneNum
             )
-
-            //Save User Phone Number To shared Preference
-            saveToSharedPreference(requireActivity(), DRIVERPHONENUMBER, phoneNum)
 
 
             val action = SignUpFragmentDirections
