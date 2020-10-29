@@ -17,8 +17,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/fragment_driver_profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:src="@drawable/logo_filled_green_background"
@@ -48,12 +48,12 @@
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/CustomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            style="@style/CustomAppBar"
-           >
+            android:elevation="2dp">
 
             <TextView
                 android:id="@+id/driver_total_trip_title_tv"
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="10"
+                android:text="0"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/driver_total_trip_title_tv"
                 app:layout_constraintStart_toStartOf="@+id/driver_total_trip_title_tv"
@@ -99,26 +99,27 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/fragment_driver_profuile_earnings_tv"
+                android:id="@+id/fragment_driver_profile_earnings_tv"
                 style="@style/BoldNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="N10,000"
+                android:text="₦ 0"
                 android:textAlignment="viewStart"
                 app:layout_constraintEnd_toEndOf="@+id/driver_earning_title_tv"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/driver_earning_title_tv"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
             <TextView
                 android:id="@+id/fragment_driver_profile_next_payout_tv"
+                style="@style/BoldNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="21 Oct '19"
-                style="@style/BoldNormalText"
+                android:text="07 Oct '20"
                 app:layout_constraintEnd_toEndOf="@+id/driver_earning_next_payout_title_tv"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/driver_earning_next_payout_title_tv"
                 app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
@@ -163,6 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@drawable/white_background"
+            android:elevation="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -190,6 +192,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_driver_profile_trip_detail_box_cl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

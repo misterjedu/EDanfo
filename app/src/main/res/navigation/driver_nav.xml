@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_driverProfile_to_currentPassengers"
             app:destination="@id/currentPassengers" />
+        <argument
+            android:name="destinationId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
     </fragment>
 
 
@@ -43,7 +49,11 @@
         android:id="@+id/currentPassengers"
         android:name="com.misterjedu.edanfo.ui.main.driver.home.CurrentPassengers"
         android:label="fragment_current_passengers"
-        tools:layout="@layout/fragment_current_passengers" />
+        tools:layout="@layout/fragment_current_passengers">
+        <argument
+            android:name="destinationId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/addNewTripFragment"
@@ -57,6 +67,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="destinationId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/tripFromHistory"
@@ -137,15 +150,14 @@
         android:id="@+id/driverAccountWithdrawal"
         android:name="com.misterjedu.edanfo.ui.main.driver.account.DriverAccountWithdrawal"
         android:label="fragment_driver_account_withdrawal"
-        tools:layout="@layout/fragment_driver_account_withdrawal" >
+        tools:layout="@layout/fragment_driver_account_withdrawal">
         <action
             android:id="@+id/action_driverAccountWithdrawal_to_fragmentDriverWithdrawalSettings"
             app:destination="@id/fragmentDriverWithdrawalSettings"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDriverWithdrawalSettings"

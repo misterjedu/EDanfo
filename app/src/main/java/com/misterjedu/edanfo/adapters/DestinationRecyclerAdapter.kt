@@ -7,14 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.DestinationData
+import com.misterjedu.edanfo.data.firebasedata.Trip
 import kotlinx.android.synthetic.main.single_destination_price.view.*
 
 class DestinationRecyclerAdapter(
     private var clickListener: OnDestinationClickListener,
-    private var destinationList: List<DestinationData>
 ) : RecyclerView.Adapter<DestinationRecyclerAdapter.DestinationViewHolders>() {
 
-//    private var destinationList = destination
+    private var tripList: MutableList<Trip> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewHolders {
         val destinationListView = LayoutInflater.from(parent.context)
@@ -23,17 +23,17 @@ class DestinationRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: DestinationViewHolders, position: Int) {
-        holder.initialize(destinationList[position], clickListener)
+        tripList[position].let { holder.initialize(it, clickListener) }
     }
 
-    override fun getItemCount() = destinationList.size
+    override fun getItemCount() = tripList.size
 
     inner class DestinationViewHolders(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var location: TextView = itemView.single_destination_location_tv
         private var destination: TextView = itemView.single_destination_destination_tv
         private var price: TextView = itemView.single_destination_price_tv
 
-        fun initialize(item: DestinationData, action: OnDestinationClickListener) {
+        fun initialize(item: Trip, action: OnDestinationClickListener) {
             location.text = item.location
             destination.text = item.destination
             price.text = item.price.toString()
@@ -44,8 +44,21 @@ class DestinationRecyclerAdapter(
         }
     }
 
+
+    fun setTripList(tripList: MutableList<Trip>) {
+        this.tripList = tripList.toMutableList()
+    }
+
+    fun addTripToList(trip: Trip) {
+        this.tripList.add(trip)
+    }
+
+    fun removeTripFromList(position: Int){
+        this.tripList.removeAt(position)
+    }
+
     // OnClick Listener InterfaceR
     interface OnDestinationClickListener {
-        fun onItemClick(item: DestinationData, position: Int)
+        fun onItemClick(item: Trip, position: Int)
     }
 }

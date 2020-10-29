@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.PassengerRecyclerAdapter
@@ -17,6 +18,11 @@ import kotlinx.android.synthetic.main.fragment_current_passengers.*
 class CurrentPassengers :
     Fragment(),
     PassengerRecyclerAdapter.OnPassengerClickListener {
+
+
+    private lateinit var destinationId: String
+
+    private val args: CurrentPassengersArgs by navArgs()
 
     private lateinit var adapter: PassengerRecyclerAdapter
     private var passengerList = DummyData.passengerList()
@@ -32,6 +38,8 @@ class CurrentPassengers :
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        destinationId = args.destinationId
 
         // Passenger Recycler Adapter
         adapter = PassengerRecyclerAdapter(this, passengerList)

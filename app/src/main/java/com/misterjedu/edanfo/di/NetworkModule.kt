@@ -1,6 +1,7 @@
 package com.misterjedu.edanfo.di
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,4 +26,11 @@ class NetworkModule {
     fun provideFirebaseAuth(): FirebaseAuth {
         return FirebaseAuth.getInstance()
     }
+
+
+//    @Provides
+//    @Singleton
+//    fun provideFirebaseUser(): FirebaseUser {
+//        return FirebaseUser
+//    }
 }

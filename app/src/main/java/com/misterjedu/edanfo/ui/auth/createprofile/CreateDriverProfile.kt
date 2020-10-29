@@ -24,12 +24,13 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.misterjedu.edanfo.R
-import com.misterjedu.edanfo.data.DriverDetail
+import com.misterjedu.edanfo.data.firebasedata.User
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import com.misterjedu.edanfo.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_driver_profile.*
 import java.io.InputStream
+import java.util.*
 import javax.inject.Inject
 
 
@@ -45,6 +46,7 @@ class CreateDriverProfile : Fragment() {
     private lateinit var driverFirstName: String
     private lateinit var driverLastName: String
     private lateinit var driverEmail: String
+    private lateinit var userId: String
 
     private lateinit var firstNameEditText: EditText
     private lateinit var lastNameEditText: EditText
@@ -242,37 +244,69 @@ class CreateDriverProfile : Fragment() {
     }
 
 
+    //Create a new user object with details about user(driver) and upload to database
+    private fun uploadDetailToRealTimeFirebase() {
+
+        val phoneNum = phoneNumberEditText.text.toString()
+        val email = emailEditText.text.toString()
+        val firstName = firstNameEditText.text.toString()
+        val lastName = lastNameEditText.text.toString()
+
+        //Create New User Object
+        val userDetail = User(
+            null, userId, phoneNum, email, firstName, lastName, DRIVER
+        )
+
+        FirebaseAuth.getInstance().currentUser?.uid?.let { it1 ->
+            FirebaseDatabase.getInstance().getReference(USER_DETAILS)
+                .child(it1)
+                .setValue(userDetail).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        showSnackBar(
+                            createDriverAccountButton,
+                            "Registration Successful"
+                        )
+                        // Login and Start Activity for Driver
+                        val intent =
+                            Intent(requireContext(), DriverActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
+                        showSnackBar(createDriverAccountButton, "Your details were not uloaded")
+                    }
+                }
+        }
+    }
+
     /**
      * Upload Profile Picture and name to firebase
      */
-    private fun updateProfileToFirebase() {
+    private fun updateProfileToFirebaseAuth() {
         driverFirstName = firstNameEditText.text.toString()
         driverLastName = lastNameEditText.text.toString()
 
         val user: FirebaseUser? = firebaseAuth.currentUser
-
 
         //Show Progress Bar when Button's clicked and disable Button
         fragment_driver_profile_progress_bar.show(createDriverAccountButton)
 
         //User Profile object builder containing Profile picture and Display Name
         val profile: UserProfileChangeRequest = UserProfileChangeRequest.Builder()
-            .setDisplayName(driverLastName + driverFirstName)
+            .setDisplayName(
+                "${driverLastName.capitalize(Locale.ROOT)} ${
+                    driverFirstName.capitalize(
+                        Locale.ROOT
+                    )
+                }"
+            )
             .setPhotoUri(Uri.parse(profileImageDownloadUrl))
             .build()
 
         user?.updateProfile(profile)?.addOnCompleteListener {
+
             if (it.isSuccessful) {
-                showSnackBar(
-                    createDriverAccountButton,
-                    "Registration Successful"
-                )
-                // Login and Start Activity for Driver
-                val intent =
-                    Intent(requireContext(), DriverActivity::class.java)
-                startActivity(intent)
-                //Finish Authentication Activity  here and user moves to a new Driver Activity
-                requireActivity().finish()
+                uploadDetailToRealTimeFirebase()
+                userId = user.uid
             } else {
                 fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
             }
@@ -299,7 +333,7 @@ class CreateDriverProfile : Fragment() {
                     fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
 
                     if (task.isSuccessful) {
-                        updateProfileToFirebase()
+                        updateProfileToFirebaseAuth()
                     } else {
                         fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
                         // If sign up fails, display a message to the user.
@@ -332,45 +366,3 @@ class CreateDriverProfile : Fragment() {
         }
     }
 }
-
-
-////Create Driver Detail Object with all Parameters
-//val driverDetail =
-//    DriverDetail(
-//        phoneNumberEditText.text.toString(),
-//        driverEmail,
-//        driverFirstName,
-//        driverLastName
-//    )
-//
-////Second, if sign_up is successful, upload user detail to real time database
-//FirebaseAuth.getInstance().currentUser?.uid?.let { it1 ->
-//    FirebaseDatabase.getInstance().getReference("Drivers")
-//        .child(it1)
-//        .setValue(driverDetail).addOnCompleteListener {
-//            if (it.isSuccessful) {
-//                showSnackBar(
-//                    createDriverAccountButton,
-//                    "Registration Successful"
-//                )
-//                // Login and Start Activity for Driver
-//                val intent =
-//                    Intent(requireContext(), DriverActivity::class.java)
-//                startActivity(intent)
-//                //Finish Authentication Activity  here and user moves to a new Driver Activity
-//                requireActivity().finish()
-//
-//            } else {
-//                showSnackBar(
-//                    createDriverAccountButton,
-//                    "Registration successful but Your details were not saved. Update in your account settings"
-//                )
-//                // Login and Start Activity for Driver
-//                val intent =
-//                    Intent(requireContext(), DriverActivity::class.java)
-//                startActivity(intent)
-//                //Finish Authentication Activity  here and user moves to a new Driver Activity
-//                requireActivity().finish()
-//            }
-//        }
-//}

@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="MainLand"
+                android:text="No Location"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -63,7 +63,7 @@
                 android:id="@+id/fragment_destination_destination_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Island"
+                android:text="No Destination"
                 app:layout_constraintBottom_toBottomOf="@+id/fragment_destination_home_tv"
                 app:layout_constraintEnd_toEndOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -90,7 +90,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="N 500"
+                android:text="NO ACTIVE TRIP"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold"
