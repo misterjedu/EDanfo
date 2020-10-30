@@ -10,5 +10,6 @@ data class Trip(
     var location: String? = null,
     var isActive: Boolean = true,
     var isCompleted: Boolean = false,
+    var isCancelled: Boolean? = false,
     var price: Int? = null,
 )

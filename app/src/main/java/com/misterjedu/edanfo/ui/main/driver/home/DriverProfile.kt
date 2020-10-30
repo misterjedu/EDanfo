@@ -45,8 +45,8 @@ class DriverProfile : Fragment() {
     private lateinit var launchButton: Button
     private lateinit var tripStatus: TextView
     private var totalAmountEarned: Int = 0
-    private lateinit var totalCompletedTrips: List<Trip>
-    private lateinit var totalCompletedDestinations: List<DriverDestination>
+    private var totalCompletedTrips: List<Trip>? = null
+    private var totalCompletedDestinations: List<DriverDestination>? = null
     private var totalTrips: Int = 0
 
 
@@ -67,6 +67,7 @@ class DriverProfile : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
         driverDetailBox = fragment_driver_profile_trip_detail_box_cl
         launchButton = fragment_drvier_profile_launch_trip_btn
         tripStatus = fragment_driver_profile_trip_status_tv
@@ -81,22 +82,25 @@ class DriverProfile : Fragment() {
 
 
         //Start Getting Newly Destination Real time Updates and fetch all destination details
-        destinationViewModel.getDestinationRealTimeUpdate()
         destinationViewModel.fetchDriverDestinations()
+        destinationViewModel.getDestinationRealTimeUpdate()
         driverTripViewModel.fetchDriverTrips()
+        driverTripViewModel.getTripsRealTimeUpdate()
 
+
+//        Log.i("Destination", destinationId!!)
         //Get Current Active Destination, which is usually newly added destination
-        destinationViewModel.newlyAddedDestination.observe(viewLifecycleOwner, {
-
+        destinationViewModel.activeDestination.observe(viewLifecycleOwner, {
             //TODO( SHOW LOADER HERE UNTIL FIREBASE SENDS RESULT )
-
             if (it == null) {
-                //If no active trip, show launch button, and show No active until a trip is active
-                driverDetailBox.hide()
-                launchButton.show()
-                tripStatus.setTextColor(resources.getColor(R.color.colorCancelButton))
-                tripStatus.text = "No Active Trip"
+                Log.i("Destination", "Destination is null")
+//                //If no active trip, show launch button, and show No active until a trip is active
+//                driverDetailBox.hide()
+//                launchButton.show()
+//                tripStatus.setTextColor(resources.getColor(R.color.colorCancelButton))
+//                tripStatus.text = "No Active Trip"
             } else {
+                Log.i("Destination", "Destination is not null")
                 //Set view based on if there's a destination or not
                 driverDetailBox.show()
                 launchButton.hide()
@@ -112,26 +116,26 @@ class DriverProfile : Fragment() {
 
         })
 
-
         //Observe Total Completed Destinations
         destinationViewModel.completedDestination.observe(viewLifecycleOwner, {
             totalCompletedDestinations = it
-
             //Get Total Amount Earned
-            for (trip in totalCompletedTrips) {
-                totalAmountEarned += trip.price!!
+            if (totalCompletedTrips != null) {
+                for (trip in totalCompletedTrips!!) {
+                    totalAmountEarned += trip.price!!
+                }
             }
-
             fragment_driver_profile_total_trips_tv.text = totalAmountEarned.toString()
-
         })
 
         //Observe Driver trips
         driverTripViewModel.completedTrips.observe(viewLifecycleOwner, {
-            totalCompletedTrips = it
-            //Set Total Trip
-            totalTrips = totalCompletedDestinations.size
-            fragment_driver_profile_earnings_tv.text = totalTrips.toString()
+            if (it != null && totalCompletedDestinations != null) {
+                totalCompletedTrips = it
+                //Set Total Trip
+                totalTrips = totalCompletedDestinations?.size!!
+                fragment_driver_profile_earnings_tv.text = totalTrips.toString()
+            }
         })
 
 
@@ -163,6 +167,17 @@ class DriverProfile : Fragment() {
                 findNavController().popBackStack()
             }
         }
+
+
+        enableNoDestinationMode()
+    }
+
+    private fun enableNoDestinationMode() {
+        //If no active trip, show launch button, and show No active until a trip is active
+        driverDetailBox.hide()
+        launchButton.show()
+        tripStatus.setTextColor(resources.getColor(R.color.colorCancelButton))
+        tripStatus.text = "No Active Trip"
     }
 
     private fun getHomePageDetails() {

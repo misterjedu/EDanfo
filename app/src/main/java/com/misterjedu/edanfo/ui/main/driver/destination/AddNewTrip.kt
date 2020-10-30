@@ -73,11 +73,13 @@ class AddNewTrip : Fragment() {
         //Observe what happens when a trip is added. When exception is null, trip successfuly added
         driverTripViewModel.tripResult.observe(requireActivity(), {
             if (it == null) {
+                addTripButton.isEnabled = true
                 showSnackBar(addTripButton, "Successfully Added")
+                findNavController().popBackStack()
             } else {
                 showSnackBar(addTripButton, it.message.toString())
                 addTripButton.isEnabled = true
-                findNavController().popBackStack()
+
             }
         })
 
@@ -89,6 +91,7 @@ class AddNewTrip : Fragment() {
                 driverCurrentBustop.text.toString(),
                 driverDestination.text.toString(),
                 true,
+                false,
                 false,
                 driverTripPrice.text.toString().toInt(),
             )

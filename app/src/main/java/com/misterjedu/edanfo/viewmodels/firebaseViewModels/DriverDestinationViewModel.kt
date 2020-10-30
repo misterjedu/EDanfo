@@ -22,20 +22,20 @@ class DriverDestinationViewModel : ViewModel() {
         get() = _deleteDestinationResult
 
 
-    //Get active destination / full trip
+//    //Get active destination / full trip
+//    private val _activeDestination = MutableLiveData<DriverDestination?>()
+//    val activeDestination: LiveData<DriverDestination?>
+//        get() = _activeDestination
+
+    //New Destination
     private val _activeDestination = MutableLiveData<DriverDestination?>()
     val activeDestination: LiveData<DriverDestination?>
         get() = _activeDestination
 
-    //New Destination
-    private val _newlyAddedDestination = MutableLiveData<DriverDestination?>()
-    val newlyAddedDestination: LiveData<DriverDestination?>
-        get() = _newlyAddedDestination
-
 
     //  //Get active destination / full trip
-    private val _completedDestination = MutableLiveData<MutableList<DriverDestination>>()
-    val completedDestination: LiveData<MutableList<DriverDestination>>
+    private val _completedDestination = MutableLiveData<MutableList<DriverDestination>?>()
+    val completedDestination: LiveData<MutableList<DriverDestination>?>
         get() = _completedDestination
 
 
@@ -67,8 +67,13 @@ class DriverDestinationViewModel : ViewModel() {
 
         override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {
             val newDestination = snapshot.getValue(DriverDestination::class.java)
-            newDestination?.id = snapshot.key
-            _newlyAddedDestination.value = newDestination
+            if (newDestination != null) {
+                newDestination.id = snapshot.key
+                _activeDestination.value = newDestination
+            } else {
+                _activeDestination.value = null
+            }
+
         }
     }
 
@@ -99,19 +104,24 @@ class DriverDestinationViewModel : ViewModel() {
                         val singleDestination =
                             destinationSnapShot.getValue(DriverDestination::class.java)
                         singleDestination?.id = destinationSnapShot.key
+
+                        if (singleDestination != null && singleDestination.isActive) {
+                            _activeDestination.value = singleDestination
+
+                        } else {
+                            _activeDestination.value = null
+                        }
+
                         if (singleDestination != null && singleDestination.isCompleted) {
                             _completedDestination.value?.add(singleDestination)
                         }
 
-                        if (singleDestination != null && singleDestination.isActive) {
-                            _newlyAddedDestination.value = singleDestination
-                        }
                     }
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                _activeDestination.value = null
             }
         })
 

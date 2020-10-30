@@ -1,8 +1,10 @@
 package com.misterjedu.edanfo.adapters
 
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.misterjedu.edanfo.R
@@ -32,13 +34,14 @@ class DestinationRecyclerAdapter(
         private var location: TextView = itemView.single_destination_location_tv
         private var destination: TextView = itemView.single_destination_destination_tv
         private var price: TextView = itemView.single_destination_price_tv
+        private var deleteButton: ImageView = itemView.single_destination_price_delete_button
 
         fun initialize(item: Trip, action: OnDestinationClickListener) {
             location.text = item.location
             destination.text = item.destination
             price.text = item.price.toString()
 
-            itemView.setOnClickListener {
+            deleteButton.setOnClickListener {
                 action.onItemClick(item, adapterPosition)
             }
         }
@@ -46,6 +49,7 @@ class DestinationRecyclerAdapter(
 
 
     fun setTripList(tripList: MutableList<Trip>) {
+//        this.tripList.clear()
         this.tripList = tripList.toMutableList()
     }
 
@@ -53,7 +57,7 @@ class DestinationRecyclerAdapter(
         this.tripList.add(trip)
     }
 
-    fun removeTripFromList(position: Int){
+    fun removeTripFromList(position: Int) {
         this.tripList.removeAt(position)
     }
 

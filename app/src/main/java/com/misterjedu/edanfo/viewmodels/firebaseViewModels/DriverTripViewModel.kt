@@ -33,8 +33,8 @@ class DriverTripViewModel : ViewModel() {
     val activeTrips: LiveData<MutableList<Trip>>
         get() = _activeTrips
 
-    private val _completedTrips = MutableLiveData<MutableList<Trip>>()
-    val completedTrips: LiveData<MutableList<Trip>>
+    private val _completedTrips = MutableLiveData<MutableList<Trip>?>()
+    val completedTrips: LiveData<MutableList<Trip>?>
         get() = _completedTrips
 
 
@@ -60,16 +60,15 @@ class DriverTripViewModel : ViewModel() {
                     val onGoingTripList = mutableListOf<Trip>()
                     val completedTripList = mutableListOf<Trip>()
 
-
                     for (tripSnapShot in snapshot.children) {
                         val trip = tripSnapShot.getValue(Trip::class.java)
                         trip?.id = tripSnapShot.key
 
-                        if (trip != null && trip.isActive && !trip.isCompleted) {
+                        if (trip != null && trip.isActive && !trip.isCompleted && !trip.isCancelled!!) {
                             onGoingTripList.add(trip)
                         }
 
-                        if (trip != null && trip.isCompleted) {
+                        if (trip != null && trip.isCompleted && trip.isCancelled!!) {
                             completedTripList.add(trip)
                         }
                     }
@@ -118,6 +117,7 @@ class DriverTripViewModel : ViewModel() {
         }
     }
 
+
     //This only Updates the trip.iscompleted to true
     fun completeTrip(trip: Trip) {
         trip.id?.let { driverTrips.child(it).setValue(trip) }
@@ -129,6 +129,7 @@ class DriverTripViewModel : ViewModel() {
                 }
             }
     }
+
 
     override fun onCleared() {
         super.onCleared()

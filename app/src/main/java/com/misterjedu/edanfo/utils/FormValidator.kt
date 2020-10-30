@@ -54,7 +54,7 @@ fun validatePrice(amount: String): Boolean {
     return if (amount.isEmpty()) {
         false
     } else {
-        amount.toInt() > 50
+        amount.toInt() >= 50
     }
 }
 

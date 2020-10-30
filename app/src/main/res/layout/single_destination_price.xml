@@ -61,8 +61,8 @@
         android:text="Price"
         android:textSize="12sp"
         app:drawableTint="@color/colorPrimary"
-        app:layout_constraintEnd_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        app:layout_constraintEnd_toStartOf="@+id/single_destination_price_delete_button"
+        app:layout_constraintTop_toTopOf="@+id/single_destination_price_delete_button" />
 
     <TextView
         android:id="@+id/single_destination_destination_tv"
@@ -86,11 +86,11 @@
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/single_destination_price_delete_button"
         app:layout_constraintEnd_toEndOf="@+id/textView11" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/single_destination_price_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
