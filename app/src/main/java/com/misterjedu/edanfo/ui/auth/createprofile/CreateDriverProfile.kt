@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.misterjedu.edanfo.R
+import com.misterjedu.edanfo.data.firebasedata.DriverDetail
 import com.misterjedu.edanfo.data.firebasedata.User
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import com.misterjedu.edanfo.utils.*
@@ -55,6 +56,7 @@ class CreateDriverProfile : Fragment() {
     private lateinit var tapToUploadTextView: TextView
     private lateinit var uploadImageButton: Button
     private lateinit var phoneNumberEditText: EditText
+    private lateinit var vehiclePlateNumber: EditText
 
 
     override fun onCreateView(
@@ -77,6 +79,7 @@ class CreateDriverProfile : Fragment() {
         tapToUploadTextView = fragment_create_driver_tap_to_upload_tv
         uploadImageButton = fragment_create_driver_profile_upload_image_btn
         phoneNumberEditText = fragment_phone_number_et
+        vehiclePlateNumber = fragment_driver_plate_number_et
 
 
         //Form Field Validation
@@ -257,22 +260,51 @@ class CreateDriverProfile : Fragment() {
             null, userId, phoneNum, email, firstName, lastName, DRIVER
         )
 
-        FirebaseAuth.getInstance().currentUser?.uid?.let { it1 ->
+
+        val driverDetail = DriverDetail(
+            null,
+            userId,
+            vehiclePlateNumber.text.toString(),
+            0F,
+            null,
+            null,
+            0,
+            0
+        )
+
+        FirebaseAuth.getInstance().currentUser?.uid?.let { userUniqueId ->
             FirebaseDatabase.getInstance().getReference(USER_DETAILS)
-                .child(it1)
+                .child(userUniqueId)
                 .setValue(userDetail).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        showSnackBar(
-                            createDriverAccountButton,
-                            "Registration Successful"
-                        )
-                        // Login and Start Activity for Driver
-                        val intent =
-                            Intent(requireContext(), DriverActivity::class.java)
-                        startActivity(intent)
+                        FirebaseDatabase.getInstance().getReference(DRIVER)
+                            .child(userUniqueId).setValue(driverDetail)
+                            .addOnCompleteListener { driverUpload ->
+                                if (driverUpload.isSuccessful) {
+                                    showSnackBar(
+                                        createDriverAccountButton,
+                                        "Registration Successful"
+                                    )
+                                    // Login and Start Activity for Driver
+                                    val intent =
+                                        Intent(requireContext(), DriverActivity::class.java)
+                                    startActivity(intent)
+                                } else {
+                                    fragment_driver_profile_progress_bar.hide(
+                                        createDriverAccountButton
+                                    )
+                                    showSnackBar(
+                                        createDriverAccountButton,
+                                        "Your details were not uploaded"
+                                    )
+                                }
+                            }
                     } else {
                         fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
-                        showSnackBar(createDriverAccountButton, "Your details were not uloaded")
+                        showSnackBar(
+                            createDriverAccountButton,
+                            "Something went wrong"
+                        )
                     }
                 }
         }

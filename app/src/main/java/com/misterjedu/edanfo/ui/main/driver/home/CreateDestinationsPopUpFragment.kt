@@ -120,7 +120,6 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
         super.onActivityCreated(savedInstanceState)
 
         val user: FirebaseUser? = firebaseAuth.currentUser
-
         destinationButton.setOnClickListener {
             destinationProgressBar.show(destinationButton)
             val destination = user?.uid?.let { it1 ->
