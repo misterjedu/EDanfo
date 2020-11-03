@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.driver.account.DriverAccountWithdrawal">
+
+    <LinearLayout
+        android:id="@+id/fragment_passenger_find_bus_app_bar_ll"
+        style="@style/CustomAppBar">
+
+        <ImageView
+            android:id="@+id/fragment_passenger_find_bus__back_arrow_iv"
+            style="@style/GreenBackArrow" />
+
+        <TextView
+            android:id="@+id/fragment_passenger_find_bus__withdrawal_tv"
+            style="@style/CustomAppBarText"
+            android:text="Find Bus" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.passenger.home.PassengerFindBus">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_passenger_find_bus_current_location_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Current Location"
+                app:endIconMode="custom"
+                app:errorEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_create_driver_profile_upload_image_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ffragment_passenger_find_bus_current_location_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:paddingLeft="10dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_passenger_find_bus_destination_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Destination"
+                app:endIconMode="custom"
+                app:errorEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_create_driver_profile_upload_image_btn">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_passenger_find_bus_destination_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:paddingLeft="10dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/fragmenr_passenger_find_bus_search_button"
+                style="@style/PrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Search"
+                android:textAlignment="viewStart"
+                app:icon="@drawable/ic_baseline_search_24"
+                app:iconGravity="end" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_passenger_find_bus_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="24dp"
+                tools:listitem="@layout/single_find_bus_layout" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
+
