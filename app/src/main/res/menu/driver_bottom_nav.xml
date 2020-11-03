@@ -16,9 +16,4 @@
         android:icon="@drawable/ic_baseline_account_circle"
         android:title="Account" />
 
-
-
-
-
-
 </menu>

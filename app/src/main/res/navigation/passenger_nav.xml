@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/passenger_nav"
+    app:startDestination="@id/passengerHome">
+
+    <fragment
+        android:id="@+id/passengerHome"
+        android:name="com.misterjedu.edanfo.ui.main.passenger.home.PassengerHome"
+        android:label="fragment_passenger_home"
+        tools:layout="@layout/fragment_passenger_home" />
+</navigation>
