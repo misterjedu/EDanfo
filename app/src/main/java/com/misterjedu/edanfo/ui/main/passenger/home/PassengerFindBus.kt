@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.misterjedu.edanfo.R
@@ -41,11 +42,16 @@ class PassengerFindBus : Fragment(), BusTripRecyclerAdapter.OnBusTripClickListen
         findBusRecyclerView.adapter = adapter
         findBusRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+
+
+
+        fragment_passenger_find_bus__back_arrow_iv.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
+
 
     override fun onButtonClick(item: BusTrip, position: Int) {
         showSnackBar(findBusRecyclerView, "${item.journey} selected")
     }
-
-
 }

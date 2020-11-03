@@ -35,28 +35,45 @@
         >
         <action
             android:id="@+id/action_passengerAccount_to_passengerStatistics"
-            app:destination="@id/passengerStatistics" />
+            app:destination="@id/passengerStatistics"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_passengerAccount_to_changePasswordFragment"
-            app:destination="@id/changePasswordFragment" />
+            app:destination="@id/passengerChangePasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_passengerAccount_to_passengerTopUpWallet"
-            app:destination="@id/passengerTopUpWallet" />
+            app:destination="@id/passengerTopUpWallet"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_passengerAccount_to_passengerAccountProfile"
-            app:destination="@id/passengerAccountProfile" />
+            app:destination="@id/passengerAccountProfile"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/passengerStatistics"
         android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerStatistics"
         android:label="fragment_passenger_statistics"
         tools:layout="@layout/fragment_passenger_statistics" />
+
     <fragment
-        android:id="@+id/changePasswordFragment"
-        android:name="com.misterjedu.edanfo.ui.auth.ChangePasswordFragment"
-        android:label="ChangePasswordFragment"
-        tools:layout="@layout/fragment_passenger_change_password"
-        />
+        android:id="@+id/passengerChangePasswordFragment"
+        android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerChangePassword"
+        android:label="PassengerChangePasswordFragment"
+        tools:layout="@layout/fragment_passenger_change_password" />
+
     <fragment
         android:id="@+id/passengerTopUpWallet"
         android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerTopUpWallet"

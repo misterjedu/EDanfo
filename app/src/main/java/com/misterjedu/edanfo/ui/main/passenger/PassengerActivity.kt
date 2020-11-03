@@ -6,8 +6,6 @@ import androidx.navigation.Navigation
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.misterjedu.edanfo.R
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_driver.*
-import kotlinx.android.synthetic.main.activity_driver.home_driver_bottom_navigation
 import kotlinx.android.synthetic.main.activity_passenger.*
 
 @AndroidEntryPoint
@@ -26,13 +24,12 @@ class PassengerActivity : AppCompatActivity() {
     private var navListener: BottomNavigationView.OnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             val fragment: Int = when (item.itemId) {
-
                 //TODO(Change the Fragments to the Passenger Fragments)
-                R.id.passenger_driver_nav_home -> R.id.driverProfile
-                R.id.passenger_nav_my_account -> R.id.destinationList
-                else -> R.id.driverProfile
+                R.id.passenger_nav_home -> R.id.passengerHome
+                R.id.passenger_nav_my_account -> R.id.passengerAccount
+                else -> R.id.passengerHome
             }
-            Navigation.findNavController(this, R.id.passenger_driver_fcv).navigate(fragment)
+            Navigation.findNavController(this, R.id.activity_passenger_fcv).navigate(fragment)
             true
         }
 

@@ -71,13 +71,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_passenger_first_name_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:hint="@string/first_name"
-                style = "@style/GreenTextInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -86,7 +86,6 @@
                     android:id="@+id/fragment_passenger_first_name_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -98,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/last_name"
-                style = "@style/GreenTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_first_name_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_passenger_first_name_til"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_first_name_til">
@@ -107,7 +106,6 @@
                     android:id="@+id/fragment_passenger_last_name_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -120,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/email_address"
-                style = "@style/GreenTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_last_name_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_passenger_last_name_til"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_last_name_til">
@@ -129,7 +127,6 @@
                     android:id="@+id/fragment_passenger_email_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -142,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/password"
-                style = "@style/GreenTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_email_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_passenger_email_til"
@@ -152,7 +149,6 @@
                     android:id="@+id/fragment_passenger_password_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -165,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/enter_password_again"
-                style = "@style/GreenTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_password_til"
                 app:layout_constraintStart_toStartOf="@+id/fragment_passenger_password_til"
@@ -175,7 +171,6 @@
                     android:id="@+id/fragment_passenger_repeat_password_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
                     android:inputType="textPassword" />
 
 
