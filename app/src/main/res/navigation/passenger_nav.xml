@@ -36,10 +36,35 @@
         <action
             android:id="@+id/action_passengerAccount_to_passengerStatistics"
             app:destination="@id/passengerStatistics" />
+        <action
+            android:id="@+id/action_passengerAccount_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_passengerAccount_to_passengerTopUpWallet"
+            app:destination="@id/passengerTopUpWallet" />
+        <action
+            android:id="@+id/action_passengerAccount_to_passengerAccountProfile"
+            app:destination="@id/passengerAccountProfile" />
     </fragment>
     <fragment
         android:id="@+id/passengerStatistics"
         android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerStatistics"
         android:label="fragment_passenger_statistics"
         tools:layout="@layout/fragment_passenger_statistics" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.misterjedu.edanfo.ui.auth.ChangePasswordFragment"
+        android:label="ChangePasswordFragment"
+        tools:layout="@layout/fragment_passenger_change_password"
+        />
+    <fragment
+        android:id="@+id/passengerTopUpWallet"
+        android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerTopUpWallet"
+        android:label="fragment_passenger_top_up_wallet"
+        tools:layout="@layout/fragment_passenger_top_up_wallet" />
+    <fragment
+        android:id="@+id/passengerAccountProfile"
+        android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerAccountProfile"
+        android:label="fragment_passenger_account_profile"
+        tools:layout="@layout/fragment_passenger_account_profile" />
 </navigation>

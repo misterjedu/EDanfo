@@ -31,21 +31,21 @@ class PassengerRecyclerAdapter(
         private var passengerName: TextView = itemView.single_passenger_order_name_tv
         private var timeOrdered: TextView = itemView.single_passenger_time_ordered_tv
         private var tripDestination: TextView = itemView.single_passenger_order_trip_tv
-        var cancelPassenegerBtn: Button = itemView.single_passenger_cancel_order_btn
+        var cancelPassengerBtn: Button = itemView.single_passenger_cancel_order_btn
 
         fun initialize(item: PassengerData, action: OnPassengerClickListener) {
             passengerName.text = item.name
             timeOrdered.text = item.timeOrdered
             tripDestination.text = item.trip
 
-            itemView.setOnClickListener {
-                action.onItemClick(item, adapterPosition)
+            cancelPassengerBtn.setOnClickListener {
+                action.onButtonClick(item, adapterPosition)
             }
         }
     }
 
     // OnClick Listener InterfaceR
     interface OnPassengerClickListener {
-        fun onItemClick(item: PassengerData, position: Int)
+        fun onButtonClick(item: PassengerData, position: Int)
     }
 }

@@ -11,7 +11,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/single_find_bus_bus_id_tv"
         style="@style/BlackNormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,43 +19,55 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="Bus 99098902"
-        app:layout_constraintEnd_toStartOf="@+id/textView28"
+        app:layout_constraintEnd_toStartOf="@+id/single_find_bus_time_started_tv"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/single_fins_bus_layout_journey_tv"
         style="@style/BoldNormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"
         android:text="Ajegunle to Mushin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintStart_toStartOf="@+id/single_find_bus_bus_id_tv"
+        app:layout_constraintTop_toBottomOf="@+id/single_find_bus_bus_id_tv" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="87dp"
-        android:layout_height="51dp"
+        android:id="@+id/single_find_bus_select_button"
+        style="@style/PrimaryButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Select"
         android:textAllCaps="false"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView26"
-        app:layout_constraintEnd_toEndOf="@+id/textView28"
-        app:layout_constraintTop_toTopOf="@+id/textView26" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/single_find_bus_layout_price_tv"
+        app:layout_constraintStart_toStartOf="@+id/single_fins_bus_layout_journey_tv"
+        app:layout_constraintTop_toBottomOf="@+id/single_fins_bus_layout_journey_tv" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/single_find_bus_time_started_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="#F2FBF1"
         android:padding="2dp"
         android:text="Started 20 minutes ago"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintBottom_toBottomOf="@+id/single_find_bus_bus_id_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+        app:layout_constraintTop_toTopOf="@+id/single_find_bus_bus_id_tv" />
+
+    <TextView
+        android:id="@+id/single_find_bus_layout_price_tv"
+        style="@style/BoldNormalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₦100"
+        app:layout_constraintBottom_toBottomOf="@+id/single_fins_bus_layout_journey_tv"
+        app:layout_constraintEnd_toEndOf="@+id/single_find_bus_time_started_tv"
+        app:layout_constraintTop_toTopOf="@+id/single_fins_bus_layout_journey_tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.misterjedu.edanfo.utils
 
+import com.misterjedu.edanfo.data.BusTrip
 import com.misterjedu.edanfo.data.DestinationData
 import com.misterjedu.edanfo.data.HistoryData
 import com.misterjedu.edanfo.data.PassengerData
@@ -44,7 +45,7 @@ object DummyData {
 
 
     fun passengerList(): List<PassengerData> {
-       return arrayListOf(
+        return arrayListOf(
             PassengerData("Badmus Shobowale", "Mushin to Yaba", "2 mins ago"),
             PassengerData("Omo Ologo", "Shagamu to Boluwatife", "5 mins ago"),
             PassengerData("Adewale Shwab", "Lekki to Sangotedo", "5 mins ago"),
@@ -56,14 +57,23 @@ object DummyData {
     }
 
 
-
-    fun passengerDetails(): List<DestinationData>{
-        return   arrayListOf(
+    fun passengerDetails(): List<DestinationData> {
+        return arrayListOf(
             DestinationData("Sango", "Sagamu", 500),
             DestinationData("Egba", "Idi Iroko", 200),
             DestinationData("Ajah", "Lekki", 100),
             DestinationData("Mary Land", "Yaba", 150),
             DestinationData("Ikeja", "Isale Afa", 700)
+        )
+    }
+
+
+    fun busTripList(): MutableList<BusTrip> {
+        return mutableListOf(
+            BusTrip("BUS 001", "12 minutes ago", "Sango to Sagamu", 100),
+            BusTrip("BUS 002", "10 minutes ago", "Egba to IdiIroko", 400),
+            BusTrip("BUS 003", "2 minutes ago", "Ajah to MaryLand", 300),
+            BusTrip("BUS 004", "20 minutes ago", "Ikeja to Osodi", 300),
         )
     }
 }

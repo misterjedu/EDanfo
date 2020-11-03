@@ -51,7 +51,7 @@ class CurrentPassengers :
         }
     }
 
-    override fun onItemClick(item: PassengerData, position: Int) {
+    override fun onButtonClick(item: PassengerData, position: Int) {
         Toast.makeText(requireContext(), item.name, Toast.LENGTH_SHORT).show()
     }
 }
