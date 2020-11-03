@@ -31,12 +31,12 @@ class DriverAccountStatistics : Fragment() {
             // Specify the layout to use when the list of choices appears
             statAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
-            driver_statistics_rating_spinner.adapter = statAdapter
-            driver_statistics_earning_spinner.adapter = statAdapter
-            driver_statistics_booked_spinner.adapter = statAdapter
-            driver_statistics_seats_cancelled_spinner.adapter = statAdapter
-            driver_statistics_trips_completed_spinner.adapter = statAdapter
-            driver_statistics_trips_cancelled_spinner.adapter = statAdapter
+//            driver_statistics_rating_spinner.adapter = statAdapter
+//            driver_statistics_earning_spinner.adapter = statAdapter
+//            driver_statistics_booked_spinner.adapter = statAdapter
+//            driver_statistics_seats_cancelled_spinner.adapter = statAdapter
+//            driver_statistics_trips_completed_spinner.adapter = statAdapter
+//            driver_statistics_trips_cancelled_spinner.adapter = statAdapter
         }
 
 

@@ -17,6 +17,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_passengerHome_to_passengerAccount"
+            app:destination="@id/passengerAccount" />
     </fragment>
     <fragment
         android:id="@+id/passengerFindBus"
@@ -24,4 +27,19 @@
         android:label="PassengerFindBus"
         tools:layout="@layout/fragment_passenger_find_bus"
         />
+    <fragment
+        android:id="@+id/passengerAccount"
+        android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerAccount"
+        android:label="PassengerAccount"
+        tools:layout="@layout/fragment_passenger_account"
+        >
+        <action
+            android:id="@+id/action_passengerAccount_to_passengerStatistics"
+            app:destination="@id/passengerStatistics" />
+    </fragment>
+    <fragment
+        android:id="@+id/passengerStatistics"
+        android:name="com.misterjedu.edanfo.ui.main.passenger.account.PassengerStatistics"
+        android:label="fragment_passenger_statistics"
+        tools:layout="@layout/fragment_passenger_statistics" />
 </navigation>

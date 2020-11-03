@@ -43,15 +43,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Spinner
-                    android:id="@+id/driver_statistics_rating_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView18"
-                    app:layout_constraintStart_toEndOf="@+id/textView18"
-                    app:layout_constraintTop_toTopOf="@+id/textView18" />
-
                 <TextView
                     android:id="@+id/driver_statistics_rating_number_tv"
                     style="@style/BoldNormalText"
@@ -60,9 +51,9 @@
                     android:layout_marginEnd="8dp"
                     android:gravity="center"
                     android:text="4"
-                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_rating_spinner"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView18"
                     app:layout_constraintEnd_toStartOf="@+id/imageView5"
-                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_rating_spinner" />
+                    app:layout_constraintTop_toTopOf="@+id/textView18" />
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -89,15 +80,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <Spinner
-                    android:id="@+id/driver_statistics_earning_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_earning_tv"
-                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_earning_tv"
-                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_earning_tv" />
 
                 <TextView
                     android:id="@+id/driver_statistics_earning_number_tv"
@@ -126,15 +108,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Spinner
-                    android:id="@+id/driver_statistics_booked_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_booked_tv"
-                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_booked_tv"
-                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_booked_tv" />
-
                 <TextView
                     android:id="@+id/driver_statistics_booked_number_tv"
                     style="@style/BoldNormalText"
@@ -160,15 +133,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <Spinner
-                    android:id="@+id/driver_statistics_seats_cancelled_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_seats_cancelled_tv"
-                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_seats_cancelled_tv"
-                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_seats_cancelled_tv" />
 
                 <TextView
                     android:id="@+id/driver_statistics_seats_cancelled_number_tv"
@@ -197,15 +161,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Spinner
-                    android:id="@+id/driver_statistics_trips_completed_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_trips_completed_tv"
-                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_trips_completed_tv"
-                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_trips_completed_tv" />
-
                 <TextView
                     android:id="@+id/driver_statistics_trips_completed_number_tv"
                     style="@style/BoldNormalText"
@@ -232,15 +187,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <Spinner
-                    android:id="@+id/driver_statistics_trips_cancelled_spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/driver_statistics_name_trips_cancelled_tv"
-                    app:layout_constraintStart_toEndOf="@+id/driver_statistics_name_trips_cancelled_tv"
-                    app:layout_constraintTop_toTopOf="@+id/driver_statistics_name_trips_cancelled_tv" />
 
                 <TextView
                     android:id="@+id/driver_statistics_trips_cancelled_number_tv"

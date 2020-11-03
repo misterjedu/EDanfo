@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.passenger.account.PassengerStatistics">
+
+    <LinearLayout
+        android:id="@+id/passenger_statistics_app_bar_ll"
+        style="@style/CustomAppBar">
+
+        <ImageView
+            android:id="@+id/fragment_passenger_statistics_back_arrow_iv"
+            style="@style/GreenBackArrow" />
+
+        <TextView
+            android:id="@+id/passenger_statistics_my_stats_tv"
+            style="@style/CustomAppBarText"
+            android:text="My Stats" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--            Trips Completed-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/driver_statistics_trips_completed_card_cl"
+                style="@style/DriverStatCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/passenger_statistics_name_trips_completed_tv"
+                    style="@style/DriverStatName"
+                    android:text="Trips Completed"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/passenger_statistics_trips_completed_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!--            Cancelled Trips-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/passenger_statistics_trips_cancelled_card_cl"
+                style="@style/DriverStatCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/driver_statistics_name_trips_cancelled_tv"
+                    style="@style/DriverStatName"
+                    android:text="Trips Cancelled"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/passenger_statistics_trips_cancelled_number_tv"
+                    style="@style/BoldNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

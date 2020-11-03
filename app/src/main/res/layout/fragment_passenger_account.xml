@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/driver_account_nsv"
+    android:id="@+id/passenger_account_nsv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.driver.account.DriverAccount">
 
     <LinearLayout
-        android:id="@+id/driver_account_subroot_ll"
+        android:id="@+id/passenger_account_subroot_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -21,7 +22,7 @@
             android:layout_marginBottom="20dp">
 
             <TextView
-                android:id="@+id/driver_account_my_account_tv"
+                android:id="@+id/passenger_account_my_account_tv"
                 style="@style/TitleBoldText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,14 +39,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:text="Mathew Ndifreke "
+                android:text="Chigere Nonso"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/driver_account_my_account_tv"
-                app:layout_constraintTop_toBottomOf="@+id/driver_account_my_account_tv" />
+                app:layout_constraintStart_toStartOf="@+id/passenger_account_my_account_tv"
+                app:layout_constraintTop_toBottomOf="@+id/passenger_account_my_account_tv" />
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/driver_account_profile_image"
+                android:id="@+id/passenger_account_profile_image"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
@@ -61,17 +62,17 @@
 
         <!--        Withdrawal Settings-->
         <LinearLayout
-            android:id="@+id/driver_account_profile_stat_card_ll"
+            android:id="@+id/passenger_account_profile_stat_card_ll"
             style="@style/SettingsOptionCard"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/driver_account_profile_stat_tv"
+                android:id="@+id/passenger_account_profile_stat_tv"
                 style="@style/SettingsOptionText"
                 android:text="My Statistics" />
 
             <ImageView
-                android:id="@+id/driver_account_profile_stat_icon_iv"
+                android:id="@+id/passenger_account_profile_stat_icon_iv"
                 style="@style/SettingsOptionIcon"
                 android:src="@drawable/ic_baseline_bar_chart" />
         </LinearLayout>
@@ -79,64 +80,48 @@
 
         <!--        Profile Settings-->
         <LinearLayout
-            android:id="@+id/driver_account_account_settings_card_ll"
+            android:id="@+id/passenger_account_account_settings_card_ll"
             style="@style/SettingsOptionCard">
 
             <TextView
-                android:id="@+id/driver_account_profile_settings_tv"
+                android:id="@+id/passenger_account_profile_settings_tv"
                 style="@style/SettingsOptionText"
                 android:text="Profile Settings" />
 
             <ImageView
-                android:id="@+id/driver_account_profile_settings_icon_iv"
+                android:id="@+id/passenger_account_profile_settings_icon_iv"
                 style="@style/SettingsOptionIcon"
                 android:src="@drawable/ic_baseline_account_circle" />
         </LinearLayout>
 
-        <!--        Withdrawal Settings-->
-        <LinearLayout
-            android:id="@+id/driver_account_withdrawal_settings_card_ll"
-            style="@style/SettingsOptionCard">
-
-            <TextView
-                android:id="@+id/driver_account_withdrawal_settings_tv"
-                style="@style/SettingsOptionText"
-                android:text="Withdrawal Settings" />
-
-            <ImageView
-                android:id="@+id/driver_account_withdrawal_settings_icon_iv"
-                style="@style/SettingsOptionIcon"
-                android:src="@drawable/ic_baseline_settings" />
-        </LinearLayout>
-
         <!--        Withdrawal-->
         <LinearLayout
-            android:id="@+id/driver_account_withdrawal_card_ll"
+            android:id="@+id/passenger_account_top_up_wallet_ll"
             style="@style/SettingsOptionCard">
 
             <TextView
-                android:id="@+id/driver_account_withdrawal_tv"
+                android:id="@+id/passenger_account_top_up_wallet_tv"
                 style="@style/SettingsOptionText"
-                android:text="Withdrawal" />
+                android:text="Top up Wallet" />
 
             <ImageView
-                android:id="@+id/driver_account_withdrawal_icon_iv"
+                android:id="@+id/passenger_account_top_up_wallet_icon_iv"
                 style="@style/SettingsOptionIcon"
                 android:src="@drawable/ic_baseline_account_balance" />
         </LinearLayout>
 
         <!--        Change Password-->
         <LinearLayout
-            android:id="@+id/driver_account_change_password_card_ll"
+            android:id="@+id/passenger_account_change_password_card_ll"
             style="@style/SettingsOptionCard">
 
             <TextView
-                android:id="@+id/driver_account_change_password_tv"
+                android:id="@+id/passeneger_account_change_password_tv"
                 style="@style/SettingsOptionText"
                 android:text="Change Password" />
 
             <ImageView
-                android:id="@+id/driver_account_change_password_icon_iv"
+                android:id="@+id/passenger_account_change_password_icon_iv"
                 style="@style/SettingsOptionIcon"
                 android:src="@drawable/ic_baseline_vpn_key" />
         </LinearLayout>
@@ -144,21 +129,20 @@
 
         <!--        Sign out -->
         <LinearLayout
-            android:id="@+id/driver_account_logout_card_ll"
+            android:id="@+id/passenger_account_logout_card_ll"
             style="@style/SettingsOptionCard">
 
             <TextView
-                android:id="@+id/driver_account_logout_tv"
+                android:id="@+id/passenger_account_logout_tv"
                 style="@style/SettingsOptionText"
                 android:text="Sign out" />
 
             <ImageView
-                android:id="@+id/driver_account_logout_icon_iv"
+                android:id="@+id/passenger_account_logout_icon_iv"
                 style="@style/SettingsOptionIcon"
                 android:src="@drawable/ic_baseline_exit_to_app"
                 app:tint="@color/colorCancelButton" />
         </LinearLayout>
-
-
     </LinearLayout>
+
 </androidx.core.widget.NestedScrollView>
