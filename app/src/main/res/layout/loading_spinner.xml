@@ -20,7 +20,7 @@
             android:src="@drawable/location_gif" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/fragment_create_passenger_image_upload_status_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -33,54 +33,75 @@
         android:layout_height="match_parent">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/fragment_passenger_root_cl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
             android:paddingTop="10dp"
+            android:paddingRight="16dp"
             android:paddingBottom="10dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/driver_account_profile_image"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/logo_filled_green_background"
-                app:civ_border_color="@color/colorAccent"
-                app:civ_border_width="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/fragment_create_passenger_profile_image_progress_bar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/passenger_account_profile_image"
+                    app:layout_constraintStart_toStartOf="@+id/passenger_account_profile_image"
+                    app:layout_constraintTop_toTopOf="@+id/passenger_account_profile_image" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/passenger_account_profile_image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logo_filled_green_background"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--          FirstName Edit Text-->
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="0dp"
+                android:id="@+id/fragment_create_passenger_image_upload_status_tv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Tap to upload Profile Image"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_first_name_til"
-                app:layout_constraintStart_toStartOf="@+id/fragment_passenger_first_name_til"
-                app:layout_constraintTop_toBottomOf="@+id/driver_account_profile_image" />
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/fragment_create_passenger_profile_upload_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:enabled="false"
+                android:text="Upload Image"
+                android:textAllCaps="false" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_passenger_first_name_til"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:hint="@string/first_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                android:hint="@string/first_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fragment_passenger_first_name_et"
@@ -93,14 +114,11 @@
             <!--          LastName Edit Text-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_passenger_last_name_til"
-                android:layout_width="0dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="@string/last_name"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_first_name_til"
-                app:layout_constraintStart_toStartOf="@+id/fragment_passenger_first_name_til"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_first_name_til">
+                android:hint="@string/last_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fragment_passenger_last_name_et"
@@ -111,17 +129,33 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
+
+            <!--          LastName Edit Text-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_passenger_phone_number_til"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Phone Number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_passenger_phone_number_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
             <!--         Email Edit Text-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_passenger_email_til"
-                android:layout_width="0dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="@string/email_address"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_last_name_til"
-                app:layout_constraintStart_toStartOf="@+id/fragment_passenger_last_name_til"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_last_name_til">
+                android:hint="@string/email_address">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fragment_passenger_email_et"
@@ -135,15 +169,12 @@
             <!--          Password Text-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_passenger_password_til"
-                android:layout_width="0dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_email_til"
-                app:layout_constraintStart_toStartOf="@+id/fragment_passenger_email_til"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_email_til">
+                app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fragment_passenger_password_et"
@@ -157,43 +188,53 @@
             <!--          Password Text-->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_passenger_repeat_password_til"
-                android:layout_width="0dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/enter_password_again"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_password_til"
-                app:layout_constraintStart_toStartOf="@+id/fragment_passenger_password_til"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_password_til">
+                app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/fragment_passenger_repeat_password_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
-
-
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/fragment_passenger_profile_btn"
-                style="@style/PrimaryButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:layout_marginBottom="24dp"
-                android:paddingBottom="16dp"
-                android:text="@string/create_passenger_account"
-                android:textAlignment="viewStart"
-                app:icon="@drawable/ic_baseline_arrow_forward"
-                app:iconGravity="end"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_repeat_password_til"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/fragment_passenger_repeat_password_til"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_repeat_password_til" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/fragment_passenger_account_btn"
+                    style="@style/PrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:enabled="false"
+                    android:paddingBottom="16dp"
+                    android:text="@string/create_passenger_account"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/fragment_create_passenger_profile_button_progress_bar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/fragment_passenger_account_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/fragment_passenger_account_btn"
+                    app:layout_constraintTop_toTopOf="@+id/fragment_passenger_account_btn" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>

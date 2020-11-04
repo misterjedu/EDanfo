@@ -337,8 +337,9 @@ class CreateDriverProfile : Fragment() {
         user?.updateProfile(profile)?.addOnCompleteListener {
 
             if (it.isSuccessful) {
-                uploadDetailToRealTimeFirebase()
                 userId = user.uid
+                uploadDetailToRealTimeFirebase()
+
             } else {
                 fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
             }
@@ -365,7 +366,9 @@ class CreateDriverProfile : Fragment() {
                     fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
 
                     if (task.isSuccessful) {
+
                         updateProfileToFirebaseAuth()
+
                     } else {
                         fragment_driver_profile_progress_bar.hide(createDriverAccountButton)
                         // If sign up fails, display a message to the user.
