@@ -5,6 +5,7 @@ const val SHARED_PREFS: String = "sharedPrefs"
 const val DRIVERPHONENUMBER: String = "driverPhoneNumber"
 const val DRIVEREMAILADDRESS: String = "driverEmailAddress"
 const val ONBOARD : String = "onboardingStatus"
+const val USERTYPE: String = "userType"
 
 const val DRIVER_DESTINATION = "driver_destination"
 const val DRIVER_TRIP = "driver_trip"

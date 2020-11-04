@@ -2,6 +2,7 @@ package com.misterjedu.edanfo.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.service.autofill.UserData
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -14,8 +15,14 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.misterjedu.edanfo.R
+import com.misterjedu.edanfo.data.firebasedata.User
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
+import com.misterjedu.edanfo.ui.main.passenger.PassengerActivity
 import com.misterjedu.edanfo.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -46,7 +53,7 @@ class LoginFragment : Fragment() {
         validateField()
 
         driverInputEmail = fragment_login_email_et
-        driverInputPassword =  fragment_login_password_et
+        driverInputPassword = fragment_login_password_et
         logInButton = fragment_login_login_btn
 
 
@@ -99,14 +106,44 @@ class LoginFragment : Fragment() {
         firebaseAuth.signInWithEmailAndPassword(userEmail, userPassWord)
             .addOnCompleteListener {
                 fragment_login_progress_bar.hide(fragment_login_login_btn)
-
                 if (it.isSuccessful) {
+                    if (firebaseAuth.currentUser != null) {
+                        //Fetch User type from RealTime Firebase
+                        FirebaseDatabase.getInstance().getReference(USER_DETAILS)
+                            .addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if (snapshot.exists()) {
+                                        for (childSnapshot in snapshot.children) {
+                                            val userData = childSnapshot.getValue(User::class.java)
 
-                    //Start Driver Activity
-                    val intent = Intent(requireContext(), DriverActivity::class.java)
-                    startActivity(intent)
-                    //Finish Authentication Activity  here and user moves to a new Driver Activity
-                    requireActivity().finish()
+                                            //Start Corresponding Activity based on User Type and finish Auth activity
+                                            if (userData != null && userData.userType == DRIVER) {
+                                                val intent =
+                                                    Intent(
+                                                        requireContext(),
+                                                        DriverActivity::class.java
+                                                    )
+                                                startActivity(intent)
+                                                requireActivity().finish()
+                                            } else if (userData != null && userData.userType == PASSENGER) {
+                                                val intent =
+                                                    Intent(
+                                                        requireContext(),
+                                                        PassengerActivity::class.java
+                                                    )
+                                                startActivity(intent)
+                                                requireActivity().finish()
+                                            }
+                                        }
+
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                    showSnackBar(fragment_login_login_btn, error.message)
+                                }
+                            })
+                    }
                 } else {
                     //Disable Button and show Progress bar
                     it.exception?.message?.let { it1 ->
@@ -148,11 +185,15 @@ class LoginFragment : Fragment() {
     //If User is already Logged in, Go straight to the Dashboard
     override fun onStart() {
         super.onStart()
-        if (firebaseAuth.currentUser != null) {
-            //Start Driver Activity
-            val intent = Intent(requireContext(), DriverActivity::class.java)
+        if (loadFromSharedPreference(requireActivity(), USERTYPE) == DRIVER) {
+            val intent =
+                Intent(requireContext(), DriverActivity::class.java)
             startActivity(intent)
-            //Finish Authentication Activity  here and user moves to a new Driver Activity
+            requireActivity().finish()
+        } else if (loadFromSharedPreference(requireActivity(), USERTYPE) == PASSENGER) {
+            val intent =
+                Intent(requireContext(), PassengerActivity::class.java)
+            startActivity(intent)
             requireActivity().finish()
         }
     }

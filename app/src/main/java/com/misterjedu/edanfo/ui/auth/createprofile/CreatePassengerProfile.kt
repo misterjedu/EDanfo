@@ -131,11 +131,6 @@ class CreatePassengerProfile : Fragment() {
         }
 
 
-        createPassengerAccountButton.setOnClickListener {
-            val intent =
-                Intent(requireContext(), PassengerActivity::class.java)
-            startActivity(intent)
-        }
         fragment_create_passenger_profile_back_arrow_iv.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -403,6 +398,10 @@ class CreatePassengerProfile : Fragment() {
                                         createPassengerAccountButton,
                                         "Registration Successful"
                                     )
+
+                                    //Save User type to shared preference to be used to
+                                    // authenticate when re-opening the app
+                                    saveToSharedPreference(requireActivity(), USERTYPE, PASSENGER)
 
                                     // Login and Start Activity for Driver
                                     val intent =

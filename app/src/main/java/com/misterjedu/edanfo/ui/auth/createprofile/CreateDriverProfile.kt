@@ -285,6 +285,11 @@ class CreateDriverProfile : Fragment() {
                                         createDriverAccountButton,
                                         "Registration Successful"
                                     )
+
+                                    //Save User type to shared preference to be used to
+                                    // authenticate when re-opening the app
+                                    saveToSharedPreference(requireActivity(), USERTYPE, DRIVER)
+
                                     // Login and Start Activity for Driver
                                     val intent =
                                         Intent(requireContext(), DriverActivity::class.java)
