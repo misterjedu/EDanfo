@@ -20,7 +20,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.misterjedu.edanfo.R
@@ -247,8 +250,36 @@ class CreateDriverProfile : Fragment() {
     }
 
 
+    //Generate a unique number the bus. E.g Bus 001
+    private fun generateUniqueBusName() {
+        FirebaseDatabase.getInstance().getReference(USER_DETAILS)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        var driverCount = 1
+                        for (userSnapShot in snapshot.children) {
+                            val driver = userSnapShot.getValue(User::class.java)
+                            driver?.id = userSnapShot.key
+                            if (driver != null && driver.userType == DRIVER) {
+                                driverCount += driverCount
+                            }
+                        }
+                        val busNumFormatted = "%04d".format(driverCount)
+                        updateAllToFireBase("Bus $busNumFormatted")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
+    }
+
+
     //Create a new user object with details about user(driver) and upload to database
-    private fun uploadDetailToRealTimeFirebase() {
+    fun updateAllToFireBase(busNumber: String) {
 
         val phoneNum = phoneNumberEditText.text.toString()
         val email = emailEditText.text.toString()
@@ -260,7 +291,6 @@ class CreateDriverProfile : Fragment() {
             null, userId, phoneNum, email, firstName, lastName, DRIVER
         )
 
-
         val driverDetail = DriverDetail(
             null,
             userId,
@@ -269,7 +299,8 @@ class CreateDriverProfile : Fragment() {
             null,
             null,
             0,
-            0
+            0,
+            busNumber
         )
 
         FirebaseAuth.getInstance().currentUser?.uid?.let { userUniqueId ->
@@ -343,7 +374,7 @@ class CreateDriverProfile : Fragment() {
 
             if (it.isSuccessful) {
                 userId = user.uid
-                uploadDetailToRealTimeFirebase()
+                generateUniqueBusName()
 
             } else {
                 fragment_driver_profile_progress_bar.hide(createDriverAccountButton)

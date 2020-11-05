@@ -5,7 +5,7 @@ import com.google.firebase.database.Exclude
 
 data class User(
     @get:Exclude
-    val id: String? = null,
+    var id: String? = null,
     val userId: String? = null,
     var phoneNumber: String? = null,
     var email: String? = null,

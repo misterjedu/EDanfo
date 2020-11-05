@@ -12,8 +12,11 @@ import kotlinx.android.synthetic.main.single_find_bus_layout.view.*
 
 class BusTripRecyclerAdapter(
     private var clickListener: OnBusTripClickListener,
-    private var busTripList: MutableList<BusTrip>
 ) : RecyclerView.Adapter<BusTripRecyclerAdapter.BusTripViewHolder>() {
+
+
+    private var busTripList: MutableList<BusTrip> = mutableListOf()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusTripViewHolder {
         val busTripListView = LayoutInflater.from(parent.context)
@@ -37,7 +40,7 @@ class BusTripRecyclerAdapter(
         var journeyPrice: TextView = itemView.single_find_bus_layout_price_tv
 
         fun initialize(item: BusTrip, action: OnBusTripClickListener) {
-            busId.text = item.busId
+            busId.text = item.busUniqueId
             timeStarted.text = item.timeStarted
             journey.text = item.journey
             journeyPrice.text = item.price.toString()
@@ -47,6 +50,12 @@ class BusTripRecyclerAdapter(
             }
         }
     }
+
+
+    fun addBustTripList(list: MutableList<BusTrip>) {
+        busTripList = list
+    }
+
 
     // OnClick Listener Interface
     interface OnBusTripClickListener {

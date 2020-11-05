@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.firebasedata.DriverDestination
 import com.misterjedu.edanfo.utils.*
@@ -69,13 +70,11 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
         driverDestinationViewModel =
             ViewModelProvider(this).get(DriverDestinationViewModel::class.java)
 
-
         destinationButton = view.create_destination_set_destinaton_button
         destinationProgressBar = view.create_destination_progress_bar
         driverDestination = view.create_destination_final_bustop_et
         driverLocation = view.create_destination_current_bustop_et
         tripCost = view.create_destination_seats_available_et
-
 
         validateFields()
 
@@ -120,6 +119,9 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
 
         val user: FirebaseUser? = firebaseAuth.currentUser
         destinationButton.setOnClickListener {
+
+
+            //TODO BusUniqueId from sharedPreference
             destinationProgressBar.show(destinationButton)
             val destination = user?.uid?.let { it1 ->
                 DriverDestination(
@@ -127,7 +129,10 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
                     it1,
                     driverLocation.text.toString(),
                     driverDestination.text.toString(),
-                    tripCost.text.toString().toInt()
+                    tripCost.text.toString().toInt(),
+                    true,
+                    false,
+                    loadFromSharedPreference(requireActivity(), DRIVERUNIQUEID)
                 )
             }
 

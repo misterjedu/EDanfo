@@ -128,7 +128,6 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         //Observe Delete Journey/Destination
         driverDestinationViewModel.deleteDestinationResult.observe(viewLifecycleOwner, {
             if (it == null) {
-
                 showSnackBar(cancelJourneyButton, "Journey has been Cancelled")
             } else {
                 showSnackBar(cancelJourneyButton, it.message!!)
@@ -139,6 +138,7 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         // Navigate to Add Trip Fragment
         destination_list_add_btn.setOnClickListener {
             val destinationId = activeDestination?.id
+//            val busUniqueId = activeDestination?.
 
             val action = destinationId?.let { it1 ->
                 DestinationListDirections.actionDestinationListToAddNewTripFragment(

@@ -16,12 +16,16 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.firebasedata.DriverDestination
+import com.misterjedu.edanfo.data.firebasedata.DriverDetail
 import com.misterjedu.edanfo.data.firebasedata.Trip
-import com.misterjedu.edanfo.utils.hide
-import com.misterjedu.edanfo.utils.show
-import com.misterjedu.edanfo.utils.swapVisibility
+import com.misterjedu.edanfo.data.firebasedata.User
+import com.misterjedu.edanfo.utils.*
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverTripViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,6 +74,9 @@ class DriverProfile : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //Fetch and save driver unique Id to share Preference
+        fetchDriverUniqueID()
+
 
         driverDetailBox = fragment_driver_profile_trip_detail_box_cl
         launchButton = fragment_drvier_profile_launch_trip_btn
@@ -96,7 +103,6 @@ class DriverProfile : Fragment() {
         launchButton.show()
 
 
-//        Log.i("Destination", destinationId!!)
         //Get Current Active Destination, which is usually newly added destination
         destinationViewModel.activeDestination.observe(viewLifecycleOwner, {
             //TODO( SHOW LOADER HERE UNTIL FIREBASE SENDS RESULT )
@@ -169,6 +175,34 @@ class DriverProfile : Fragment() {
             }
         }
 
+    }
+
+    //Fetch and save driver bus unique id to share preference
+    private fun fetchDriverUniqueID() {
+        if (loadFromSharedPreference(requireActivity(), DRIVERUNIQUEID).isEmpty()) {
+            FirebaseDatabase.getInstance().getReference(DRIVER)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            for (driverSnapShot in snapshot.children) {
+                                val driver = driverSnapShot.getValue(DriverDetail::class.java)
+                                driver?.userId = driverSnapShot.key
+                                //Save driver unique Id to shared preference
+                                if (driver != null && driver.userId == firebaseAuth.currentUser!!.uid) {
+                                    saveToSharedPreference(
+                                        requireActivity(), DRIVERUNIQUEID,
+                                        driver.busUniqueNumber!!
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                })
+        }
     }
 
     private fun getHomePageDetails() {

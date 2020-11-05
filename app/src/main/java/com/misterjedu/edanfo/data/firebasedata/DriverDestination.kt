@@ -10,5 +10,6 @@ data class DriverDestination(
     var finalBustop: String? = null,
     var seats: Int = 0,
     var isActive: Boolean = true,
-    var isCompleted: Boolean = false
+    var isCompleted: Boolean = false,
+    var busUniqueId: String? = null
 )

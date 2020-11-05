@@ -51,6 +51,7 @@ class DriverTripViewModel : ViewModel() {
     }
 
 
+
     //Fetch all Driver Trips
     fun fetchDriverTrips() {
         driverTrips.addListenerForSingleValueEvent(object : ValueEventListener {

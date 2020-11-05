@@ -34,7 +34,7 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/fragment_passenger_home_passenger_profile_name_tv"
             style="@style/TitleBoldText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,12 +115,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView14" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <include
+            android:id="@+id/fragment_passenger_home_no_on_going_trip_includes"
+            layout="@layout/page_passenger_no_activity_found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_passenger_home_active_trip_card_cl"
             style="@style/CustomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:elevation="2dp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent">
 
             <TextView
@@ -225,13 +234,6 @@
                 app:layout_constraintStart_toStartOf="@+id/fragment_passenger_home_passenger_trip_detials_card_cl"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_passenger_home_passenger_trip_detials_card_cl" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <include
-            android:id="@+id/fragment_passenger_home_no_activity_going_on_includes"
-            layout="@layout/page_passenger_no_activity_found"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

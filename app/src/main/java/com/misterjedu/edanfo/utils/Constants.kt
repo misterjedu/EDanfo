@@ -6,6 +6,7 @@ const val DRIVERPHONENUMBER: String = "driverPhoneNumber"
 const val DRIVEREMAILADDRESS: String = "driverEmailAddress"
 const val ONBOARD: String = "onboard"
 const val USERTYPE: String = "userType"
+const val DRIVERUNIQUEID: String = "driverUniqueId"
 
 const val DRIVER_DESTINATION = "driver_destination"
 const val DRIVER_TRIP = "driver_trip"

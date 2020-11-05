@@ -12,4 +12,6 @@ data class Trip(
     var isCompleted: Boolean = false,
     var isCancelled: Boolean? = false,
     var price: Int? = null,
+    var time: String? = null,
+    var busUniqueNumber: String? = null
 )

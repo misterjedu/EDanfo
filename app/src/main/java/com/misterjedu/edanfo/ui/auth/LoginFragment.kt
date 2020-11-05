@@ -133,11 +133,13 @@ class LoginFragment : Fragment() {
                                                 startActivity(intent)
                                                 requireActivity().finish()
                                             } else if (userData != null && userData.userType == PASSENGER && firebaseAuth.currentUser!!.uid == userData.userId) {
+
                                                 saveToSharedPreference(
                                                     requireActivity(),
                                                     USERTYPE,
                                                     PASSENGER
                                                 )
+
                                                 val intent =
                                                     Intent(
                                                         requireContext(),

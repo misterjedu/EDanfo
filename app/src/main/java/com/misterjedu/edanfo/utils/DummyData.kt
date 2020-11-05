@@ -70,10 +70,10 @@ object DummyData {
 
     fun busTripList(): MutableList<BusTrip> {
         return mutableListOf(
-            BusTrip("BUS 001", "12 minutes ago", "Sango to Sagamu", 100),
-            BusTrip("BUS 002", "10 minutes ago", "Egba to IdiIroko", 400),
-            BusTrip("BUS 003", "2 minutes ago", "Ajah to MaryLand", 300),
-            BusTrip("BUS 004", "20 minutes ago", "Ikeja to Osodi", 300),
+//            BusTrip("BUS 001", "12 minutes ago", "Sango to Sagamu", 100),
+//            BusTrip("BUS 002", "10 minutes ago", "Egba to IdiIroko", 400),
+//            BusTrip("BUS 003", "2 minutes ago", "Ajah to MaryLand", 300),
+//            BusTrip("BUS 004", "20 minutes ago", "Ikeja to Osodi", 300),
         )
     }
 }
