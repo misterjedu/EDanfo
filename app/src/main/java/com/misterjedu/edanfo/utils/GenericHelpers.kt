@@ -25,10 +25,8 @@ fun showSnackBar(view: View, message: String) {
 }
 
 fun swapVisibility(viewToHide: View, viewToShow: View) {
-
         viewToHide.visibility = View.GONE
         viewToShow.visibility = View.VISIBLE
-
 }
 
 

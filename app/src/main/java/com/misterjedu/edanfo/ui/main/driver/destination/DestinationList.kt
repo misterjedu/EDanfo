@@ -27,11 +27,15 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
 
     private lateinit var driverCurrDestination: TextView
     private lateinit var driverDestination: TextView
+    private lateinit var numberOfSeats: TextView
     private lateinit var driverTripViewModel: DriverTripViewModel
     private lateinit var cancelJourneyButton: Button
     private lateinit var driverDestinationViewModel: DriverDestinationViewModel
     private var activeDestination: DriverDestination? = null
     private var activeTripList = mutableListOf<Trip>()
+    private lateinit var noActiveDestination: View
+    private lateinit var oneActiveDestination: View
+    private lateinit var noSubTripAdded: View
 
     private lateinit var adapter: DestinationRecyclerAdapter
 
@@ -63,6 +67,11 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         driverCurrDestination = fragment_destination_home_tv
         driverDestination = fragment_destination_destination_tv
         cancelJourneyButton = destination_list_cancel_btn
+        numberOfSeats = fragment_destination_list_trip_status
+        noSubTripAdded = fragment_destinaton_list_no_sub_trip_added_includes
+
+        noActiveDestination = fragment_destination_no_active_destination_includes
+        oneActiveDestination = fragment_destination_sub_trip_body
 
 
         //Get live updates and get the added feed
@@ -74,14 +83,17 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
 //        })
 
 
+        swapVisibility(oneActiveDestination, noActiveDestination)
+
         //Fetch Active Destination
         driverDestinationViewModel.activeDestination.observe(viewLifecycleOwner, {
             if (it != null) {
                 driverCurrDestination.text = it.currentBustop
-                driverDestination.text = it.finalBustop
-                fragment_destination_list_trip_status.text = "One Active Journey"
-                destination_list_add_btn.show()
-                destination_list_cancel_btn.show()
+                driverCurrDestination.text = it.finalBustop
+                numberOfSeats.text = "${it.seats} seats"
+                swapVisibility(noActiveDestination, oneActiveDestination)
+            } else {
+                swapVisibility(oneActiveDestination, noActiveDestination)
             }
             activeDestination = it
         })
@@ -96,6 +108,13 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
             if (it != null) {
                 activeTripList = it
                 adapter.setTripList(it)
+                if (it.size == 0) {
+                    noSubTripAdded.show()
+                } else {
+                    noSubTripAdded.hide()
+                }
+            } else {
+                noSubTripAdded.show()
             }
         })
 
@@ -103,7 +122,6 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         //Observe Delete Journey/Destination
         driverDestinationViewModel.deleteDestinationResult.observe(viewLifecycleOwner, {
             if (it == null) {
-                enableNoDestinationMode()
 
                 showSnackBar(cancelJourneyButton, "Journey has been Cancelled")
             } else {
@@ -150,7 +168,6 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         }
 
 
-        enableNoDestinationMode()
     }
 
 
@@ -165,17 +182,6 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         adapter.setTripList(mutableListOf())
         adapter.notifyDataSetChanged()
     }
-
-
-    private fun enableNoDestinationMode() {
-        //Hide Views for null
-        destination_list_add_btn.hide()
-        destination_list_cancel_btn.hide()
-        driverCurrDestination.text = "Not Available"
-        driverDestination.text = "Not Avaiable"
-        fragment_destination_list_trip_status.text = "No Active Journey"
-    }
-
 
     override fun onItemClick(item: Trip, position: Int) {
         //Delete from Firebase

@@ -159,12 +159,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_driver_profile_activity_card_cl"
             style="@style/CustomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@drawable/white_background"
+            android:backgroundTint="@color/colorLightBackground"
             android:elevation="1dp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -196,7 +199,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary"
+                android:background="@android:color/background_light"
                 android:elevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -210,11 +213,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:backgroundTint="#FFFFFF"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_airline_seat_recline_normal_24"
-                    app:tint="@color/colorPrimary" />
+                    app:srcCompat="@drawable/ic_baseline_airline_seat_recline_normal_24" />
 
                 <TextView
                     android:id="@+id/textView21"
@@ -223,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text="Seats Booked"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@android:color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView11"
                     app:layout_constraintStart_toEndOf="@+id/imageView11"
@@ -236,7 +237,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:text="7"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@android:color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textView21"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -248,11 +249,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:backgroundTint="#FFFFFF"
                     app:layout_constraintStart_toStartOf="@+id/imageView11"
                     app:layout_constraintTop_toBottomOf="@+id/imageView11"
-                    app:srcCompat="@drawable/ic_outline_accessibility_new_24"
-                    app:tint="#B63232" />
+                    app:srcCompat="@drawable/ic_outline_accessibility_new_24" />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -260,7 +259,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Seats Available"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@android:color/black"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView12"
                     app:layout_constraintStart_toStartOf="@+id/textView21"
@@ -272,42 +271,52 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="@+id/textView23"
                     app:layout_constraintEnd_toEndOf="@+id/textView22"
                     app:layout_constraintTop_toTopOf="@+id/textView23" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/fragment_driver_profile_check_orders_btn"
-                    style="@style/PrimaryButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginBottom="16dp"
-                    android:backgroundTint="#FFFFFF"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
                     android:text="Check Orders"
                     android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/fragment_driver_profile_start_trip_button"
                     app:layout_constraintEnd_toEndOf="@+id/textView24"
                     app:layout_constraintHorizontal_bias="0.469"
                     app:layout_constraintStart_toStartOf="@+id/imageView12"
                     app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/fragment_driver_profile_start_trip_button"
                     style="@style/PrimaryButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="32dp"
-                    android:backgroundTint="#FFEB3B"
-                    android:text="Start Trip"
-                    android:textColor="#040404"
+                    android:text="START TRIP"
+                    android:textColor="@android:color/background_light"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/fragment_driver_profile_check_orders_btn"
                     app:layout_constraintStart_toStartOf="@+id/fragment_driver_profile_check_orders_btn" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/fragment_driver_profile_no_activity_going_on_includes"
+            layout="@layout/page_passenger_no_activity_found"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp" />
 
         <Button
             android:id="@+id/fragment_drvier_profile_launch_trip_btn"

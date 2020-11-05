@@ -21,6 +21,7 @@ import com.misterjedu.edanfo.data.firebasedata.DriverDestination
 import com.misterjedu.edanfo.data.firebasedata.Trip
 import com.misterjedu.edanfo.utils.hide
 import com.misterjedu.edanfo.utils.show
+import com.misterjedu.edanfo.utils.swapVisibility
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverTripViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,6 +43,8 @@ class DriverProfile : Fragment() {
     private lateinit var driverTripViewModel: DriverTripViewModel
     private var currentActiveDestination: DriverDestination? = null
     private lateinit var driverDetailBox: ConstraintLayout
+    private lateinit var noOnGoingActivity: View
+    private lateinit var onGoingActivity: View
     private lateinit var launchButton: Button
     private lateinit var tripStatus: TextView
     private var totalAmountEarned: Int = 0
@@ -71,6 +74,8 @@ class DriverProfile : Fragment() {
         driverDetailBox = fragment_driver_profile_trip_detail_box_cl
         launchButton = fragment_drvier_profile_launch_trip_btn
         tripStatus = fragment_driver_profile_trip_status_tv
+        noOnGoingActivity = fragment_driver_profile_no_activity_going_on_includes
+        onGoingActivity = fragment_driver_profile_activity_card_cl
 
         //Instantiate DestinationViewModel
         destinationViewModel = ViewModelProvider(this)
@@ -87,25 +92,21 @@ class DriverProfile : Fragment() {
         driverTripViewModel.fetchDriverTrips()
         driverTripViewModel.getTripsRealTimeUpdate()
 
+        swapVisibility(onGoingActivity, noOnGoingActivity)
+        launchButton.show()
+
 
 //        Log.i("Destination", destinationId!!)
         //Get Current Active Destination, which is usually newly added destination
         destinationViewModel.activeDestination.observe(viewLifecycleOwner, {
             //TODO( SHOW LOADER HERE UNTIL FIREBASE SENDS RESULT )
+            //Set view based on if there's a destination or not
             if (it == null) {
-                Log.i("Destination", "Destination is null")
-//                //If no active trip, show launch button, and show No active until a trip is active
-//                driverDetailBox.hide()
-//                launchButton.show()
-//                tripStatus.setTextColor(resources.getColor(R.color.colorCancelButton))
-//                tripStatus.text = "No Active Trip"
+                swapVisibility(onGoingActivity, noOnGoingActivity)
+                launchButton.show()
             } else {
-                Log.i("Destination", "Destination is not null")
-                //Set view based on if there's a destination or not
-                driverDetailBox.show()
+                swapVisibility(noOnGoingActivity, onGoingActivity)
                 launchButton.hide()
-                tripStatus.setTextColor(resources.getColor(R.color.colorPrimary))
-                tripStatus.text = "Active"
             }
 
             //Update Current Destination and Destination ID
@@ -168,16 +169,6 @@ class DriverProfile : Fragment() {
             }
         }
 
-
-        enableNoDestinationMode()
-    }
-
-    private fun enableNoDestinationMode() {
-        //If no active trip, show launch button, and show No active until a trip is active
-        driverDetailBox.hide()
-        launchButton.show()
-        tripStatus.setTextColor(resources.getColor(R.color.colorCancelButton))
-        tripStatus.text = "No Active Trip"
     }
 
     private fun getHomePageDetails() {
