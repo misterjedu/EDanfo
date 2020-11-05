@@ -87,7 +87,7 @@ class DriverProfile : Fragment() {
 
 
         //Start Getting Newly Destination Real time Updates and fetch all destination details
-        destinationViewModel.fetchDriverDestinations()
+        destinationViewModel.fetchDriverDestinations(firebaseAuth.currentUser!!.uid)
         destinationViewModel.getDestinationRealTimeUpdate()
         driverTripViewModel.fetchDriverTrips()
         driverTripViewModel.getTripsRealTimeUpdate()

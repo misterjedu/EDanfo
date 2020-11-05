@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.adapters.DestinationRecyclerAdapter
@@ -19,12 +20,16 @@ import com.misterjedu.edanfo.data.firebasedata.Trip
 import com.misterjedu.edanfo.utils.*
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverTripViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_driver.*
 import kotlinx.android.synthetic.main.fragment_destination_list.*
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClickListener {
 
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
     private lateinit var driverCurrDestination: TextView
     private lateinit var driverDestination: TextView
     private lateinit var numberOfSeats: TextView
@@ -36,6 +41,7 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
     private lateinit var noActiveDestination: View
     private lateinit var oneActiveDestination: View
     private lateinit var noSubTripAdded: View
+
 
     private lateinit var adapter: DestinationRecyclerAdapter
 
@@ -58,7 +64,7 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
 
 
         //View Model Listener Activators
-        driverDestinationViewModel.fetchDriverDestinations()
+        driverDestinationViewModel.fetchDriverDestinations(firebaseAuth.currentUser!!.uid)
         driverDestinationViewModel.getDestinationRealTimeUpdate()
         driverTripViewModel.fetchDriverTrips()
         driverTripViewModel.getTripsRealTimeUpdate()
@@ -89,7 +95,7 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         driverDestinationViewModel.activeDestination.observe(viewLifecycleOwner, {
             if (it != null) {
                 driverCurrDestination.text = it.currentBustop
-                driverCurrDestination.text = it.finalBustop
+                driverDestination.text = it.finalBustop
                 numberOfSeats.text = "${it.seats} seats"
                 swapVisibility(noActiveDestination, oneActiveDestination)
             } else {

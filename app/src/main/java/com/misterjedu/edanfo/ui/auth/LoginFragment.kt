@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.service.autofill.UserData
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -116,15 +118,7 @@ class LoginFragment : Fragment() {
                                             val userData = childSnapshot.getValue(User::class.java)
 
                                             //Start Corresponding Activity based on User Type and finish Auth activity
-                                            if (userData != null && userData.userType == DRIVER) {
-
-                                                showSnackBar(
-                                                    fragment_login_login_btn,
-                                                    "Login Successful"
-                                                )
-                                                //In case user wants to sign in as another user type
-                                                //save the user type here again
-
+                                            if (userData != null && userData.userType == DRIVER && firebaseAuth.currentUser!!.uid == userData.userId) {
                                                 saveToSharedPreference(
                                                     requireActivity(),
                                                     USERTYPE,
@@ -138,8 +132,7 @@ class LoginFragment : Fragment() {
                                                     )
                                                 startActivity(intent)
                                                 requireActivity().finish()
-                                            } else if (userData != null && userData.userType == PASSENGER) {
-
+                                            } else if (userData != null && userData.userType == PASSENGER && firebaseAuth.currentUser!!.uid == userData.userId) {
                                                 saveToSharedPreference(
                                                     requireActivity(),
                                                     USERTYPE,
@@ -152,6 +145,11 @@ class LoginFragment : Fragment() {
                                                     )
                                                 startActivity(intent)
                                                 requireActivity().finish()
+                                            } else {
+                                                showSnackBar(
+                                                    fragment_login_login_btn,
+                                                    "An error occurred"
+                                                )
                                             }
                                         }
 

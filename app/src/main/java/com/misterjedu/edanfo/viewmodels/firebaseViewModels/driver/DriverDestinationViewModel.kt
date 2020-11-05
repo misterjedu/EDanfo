@@ -96,7 +96,7 @@ class DriverDestinationViewModel : ViewModel() {
 
 
     //Get the Current/active destination trip
-    fun fetchDriverDestinations() {
+    fun fetchDriverDestinations(driverId: String) {
         driverDestinationDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -105,14 +105,14 @@ class DriverDestinationViewModel : ViewModel() {
                             destinationSnapShot.getValue(DriverDestination::class.java)
                         singleDestination?.id = destinationSnapShot.key
 
-                        if (singleDestination != null && singleDestination.isActive) {
+                        if (singleDestination != null && singleDestination.isActive && singleDestination.driverId == driverId) {
                             _activeDestination.value = singleDestination
 
                         } else {
                             _activeDestination.value = null
                         }
 
-                        if (singleDestination != null && singleDestination.isCompleted) {
+                        if (singleDestination != null && singleDestination.isCompleted && singleDestination.driverId == driverId) {
                             _completedDestination.value?.add(singleDestination)
                         }
 

@@ -74,6 +74,7 @@
                     android:text="Empty"
                     app:layout_constraintBottom_toBottomOf="@+id/fragment_destination_home_tv"
                     app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                    app:layout_constraintStart_toStartOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                 <TextView
