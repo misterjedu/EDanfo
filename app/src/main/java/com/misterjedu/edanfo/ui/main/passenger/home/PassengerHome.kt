@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.fragment_passenger_home.*
 
 class PassengerHome : Fragment() {
 
-    private lateinit var findBusButton: Button
     private lateinit var cancelTripButton: Button
 
     override fun onCreateView(
@@ -26,12 +25,7 @@ class PassengerHome : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        findBusButton = fragment_passenger_home_find_a_bus_button
         cancelTripButton = fragment_passenger_home_cance_trip_button
-
-        findBusButton.setOnClickListener {
-            findNavController().navigate(R.id.action_passengerHome_to_passengerFindBus)
-        }
 
 
     }

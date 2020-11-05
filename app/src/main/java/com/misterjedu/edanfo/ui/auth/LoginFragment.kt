@@ -105,7 +105,6 @@ class LoginFragment : Fragment() {
 
         firebaseAuth.signInWithEmailAndPassword(userEmail, userPassWord)
             .addOnCompleteListener {
-                fragment_login_progress_bar.hide(fragment_login_login_btn)
                 if (it.isSuccessful) {
                     if (firebaseAuth.currentUser != null) {
                         //Fetch User type from RealTime Firebase
@@ -118,6 +117,20 @@ class LoginFragment : Fragment() {
 
                                             //Start Corresponding Activity based on User Type and finish Auth activity
                                             if (userData != null && userData.userType == DRIVER) {
+
+                                                showSnackBar(
+                                                    fragment_login_login_btn,
+                                                    "Login Successful"
+                                                )
+                                                //In case user wants to sign in as another user type
+                                                //save the user type here again
+
+                                                saveToSharedPreference(
+                                                    requireActivity(),
+                                                    USERTYPE,
+                                                    DRIVER
+                                                )
+
                                                 val intent =
                                                     Intent(
                                                         requireContext(),
@@ -126,6 +139,12 @@ class LoginFragment : Fragment() {
                                                 startActivity(intent)
                                                 requireActivity().finish()
                                             } else if (userData != null && userData.userType == PASSENGER) {
+
+                                                saveToSharedPreference(
+                                                    requireActivity(),
+                                                    USERTYPE,
+                                                    PASSENGER
+                                                )
                                                 val intent =
                                                     Intent(
                                                         requireContext(),
@@ -140,6 +159,7 @@ class LoginFragment : Fragment() {
                                 }
 
                                 override fun onCancelled(error: DatabaseError) {
+                                    fragment_login_progress_bar.hide(fragment_login_login_btn)
                                     showSnackBar(fragment_login_login_btn, error.message)
                                 }
                             })
@@ -185,12 +205,20 @@ class LoginFragment : Fragment() {
     //If User is already Logged in, Go straight to the Dashboard
     override fun onStart() {
         super.onStart()
-        if (loadFromSharedPreference(requireActivity(), USERTYPE) == DRIVER) {
+        if (firebaseAuth.currentUser != null && loadFromSharedPreference(
+                requireActivity(),
+                USERTYPE
+            ) == DRIVER
+        ) {
             val intent =
                 Intent(requireContext(), DriverActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
-        } else if (loadFromSharedPreference(requireActivity(), USERTYPE) == PASSENGER) {
+        } else if (firebaseAuth.currentUser != null && loadFromSharedPreference(
+                requireActivity(),
+                USERTYPE
+            ) == PASSENGER
+        ) {
             val intent =
                 Intent(requireContext(), PassengerActivity::class.java)
             startActivity(intent)

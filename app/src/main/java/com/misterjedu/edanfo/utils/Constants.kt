@@ -4,7 +4,7 @@ package com.misterjedu.edanfo.utils
 const val SHARED_PREFS: String = "sharedPrefs"
 const val DRIVERPHONENUMBER: String = "driverPhoneNumber"
 const val DRIVEREMAILADDRESS: String = "driverEmailAddress"
-const val ONBOARD : String = "onboardingStatus"
+const val ONBOARD: String = "onboard"
 const val USERTYPE: String = "userType"
 
 const val DRIVER_DESTINATION = "driver_destination"

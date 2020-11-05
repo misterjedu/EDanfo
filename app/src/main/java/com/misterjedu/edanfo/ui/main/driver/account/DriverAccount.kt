@@ -1,5 +1,6 @@
 package com.misterjedu.edanfo.ui.main.driver.account
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.utils.checkItem
 import kotlinx.android.synthetic.main.activity_driver.*
@@ -43,6 +45,22 @@ class DriverAccount : Fragment() {
 
         driver_account_withdrawal_settings_card_ll.setOnClickListener {
             findNavController().navigate(R.id.action_driverAccount_to_fragmentDriverWithdrawalSettings)
+        }
+
+
+        driver_account_logout_card_ll.setOnClickListener {
+
+            AlertDialog.Builder(requireContext()).apply {
+                setTitle("Are you sure")
+                setPositiveButton("Yes") { _, _ ->
+                    FirebaseAuth.getInstance().signOut()
+                    requireActivity().finish()
+                }
+                setNegativeButton("No") { _, _ ->
+                }.create().show()
+
+            }
+
         }
 
 //        Navigate to Driver home on Back Press

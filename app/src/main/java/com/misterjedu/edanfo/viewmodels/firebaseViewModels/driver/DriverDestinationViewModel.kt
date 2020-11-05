@@ -1,4 +1,4 @@
-package com.misterjedu.edanfo.viewmodels.firebaseViewModels
+package com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

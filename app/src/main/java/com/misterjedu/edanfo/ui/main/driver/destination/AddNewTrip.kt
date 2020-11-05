@@ -15,8 +15,8 @@ import androidx.navigation.fragment.navArgs
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.firebasedata.Trip
 import com.misterjedu.edanfo.utils.*
-import com.misterjedu.edanfo.viewmodels.firebaseViewModels.DriverDestinationViewModel
-import com.misterjedu.edanfo.viewmodels.firebaseViewModels.DriverTripViewModel
+import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
+import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverTripViewModel
 import kotlinx.android.synthetic.main.fragment_add_new_trip.*
 
 class AddNewTrip : Fragment() {

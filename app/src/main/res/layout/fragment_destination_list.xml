@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:visibility="visible"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
@@ -19,7 +20,8 @@
             android:id="@+id/fragment_destination_sub_trip_body"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -69,7 +71,7 @@
                     android:id="@+id/fragment_destination_destination_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No Destination"
+                    android:text="Empty"
                     app:layout_constraintBottom_toBottomOf="@+id/fragment_destination_home_tv"
                     app:layout_constraintEnd_toEndOf="@+id/imageView3"
                     app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -96,7 +98,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="NO ACTIVE JOURNEY"
+                    android:text="EMPTY"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -118,6 +120,12 @@
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <include
+                android:id="@+id/fragment_destinaton_list_no_sub_trip_added_includes"
+                layout="@layout/page_driver_no_sub_trip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/destination_list_recyclerView"
@@ -171,11 +179,12 @@
         </LinearLayout>
 
         <include
-            android:id="@+id/fragment_destination_loading_spinner"
-            layout="@layout/loading_spinner"
+            android:id="@+id/fragment_destination_no_active_destination_includes"
+            layout="@layout/page_driver_no_active_destination"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:visibility="gone" />
+
     </LinearLayout>
 
 

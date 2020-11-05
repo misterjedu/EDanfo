@@ -54,10 +54,11 @@ class OnBoardingFragment : Fragment() {
         }.attach()
 
         fragment_onboarding_getStarted_btn.setOnClickListener {
+            saveToSharedPreference(requireActivity(), ONBOARD, "true")
             findNavController().navigate(R.id.loginFragment)
         }
 
-        saveToSharedPreference(requireActivity(), ONBOARD, "true")
+
     }
 
 

@@ -389,7 +389,7 @@ class CreatePassengerProfile : Fragment() {
                 .child(userUniqueId)
                 .setValue(userDetail).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        FirebaseDatabase.getInstance().getReference(DRIVER)
+                        FirebaseDatabase.getInstance().getReference(PASSENGER)
                             .child(userUniqueId).setValue(passengerDetail)
                             .addOnCompleteListener { passengerUpload ->
 

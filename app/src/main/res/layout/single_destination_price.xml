@@ -55,14 +55,15 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:drawablePadding="10dp"
         android:gravity="center"
         android:text="Price"
         android:textSize="12sp"
         app:drawableTint="@color/colorPrimary"
         app:layout_constraintEnd_toStartOf="@+id/single_destination_price_delete_button"
-        app:layout_constraintTop_toTopOf="@+id/single_destination_price_delete_button" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/single_destination_destination_tv"
@@ -81,24 +82,25 @@
         android:id="@+id/single_destination_price_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/poppins"
         android:text="N100"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/single_destination_price_delete_button"
-        app:layout_constraintEnd_toEndOf="@+id/textView11" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <ImageView
         android:id="@+id/single_destination_price_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/backarrow_round_background"
         android:backgroundTint="@color/colorCancelButton"
-        android:padding="12dp"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

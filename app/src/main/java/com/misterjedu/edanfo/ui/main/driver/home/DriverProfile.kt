@@ -21,8 +21,8 @@ import com.misterjedu.edanfo.data.firebasedata.DriverDestination
 import com.misterjedu.edanfo.data.firebasedata.Trip
 import com.misterjedu.edanfo.utils.hide
 import com.misterjedu.edanfo.utils.show
-import com.misterjedu.edanfo.viewmodels.firebaseViewModels.DriverDestinationViewModel
-import com.misterjedu.edanfo.viewmodels.firebaseViewModels.DriverTripViewModel
+import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
+import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverTripViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_driver_profile.*

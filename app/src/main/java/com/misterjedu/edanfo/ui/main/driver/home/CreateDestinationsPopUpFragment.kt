@@ -19,10 +19,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.firebasedata.DriverDestination
 import com.misterjedu.edanfo.utils.*
-import com.misterjedu.edanfo.viewmodels.firebaseViewModels.DriverDestinationViewModel
+import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_destinations.view.*
-import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 @AndroidEntryPoint

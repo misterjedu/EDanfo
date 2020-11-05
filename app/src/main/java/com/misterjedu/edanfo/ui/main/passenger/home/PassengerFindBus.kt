@@ -43,11 +43,6 @@ class PassengerFindBus : Fragment(), BusTripRecyclerAdapter.OnBusTripClickListen
         findBusRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
 
-
-
-        fragment_passenger_find_bus__back_arrow_iv.setOnClickListener {
-            findNavController().popBackStack()
-        }
     }
 
 

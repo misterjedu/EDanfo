@@ -1,5 +1,6 @@
 package com.misterjedu.edanfo.ui.main.passenger.account
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.misterjedu.edanfo.R
 import kotlinx.android.synthetic.main.fragment_passenger_account.*
 
@@ -52,5 +54,20 @@ class PassengerAccount : Fragment() {
         changePasswordCard.setOnClickListener {
             findNavController().navigate(R.id.action_passengerAccount_to_changePasswordFragment)
         }
+
+        passenger_account_logout_card_ll.setOnClickListener {
+            AlertDialog.Builder(requireContext()).apply {
+                setTitle("Are you sure")
+                setPositiveButton("Yes") { _, _ ->
+                    FirebaseAuth.getInstance().signOut()
+                    requireActivity().finish()
+                }
+                setNegativeButton("No") { _, _ ->
+                }.create().show()
+
+
+            }
+        }
+
     }
 }
