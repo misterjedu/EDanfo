@@ -7,5 +7,5 @@ enum class EditField {
     EMAIL,
     PHONE,
     AMOUNT,
-    PAYMENT
+    PAYMENT,
 }

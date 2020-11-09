@@ -60,6 +60,11 @@ class PassengerFindBus : Fragment(), BusTripRecyclerAdapter.OnBusTripClickListen
 
         validateFields()
 
+        //Feed Recycler Adapter with Data
+        adapter = BusTripRecyclerAdapter(this)
+        findBusRecyclerView.adapter = adapter
+        findBusRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
 
         //Initialize Driver View model
         driverTripViewModel = ViewModelProvider(this).get(PassengerTripViewModel::class.java)
@@ -72,6 +77,8 @@ class PassengerFindBus : Fragment(), BusTripRecyclerAdapter.OnBusTripClickListen
                 destinationEditText.text.toString()
             )
 
+            destinationEditText.clearFocus()
+            currLocationEditText.clearFocus()
             //Disable button and show progress bar
             searchProgressBar.show(searchTripButton)
         }
@@ -90,23 +97,21 @@ class PassengerFindBus : Fragment(), BusTripRecyclerAdapter.OnBusTripClickListen
             //Disable button and show progress bar
             searchProgressBar.hide(searchTripButton)
 
-            showSnackBar(searchTripButton, " Array size ${it.size}")
-
-
-            //Feed Recycler Adapter with Data
-            adapter = BusTripRecyclerAdapter(this)
-            findBusRecyclerView.adapter = adapter
-            findBusRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
             if (it != null) {
                 activeTripList = it
                 val busTrips = mutableListOf<BusTrip>()
 
                 for (trip in activeTripList) {
+
+                    val currentTIme = getFormattedDate(getCurrentTimeStamp())
+                    val timeStarted = getFormattedDate(trip.time!!)
+                    val time = getTimeDifference(timeStarted, currentTIme)
+
                     busTrips.add(
                         BusTrip(
                             trip.busUniqueNumber!!,
-                            trip.time!!,
+                            time,
                             "${trip.location!!.capitalize(Locale.ROOT)} to ${
                                 trip.destination!!.capitalize(Locale.ROOT)
                             }",
@@ -115,7 +120,13 @@ class PassengerFindBus : Fragment(), BusTripRecyclerAdapter.OnBusTripClickListen
                     )
                 }
 
+                //Feed Recycler Adapter with Data
+                adapter = BusTripRecyclerAdapter(this)
+                findBusRecyclerView.adapter = adapter
+                findBusRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
                 adapter.addBustTripList(busTrips)
+                adapter.notifyDataSetChanged()
 
                 if (it.size == 0) {
                     noTripFoundCard.show()
@@ -129,14 +140,17 @@ class PassengerFindBus : Fragment(), BusTripRecyclerAdapter.OnBusTripClickListen
         })
     }
 
+
+
+
     private fun validateFields() {
+
         currLocationEditText.watchToValidate(EditField.NAME, currLocationTil)
         destinationEditText.watchToValidate(EditField.NAME, destinationTil)
-
-
         currLocationEditText.addTextChangedListener(watcher)
         destinationEditText.addTextChangedListener(watcher)
     }
+
 
     private val watcher: TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

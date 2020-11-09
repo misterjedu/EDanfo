@@ -94,8 +94,8 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
         //Fetch Active Destination
         driverDestinationViewModel.activeDestination.observe(viewLifecycleOwner, {
             if (it != null) {
-                driverCurrDestination.text = it.currentBustop
-                driverDestination.text = it.finalBustop
+                driverCurrDestination.text = it.currentBuStop
+                driverDestination.text = it.finalBuStop
                 numberOfSeats.text = "${it.seats} seats"
                 swapVisibility(noActiveDestination, oneActiveDestination)
             } else {

@@ -21,16 +21,15 @@ class DriverDestinationViewModel : ViewModel() {
     val deleteDestinationResult: LiveData<Exception?>
         get() = _deleteDestinationResult
 
-
-//    //Get active destination / full trip
-//    private val _activeDestination = MutableLiveData<DriverDestination?>()
-//    val activeDestination: LiveData<DriverDestination?>
-//        get() = _activeDestination
-
     //New Destination
     private val _activeDestination = MutableLiveData<DriverDestination?>()
     val activeDestination: LiveData<DriverDestination?>
         get() = _activeDestination
+
+    //New Destination
+    private val _changedDestination = MutableLiveData<DriverDestination?>()
+    val changedDestination: LiveData<DriverDestination?>
+        get() = _changedDestination
 
 
     //  //Get active destination / full trip
@@ -63,6 +62,7 @@ class DriverDestinationViewModel : ViewModel() {
         override fun onCancelled(error: DatabaseError) {}
         override fun onChildMoved(snapshot: DataSnapshot, p1: String?) {}
         override fun onChildChanged(snapshot: DataSnapshot, p1: String?) {}
+
         override fun onChildRemoved(snapshot: DataSnapshot) {}
 
         override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {
@@ -73,7 +73,6 @@ class DriverDestinationViewModel : ViewModel() {
             } else {
                 _activeDestination.value = null
             }
-
         }
     }
 

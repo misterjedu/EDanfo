@@ -13,11 +13,6 @@ class DriverTripViewModel : ViewModel() {
     private val driverTrips = FirebaseDatabase.getInstance().getReference(DRIVER_TRIP)
 
 
-    //Just added trip object
-    private val _addedTrip = MutableLiveData<Trip?>()
-    val addedTrip: LiveData<Trip?>
-        get() = _addedTrip
-
     // Exception when trip is added. If exception is added, then the adding was successful
     private val _tripResult = MutableLiveData<Exception?>()
     val tripResult: LiveData<Exception?>
@@ -49,7 +44,6 @@ class DriverTripViewModel : ViewModel() {
                 }
             }
     }
-
 
 
     //Fetch all Driver Trips
@@ -87,18 +81,19 @@ class DriverTripViewModel : ViewModel() {
         })
     }
 
+
     // Listen to events on Trips children
     private val childEventListener = object : ChildEventListener {
         override fun onCancelled(error: DatabaseError) {}
         override fun onChildMoved(snapshot: DataSnapshot, p1: String?) {}
-        override fun onChildChanged(snapshot: DataSnapshot, p1: String?) {}
-        override fun onChildRemoved(snapshot: DataSnapshot) {}
-
-        override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {
-            val trip = snapshot.getValue(Trip::class.java)
-            trip?.id = snapshot.key
-            _addedTrip.value = trip
+        override fun onChildChanged(snapshot: DataSnapshot, p1: String?) {
+//            val trip = snapshot.getValue(Trip::class.java)
+//            trip?.id = snapshot.key
+//
         }
+
+        override fun onChildRemoved(snapshot: DataSnapshot) {}
+        override fun onChildAdded(snapshot: DataSnapshot, p1: String?) {}
     }
 
     //Get real time updates on trips added

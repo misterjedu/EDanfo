@@ -1,7 +1,6 @@
 package com.misterjedu.edanfo.ui.main.driver.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,8 +23,8 @@ import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.data.firebasedata.DriverDestination
 import com.misterjedu.edanfo.data.firebasedata.DriverDetail
 import com.misterjedu.edanfo.data.firebasedata.Trip
-import com.misterjedu.edanfo.data.firebasedata.User
 import com.misterjedu.edanfo.utils.*
+import com.misterjedu.edanfo.viewmodels.firebaseViewModels.OrdersViewModel
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverTripViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,10 +44,13 @@ class DriverProfile : Fragment() {
     private var destinationId: String? = null
     private lateinit var destinationViewModel: DriverDestinationViewModel
     private lateinit var driverTripViewModel: DriverTripViewModel
+    private lateinit var orderViewModel: OrdersViewModel
     private var currentActiveDestination: DriverDestination? = null
     private lateinit var driverDetailBox: ConstraintLayout
     private lateinit var noOnGoingActivity: View
     private lateinit var onGoingActivity: View
+    private lateinit var seatsBookedTextView: TextView
+    private lateinit var seatsAvailableTextView: TextView
     private lateinit var launchButton: Button
     private lateinit var tripStatus: TextView
     private var totalAmountEarned: Int = 0
@@ -83,14 +85,20 @@ class DriverProfile : Fragment() {
         tripStatus = fragment_driver_profile_trip_status_tv
         noOnGoingActivity = fragment_driver_profile_no_activity_going_on_includes
         onGoingActivity = fragment_driver_profile_activity_card_cl
+        seatsBookedTextView = fragment_driver_profile_seats_booked_tv
+        seatsAvailableTextView = fragment_driver_profile_seats_available_tv
 
-        //Instantiate DestinationViewModel
+
+        //Instantiate View Models
+
         destinationViewModel = ViewModelProvider(this)
             .get(DriverDestinationViewModel::class.java)
 
-
         driverTripViewModel = ViewModelProvider(this)
             .get(DriverTripViewModel::class.java)
+
+        orderViewModel = ViewModelProvider(this)
+            .get(OrdersViewModel::class.java)
 
 
         //Start Getting Newly Destination Real time Updates and fetch all destination details
@@ -119,9 +127,33 @@ class DriverProfile : Fragment() {
             if (it != null) {
                 destinationId = it.id
                 currentActiveDestination = it
+
+                //Start Orders Query
+                orderViewModel.getOrderUpdate(destinationId!!)
+                orderViewModel.fetchAllOrders(destinationId!!)
             }
 
         })
+
+        //Listen to Order Update from Passengers
+        orderViewModel.orderChange.observe(viewLifecycleOwner, {
+
+
+        })
+
+        //Listen to list of all ongoing orders
+        orderViewModel.onGoingOrders.observe(viewLifecycleOwner, {
+            if (it != null && currentActiveDestination != null) {
+
+                val seatsBooked = it.size
+                val seatsAvailable = currentActiveDestination?.seats?.minus(seatsBooked)
+
+                seatsBookedTextView.text = seatsBooked.toString()
+                seatsAvailableTextView.text = seatsAvailable.toString()
+
+            }
+        })
+
 
         //Observe Total Completed Destinations
         destinationViewModel.completedDestination.observe(viewLifecycleOwner, {

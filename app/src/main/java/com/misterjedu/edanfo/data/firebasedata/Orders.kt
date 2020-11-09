@@ -1,11 +1,15 @@
 package com.misterjedu.edanfo.data.firebasedata
 
-import java.sql.Timestamp
+import com.google.firebase.database.Exclude
 
-
-data class orders(
+data class Orders(
+    @get: Exclude
     var id: String? = null,
-    var place: String? = null,
-    var timestamp: Timestamp = Timestamp(System.currentTimeMillis()),
-    var cancelled: Boolean = false
+    var destinationId: String? = null,
+    var passengerName: String? = null,
+    var trip: String? = null,
+    var timestamp: String? = null,
+    var isCancelled: Boolean? = false,
+    var isCompleted: Boolean? = false,
+    var isPaid: Boolean? = false,
 )

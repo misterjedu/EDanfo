@@ -12,7 +12,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,6 +22,7 @@ import com.misterjedu.edanfo.utils.*
 import com.misterjedu.edanfo.viewmodels.firebaseViewModels.driver.DriverDestinationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_destinations.view.*
+import java.util.Observer
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,7 +43,7 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        driverDestinationViewModel.result.observe(requireActivity(), Observer {
+        driverDestinationViewModel.result.observe(requireActivity(), {
             if (it == null) {
                 showSnackBar(destinationButton, "Successfully Added")
                 dismiss()
@@ -120,8 +120,6 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
         val user: FirebaseUser? = firebaseAuth.currentUser
         destinationButton.setOnClickListener {
 
-
-            //TODO BusUniqueId from sharedPreference
             destinationProgressBar.show(destinationButton)
             val destination = user?.uid?.let { it1 ->
                 DriverDestination(
@@ -131,8 +129,9 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
                     driverDestination.text.toString(),
                     tripCost.text.toString().toInt(),
                     true,
-                    false,
-                    loadFromSharedPreference(requireActivity(), DRIVERUNIQUEID)
+                    isStarted = false,
+                    isCompleted = false,
+                    busUniqueId = loadFromSharedPreference(requireActivity(), DRIVERUNIQUEID),
                 )
             }
 
@@ -141,8 +140,6 @@ class CreateDestinationsPopUpFragment : AppCompatDialogFragment() {
             } else {
                 showSnackBar(destinationButton, "Something went Wrong")
             }
-
         }
-
     }
 }

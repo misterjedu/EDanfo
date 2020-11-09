@@ -212,7 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_baseline_airline_seat_recline_normal_24" />
@@ -231,7 +231,7 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/fragment_driver_profile_seats_booked_tv"
                     style="@style/BoldNormalText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -266,14 +266,14 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/fragment_driver_profile_seats_available_tv"
                     style="@style/BoldNormalText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5"
                     android:textColor="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                    app:layout_constraintEnd_toEndOf="@+id/textView22"
+                    app:layout_constraintEnd_toEndOf="@+id/fragment_driver_profile_seats_booked_tv"
                     app:layout_constraintTop_toTopOf="@+id/textView23" />
 
                 <com.google.android.material.button.MaterialButton
@@ -290,7 +290,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/fragment_driver_profile_start_trip_button"
-                    app:layout_constraintEnd_toEndOf="@+id/textView24"
+                    app:layout_constraintEnd_toEndOf="@+id/fragment_driver_profile_seats_available_tv"
                     app:layout_constraintHorizontal_bias="0.469"
                     app:layout_constraintStart_toStartOf="@+id/imageView12"
                     app:layout_constraintTop_toBottomOf="@+id/imageView12" />

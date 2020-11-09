@@ -31,6 +31,7 @@ import com.misterjedu.edanfo.data.firebasedata.DriverDetail
 import com.misterjedu.edanfo.data.firebasedata.User
 import com.misterjedu.edanfo.ui.main.driver.DriverActivity
 import com.misterjedu.edanfo.utils.*
+import com.misterjedu.edanfo.utils.AllFormValidator.setEditFieldsToWatch
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_driver_profile.*
 import java.io.InputStream
@@ -143,13 +144,22 @@ class CreateDriverProfile : Fragment() {
 
 
         //Watch every text field and enable button when all fields are validated.
-        firstNameEditText.addTextChangedListener(watcher);
-        lastNameEditText.addTextChangedListener(watcher);
-        phoneNumberEditText.addTextChangedListener(watcher)
-        fragment_driver_email_et.addTextChangedListener(watcher);
-        fragment_driver_plate_number_et.addTextChangedListener(watcher);
-        fragment_driver_password_et.addTextChangedListener(watcher);
-        fragment_driver_repeat_password_et.addTextChangedListener(watcher);
+//        firstNameEditText.addTextChangedListener(watcher);
+//        lastNameEditText.addTextChangedListener(watcher);
+//        phoneNumberEditText.addTextChangedListener(watcher)
+//        fragment_driver_email_et.addTextChangedListener(watcher);
+//        fragment_driver_plate_number_et.addTextChangedListener(watcher);
+//        fragment_driver_password_et.addTextChangedListener(watcher);
+//        fragment_driver_repeat_password_et.addTextChangedListener(watcher);
+
+
+        setEditFieldsToWatch(
+            mutableMapOf(
+                firstNameEditText to EditField.NAME,
+                lastNameEditText to EditField.NAME,
+                phoneNumberEditText to EditField.PHONE
+            ), createDriverAccountButton
+        )
 
     }
 
@@ -325,6 +335,7 @@ class CreateDriverProfile : Fragment() {
                                     val intent =
                                         Intent(requireContext(), DriverActivity::class.java)
                                     startActivity(intent)
+
                                 } else {
                                     fragment_driver_profile_progress_bar.hide(
                                         createDriverAccountButton

@@ -83,7 +83,8 @@ class AddNewTrip : Fragment() {
             }
         })
 
-        //TODO( "Add Bus Unique Number")
+
+        //Add a new trip or SubTrip
         addTripButton.setOnClickListener {
             val trip = Trip(
                 null,
@@ -91,11 +92,11 @@ class AddNewTrip : Fragment() {
                 driverCurrentBustop.text.toString(),
                 driverDestination.text.toString(),
                 true,
-                false,
-                false,
-                driverTripPrice.text.toString().toInt(),
-                getCurrentTimeStamp(),
-                loadFromSharedPreference(requireActivity(), DRIVERUNIQUEID)
+                isCompleted = false,
+                isCancelled = false,
+                price = driverTripPrice.text.toString().toInt(),
+                time = getCurrentTimeStamp(),
+                busUniqueNumber = loadFromSharedPreference(requireActivity(), DRIVERUNIQUEID)
             )
 
             //Add A trip to Firebase

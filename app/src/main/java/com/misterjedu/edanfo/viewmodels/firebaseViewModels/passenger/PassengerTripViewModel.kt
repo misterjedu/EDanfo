@@ -33,11 +33,12 @@ class PassengerTripViewModel : ViewModel() {
                         val trip = tripSnapShot.getValue(Trip::class.java)
                         trip?.id = tripSnapShot.key
 
-                        if (trip != null && trip.isActive &&
-                            !trip.isCompleted &&
-                            !trip.isCancelled!!
-//                             &&trip.destination == destination ||
-//                            trip!!.location == location
+                        if ((trip != null && trip.isActive &&
+                                    !trip.isCompleted &&
+                                    !trip.isCancelled!!)
+                            &&
+                            (trip.destination == destination ||
+                                    trip.location == location)
                         ) {
                             onGoingTripList.add(trip)
                         }
