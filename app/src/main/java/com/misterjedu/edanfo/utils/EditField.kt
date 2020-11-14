@@ -9,3 +9,15 @@ enum class EditField {
     AMOUNT,
     PAYMENT,
 }
+
+
+class EditFieldCreator(val constants: ArrayList<String> = arrayListOf()) {
+
+    var enumConstants = constants
+
+   fun createEnum(){
+
+   }
+
+
+}

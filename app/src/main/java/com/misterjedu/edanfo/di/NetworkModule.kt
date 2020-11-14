@@ -28,6 +28,7 @@ class NetworkModule {
     }
 
 
+
 //    @Provides
 //    @Singleton
 //    fun provideFirebaseUser(): FirebaseUser {

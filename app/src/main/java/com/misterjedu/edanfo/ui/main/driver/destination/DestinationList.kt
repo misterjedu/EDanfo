@@ -167,7 +167,6 @@ class DestinationList : Fragment(), DestinationRecyclerAdapter.OnDestinationClic
                     activeDestination?.id
                 )
                 findNavController().navigate(action)
-
             } else {
                 findNavController().popBackStack()
             }
