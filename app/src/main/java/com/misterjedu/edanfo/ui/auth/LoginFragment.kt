@@ -52,17 +52,20 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        validateField()
+
 
         driverInputEmail = fragment_login_email_et
         driverInputPassword = fragment_login_password_et
         logInButton = fragment_login_login_btn
+
+        validateField()
 
 
         // Load Header Image with Glide
         Glide.with(this)
             .load(R.drawable.danfo_curved_bg_2)
             .into(fragment_sign_up_header_img)
+
 
         // Navigate to PhoneActivationFragment to SignUpFragment
         fragment_login_create_my_account_tv.setOnClickListener {
@@ -73,9 +76,10 @@ class LoginFragment : Fragment() {
         }
 
 
-        // Login and Start Activity for Driver
+//        // Login and Start Activity for Driver
         fragment_login_login_btn.setOnClickListener {
-            userLogin()
+//            validateField()
+//            userLogin()
         }
 
         // Navigate to PhoneActivationFragment to change Password
@@ -178,29 +182,33 @@ class LoginFragment : Fragment() {
 
 
     private fun validateField() {
-        fragment_login_email_et.watchToValidate(
-            EditField.EMAIL,
-            fragment_login_email_text_layout_tl,
+
+        val fields: MutableList<JeduFormData> = mutableListOf(
+            JeduFormData(
+                editText = driverInputEmail,
+                editTextInputLayout = fragment_login_email_text_layout_tl,
+                errorMessage = JeduErrorMessageConstants.INVALID_EMAIL_ERROR,
+                validator = { it.validateEmail(it.text.toString()) }
+
+            ),
+            JeduFormData(
+                editText = driverInputPassword,
+                editTextInputLayout = fragment_login_password_til,
+                errorMessage = JeduErrorMessageConstants.INVALID_PASSWORD_ERROR,
+                validator = { it.validatePassword(it.text.toString()) }
+            )
         )
 
-        fragment_login_password_et.watchToValidate(
-            EditField.PASSWORD, fragment_login_password_til
-        )
 
-        fragment_login_email_et.addTextChangedListener(watcher)
-        fragment_login_password_et.addTextChangedListener(watcher)
+        JeduFormValidator.Builder()
+            .addFieldsToValidate(fields)
+            .viewsToEnable(mutableListOf(logInButton))
+            .watchWhileTyping(true)
+            .setErrorIcon(R.drawable.ic_baseline_check_circle)
+            .shouldShowErrorIcon(true)
+            .build()
     }
 
-
-    private val watcher: TextWatcher = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-        override fun afterTextChanged(s: Editable) {
-            fragment_login_login_btn.isEnabled =
-                !(!validateEmail(fragment_login_email_et.text.toString()) or
-                        !validatePassword(fragment_login_password_et.text.toString().trim()))
-        }
-    }
 
     //If User is already Logged in, Go straight to the Dashboard
     override fun onStart() {

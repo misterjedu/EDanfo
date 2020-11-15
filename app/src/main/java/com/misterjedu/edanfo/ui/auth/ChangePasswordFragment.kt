@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.misterjedu.edanfo.R
+import com.misterjedu.edanfo.utils.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class ChangePasswordFragment : Fragment() {
 
@@ -27,5 +29,36 @@ class ChangePasswordFragment : Fragment() {
         Glide.with(this)
             .load(R.drawable.danfo_curved_bg_2)
             .into(fragment_change_password_header_img)
+
+
+        validateFields()
+    }
+
+    private fun validateFields() {
+
+        val fields: MutableList<JeduFormData> = mutableListOf(
+            JeduFormData(
+                editText = fragment_change_password_new_password_et,
+                editTextInputLayout = fragment_login_email_text_layout_tl,
+                errorMessage = JeduErrorMessageConstants.INVALID_EMAIL_ERROR,
+                validator = { it.validateEmail(it.text.toString()) }
+
+            ),
+            JeduFormData(
+                editText = fragment_change_password_confirm_password_et,
+                editTextInputLayout = fragment_login_password_til,
+                errorMessage = JeduErrorMessageConstants.INVALID_PASSWORD_ERROR,
+                validator = { it.validatePassword(it.text.toString()) }
+            )
+        )
+
+
+        JeduFormValidator.Builder()
+            .addFieldsToValidate(fields)
+            .watchWhileTyping(true)
+            .setErrorIcon(R.drawable.ic_baseline_check_circle)
+            .shouldShowErrorIcon(true)
+            .build()
+
     }
 }

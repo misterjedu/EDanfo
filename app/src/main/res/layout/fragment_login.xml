@@ -50,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/email_address"
             app:boxStrokeColor="@color/colorPrimary"
             app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +60,9 @@
                 android:id="@+id/fragment_login_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+                android:autofillHints="@string/email_address"
+                android:inputType="textEmailAddress"
+                android:text="@string/email_address" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,7 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
-            android:hint="@string/password"
             app:endIconMode="custom"
             app:layout_constraintEnd_toEndOf="@+id/fragment_login_email_text_layout_tl"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,8 @@
                 android:id="@+id/fragment_login_password_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="@string/password" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,8 +108,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/login"
             android:enabled="false"
+            android:text="@string/login"
             android:textAlignment="viewStart"
             app:icon="@drawable/ic_baseline_arrow_forward"
             app:iconGravity="end"
