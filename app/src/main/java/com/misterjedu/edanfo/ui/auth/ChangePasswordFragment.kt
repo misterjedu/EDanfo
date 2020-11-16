@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.misterjedu.edanfo.R
 import com.misterjedu.edanfo.utils.*
 import kotlinx.android.synthetic.main.fragment_change_password.*
-import kotlinx.android.synthetic.main.fragment_login.*
 
 class ChangePasswordFragment : Fragment() {
 
@@ -39,14 +38,13 @@ class ChangePasswordFragment : Fragment() {
         val fields: MutableList<JeduFormData> = mutableListOf(
             JeduFormData(
                 editText = fragment_change_password_new_password_et,
-                editTextInputLayout = fragment_login_email_text_layout_tl,
+                editTextInputLayout = fragment_change_password_phone_number_text_layout_tl,
                 errorMessage = JeduErrorMessageConstants.INVALID_EMAIL_ERROR,
                 validator = { it.validateEmail(it.text.toString()) }
-
             ),
             JeduFormData(
                 editText = fragment_change_password_confirm_password_et,
-                editTextInputLayout = fragment_login_password_til,
+                editTextInputLayout = null,
                 errorMessage = JeduErrorMessageConstants.INVALID_PASSWORD_ERROR,
                 validator = { it.validatePassword(it.text.toString()) }
             )
@@ -56,8 +54,9 @@ class ChangePasswordFragment : Fragment() {
         JeduFormValidator.Builder()
             .addFieldsToValidate(fields)
             .watchWhileTyping(true)
-            .setErrorIcon(R.drawable.ic_baseline_check_circle)
-            .shouldShowErrorIcon(true)
+            .setValidatedIcon(R.drawable.ic_baseline_check_circle)
+            .viewsToEnable(mutableListOf(fragment_change_password_login_btn))
+            .fieldsToShow(mutableListOf(button_to_remove))
             .build()
 
     }
